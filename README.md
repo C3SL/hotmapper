@@ -1,108 +1,139 @@
-# Administrador de base de dados SimCAQ/SMPPIR #
+# HOTMapper #
 
-Esse repositório implementa a classe DatabaseTable e funções para verificar pareamento entre
-diferentes anos inseridos no banco de dados. A ferramenta é desenvolvida em Python 3, e usa
-como base arquivos de mapeamento em formato CSV.
+This repository implements the HOTMapper, a tool that allows the user to manage his historical data using a mapping protocol
 
-Para a utilização a partir da linha de comando, a CLI manage.py pode ser utilizada sem
-que se invoque manualmente as funções a partir da linha de comando Python.
+## Requirements ##
 
-## Requisitos ##
+* Python 3 (It's recommended that you use a virtual environment, such as virtualenv)
+* MonetDB (We plan to make other databases to work with HOTMapper in the future)
 
-O utilitário foi desenvolvido em Python 3 usando a biblioteca SQLAlchemy com vistas ao banco
-de dados MonetDB. Versões futuras podem ter modificações visando a compatibilidade com outros
-bancos de dados, aproveitando as capacidades da biblioteca base.
+## Installation ##
 
-Para a instalação dos requisitos conforme usados durante o desenvolvimento, o arquivo
-requirements.txt pode ser usado como base (Recomenda-se o uso de um ambiente virtual).
+----
+**NOTICE:**
+We suppose that you already have Python 3.x installed in you computer and that all the following commands that use Python will use the Python 3.x
+--
+
+1) Install virtualenv
+
+1a) On Linux/macOS
 
 ```bash
-(env) $ pip install -r requirements.txt
+$ sudo -H pip install virtualenv
 ```
 
-A CLI depende do módulo manage.py. Demais dependências serão listadas a seguir.
+1b) On Windows (with administrator privilleges)
 
-### Requisitos para a interface com a base de dados ###
+```cmd
+$ pip install virtualenv
+```
 
-* pymonetdb
-* SQLAlchemy
-* sqlalchemy-monetdb
 
-### Requisitos para geração de pareamentos ###
+2) Clone this repository
+```bash
+$ git clone git@gitlab.c3sl.ufpr.br:tools/hotmapper.git
+```
 
-* numpy
-* pandas
-* xlrd
-* XlsxWriter
+3) Go to the repository
+
+```bash
+$ cd hotmapper
+```
+
+4) Create a virtual environment
+ 
+```bash
+$ virtualenv env
+```
+
+5) Start the virtual environment
+
+5a) On Linux/macOS
+
+```bash
+$ source env/bin/activate
+```
+
+5b) On Windows (with administrator privilleges)
+
+```cmd
+$ .\env\Scripts/activate
+```
+
+6) Install dependencies
+ 
+```bash
+$ pip install -r requirements.txt
+```
 
 ## Interface de linha de comando ##
 
-A invocação da CLI utiliza o padrão do pacote manage.py, que é:
+The CLI (Command Line Interface) uses the standart of the manage.py package, which means that to invoke a command you should use the following pattern:
 
 ```bash
-$ python manage.py [commando] [argumentos posicionais] [argumentos opcionais com valor]
+$ python manage.py [COMMAND] [POSITIONAL ARGUMENTS] [OPTIONAL ARGUMENTS]
 ```
 
-Os comandos já implementados são:
+Where COMMAND can be:
 
-* create: Cria a tabela conforme definido no protocolo de mapeamento.
+* create: Create a table using the mapping protocol.
 
 ```bash
-$ python manage.py create <nome da tabela>
+$ python manage.py create <table_name>
 ```
 
-O único argumento usado é o nome da tabela. O script procurará por um protocolo de
-mapeamento com o mesmo nome para a busca do esquema das colunas.
+**Notice** that the HOTMapper will use the name of the protocol as the name of the table.
 
-* insert: insere um arquivo de dados em formato CSV ou similar em uma tabela existente.
+
+* insert: Insert a CSV file in an existing table.
 
 ```bash
-$ python manage.py insert <caminho para o arquivo> <nome da tabela> <ano> [--sep separador] [--null valor_nulo]
+$ python manage.py insert <full/path/for/the/file> <table_name> <year> [--sep separator] [--null null_value]
 ```
 
-O caminho para o arquivo deve ser absoluto. A tabela utilizada deve existir e estar
-sincronizada com o protocolo de mapeamento correspondente. O separador padrão utilizado
-é ponto e vírgula (';'); caso outros separadores sejam utilizados pelo arquivo fonte,
-devem ser especificados com --sep (por exemplo --sep \\| para pipe). O valor nulo padrão
-é string vazia. Caso outro valor seja usado, deve ser especificado com --null.
+```
+<full/path/for/the/file> : The absolute file path
 
-* drop: derruba uma tabela do banco de dados.
+<table_name>: The name of the table where the file will be inserted
+
+<year>: The column of the mapping protocol that the HOTMapper should use to insert data
+
+[--sep separator]: The custom separtor of the CSV. To change it you should just replace 'separator' with the token your file uses
+
+[--null null_value]: Define what will replace the null value. Replace the 'null_value' with what you wish to do.
+
+```
+
+
+
+* drop: Delete a table from the database
 
 ```bash
-$ python manage.py drop <nome da tabela>
+$ python manage.py drop <table_name>
 ```
 
-O comando não contorna chaves estrangeiras que apontem para a tabela, e o banco de dados
-pode retornar um erro caso exista alguma.
+**NOTICE:** The command does not take care of foreign keys that points to the table that are being deleted. Therefore, the database can produce errors.
 
-* remap: sincroniza uma tabela com o protocolo de mapeamento.
+* remap: syncronize a table with the mapping protocol.
 
 ```bash
-$ python manage.py remap <nome da tabela>
+$ python manage.py remap <table_name>
 ```
+You should use this command everytime a mapping protocol is updated.
 
-Esse comando deve ser utilizado sempre que um protocolo de mapeamento for atualizado.
+The remap allows the creation of new columns, the drop of existent columns, the renaming of columns and the change of type of columns. Be aware that the bigger the table the bigger the usegae of RAM memory.
 
-O remapeamento permite a criação de novas colunas, derrubada de colunas existentes,
-renomeamento de colunas e mudança de tipo. Dependendo do tamanho da tabela, o uso de
-memória primária pode ser intenso.
-
-* generate_pairing_report: gera relatórios de pareamento para comparação de dados ano
-a ano.
+* generate_pairing_report: generate reports to compare data from diferent years.
 
 ```bash
 $ python manage.py generate_pairing_report [--output xlsx|csv]
 ```
 
-Os relatórios são criados na pasta pairing. Caso o formato não seja especificado,
-csv será utilizado (um arquivo será criado para cada tabela). Caso xlsx seja o formato
-utilizado, um arquivo será criado com todas as tabelas separadas em diferentes planilhas.
+The reports will be created in the folder "pairing" 
 
-* generate_backup: Cria/Atualiza o arquivo monitorado para o backup.
+
+* generate_backup: Create/Update a file to backup the database.
 
 ```bash
 $ python manage.py generate_backup
 ```
-
-O arquivo é criado ou atualizado na máquina onde o banco de dados da produção está,
-o procedimento de backup da equipe de infraestrutura o monitora para realizar o procedimento.
