@@ -1,0 +1,3 @@
+[submodule "mapping_protocols"]
+	path = mapping_protocols
+	url = git@gitlab.c3sl.ufpr.br:simcaq/mapping_protocols.git

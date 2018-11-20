@@ -1,0 +1,21 @@
+{
+    "data_source": "Microdados do Censo Escolar/INEP (arquivo Escolas)",
+    "pk": ["ano_censo", "id"],
+    "foreign_keys": [
+        {
+            "keys": ["municipio_id"],
+            "reference_columns": ["id"],
+            "reference_table": "municipio"
+        },
+        {
+            "keys": ["estado_id"],
+            "reference_columns": ["id"],
+            "reference_table": "estado"
+        },
+        {
+            "keys": ["regiao_id"],
+            "reference_columns": ["id"],
+            "reference_table": "regiao"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "data_source": "Microdados do Censo Escolar/INEP (arquivo Docentes)",
+    "pk": ["ano_censo", "id", "turma_id"],
+    "foreign_keys": [
+        {
+            "keys": ["escola_municipio_id"],
+            "reference_columns": ["id"],
+            "reference_table": "municipio"
+        },
+        {
+            "keys": ["escola_estado_id"],
+            "reference_columns": ["id"],
+            "reference_table": "estado"
+        },
+        {
+            "keys": ["escola_regiao_id"],
+            "reference_columns": ["id"],
+            "reference_table": "regiao"
+        },
+        {
+            "keys": ["ano_censo", "escola_id"],
+            "reference_columns": ["ano_censo", "id"],
+            "reference_table": "escola"
+        },
+        {
+            "keys": ["formacao_superior_id_1"],
+            "reference_columns": ["id"],
+            "reference_table": "formacao_superior"
+        },
+        {
+            "keys": ["formacao_superior_id_2"],
+            "reference_columns": ["id"],
+            "reference_table": "formacao_superior"
+        },
+        {
+            "keys": ["formacao_superior_id_3"],
+            "reference_columns": ["id"],
+            "reference_table": "formacao_superior"
+        },
+        {
+            "keys": ["instituicao_id_1"],
+            "reference_columns": ["id"],
+            "reference_table": "instituicao_superior"
+        },
+        {
+            "keys": ["instituicao_id_2"],
+            "reference_columns": ["id"],
+            "reference_table": "instituicao_superior"
+        },
+        {
+            "keys": ["instituicao_id_3"],
+            "reference_columns": ["id"],
+            "reference_table": "instituicao_superior"
+        }
+    ]
+}
