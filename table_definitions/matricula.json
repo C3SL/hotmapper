@@ -1,31 +1,6 @@
 {
+    "pairing_description": "Tabela de matrículas",
     "data_source": "Microdados do Censo Escolar/INEP (arquivo Matrículas)",
     "pk": ["ano_censo", "id"],
-    "foreign_keys": [
-        {
-            "keys": ["municipio_id"],
-            "reference_columns": ["id"],
-            "reference_table": "municipio"
-        },
-        {
-            "keys": ["estado_id"],
-            "reference_columns": ["id"],
-            "reference_table": "estado"
-        },
-        {
-            "keys": ["regiao_id"],
-            "reference_columns": ["id"],
-            "reference_table": "regiao"
-        },
-        {
-            "keys": ["ano_censo", "escola_id"],
-            "reference_columns": ["ano_censo", "id"],
-            "reference_table": "escola"
-        },
-        {
-            "keys": ["ano_censo", "turma_id"],
-            "reference_columns": ["ano_censo", "id"],
-            "reference_table": "turma"
-        }
-    ]
+    "foreign_keys": [  ]
 }
