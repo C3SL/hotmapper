@@ -2,6 +2,12 @@
 
 This repository implements the HOTMapper, a tool that allows the user to manage his historical data using a mapping protocol
 
+## Data ##
+
+The dataset "Matrícula" can be found at the link: [INEP](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar".
+
+The dataset "Local Oferta" can be found in the same link, but at the section "Censo da Educação Superior". Additionaly for increase the convenience, all data from "Local Oferta" is in the directory open_data.
+
 ## Requirements ##
 
 * Python 3 (It's recommended that you use a virtual environment, such as virtualenv)
