@@ -20,6 +20,16 @@ def compile_double(element, compiler, **kwargs):
     by default'''
     return 'DOUBLE'
 
+@compiles(TINYINT, 'mysql')
+def compile_tinyint(element, compiler, **kwargs):
+    return 'SMALLINT'
+
+@compiles(DOUBLE_PRECISION, 'mysql')
+def compile_double(element, compiler, **kwargs):
+    '''Translation for double - not sure if implemented in sqlalchemy_monetdb
+    by default'''
+    return 'FLOAT'
+
 def get_type(in_string):
     '''Returns a remapped type object for a given type string'''
     in_string = in_string.lower()

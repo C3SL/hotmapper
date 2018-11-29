@@ -2,4 +2,6 @@ env/
 __pycache__
 *.pyc
 pairing/
+.cache
+.coverage
 .vscode

@@ -1,12 +1,14 @@
 # HOTMapper #
 
-This repository implements the HOTMapper, a tool that allows the user to manage his historical data using a mapping protocol
+This respository was created in order to make available the HOTMapper, a tool that allows the user to manage his historical data using a mapping protocol for demonstration purposes for the EDBT 2019. 
 
 ## Data ##
 
 The dataset "Matrícula" can be found at the link: [INEP](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar".
 
 The dataset "Local Oferta" can be found in the same link, but at the section "Censo da Educação Superior". Additionaly for increase the convenience, all data from "Local Oferta" is in the directory open_data.
+
+**NOTE**: It's important that you ta
 
 ## Requirements ##
 

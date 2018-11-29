@@ -18,20 +18,15 @@ DATABASE = 'hotmapper_demo'
 # URI structure. Standards to login:password model, but can be changed as needed.
 DATABASE_URI = '{}://{}:{}@{}/{}'.format(DATABASE_DIALECT, DATABASE_USER,
                                          DATABASE_USER_PASSWORD, DATABASE_HOST, DATABASE)
+# Folder and file where backup is created - absolute path
+BACKUP_FOLDER = '/home/banco/dumps/monetdb/'
+BACKUP_FILE = 'backupdadoseducacionais'
 
 # Folder where mapping protocols can be found - relative to root
 MAPPING_PROTOCOLS_FOLDER = 'mapping_protocols'
 
 # Folder for table definitions files
 TABLE_DEFINITIONS_FOLDER = 'table_definitions'
-
-# Pairing report paths
-PAIRING_OUTPUT_FOLDER = './pairing'
-XLS_OUTPUT_FILE_NAME = 'pairing.xlsx'
-DICTIONARY_FOLDER = './dictionaries'
-# Pairing variable list will eventually be moved to mapping protocol - kept because of old
-# script used as base
-PAIRING_VARIABLE_FILE = './variables.txt'
 
 # Source table definitions
 SOURCE_TABLE_NAME = 'fonte'
@@ -46,3 +41,6 @@ ECHO = False
 # Logging
 LOGGING_LEVEL = logging.INFO
 LOGGING_FORMAT = "%(levelname)s - %(name)s: %(message)s"
+
+# Info used on file format conversions
+CHUNK_SIZE = 500

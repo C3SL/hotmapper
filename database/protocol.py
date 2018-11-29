@@ -3,18 +3,24 @@ Names comonly used:
 - original columns: columns as they are named in the original database;
 - target columns: columns as named internaly in project;
 - dbcolumns: columns as named in database.'''
+import logging
 import pandas as pd
 
+from database.base import InvalidTargetError, DuplicateColumnNameError
+
+
+logger = logging.getLogger(__name__)
 
 standard_columns = {
     'description': 'Novo Rótulo',
     'target_name': 'Var.Lab',
     'standard_name': 'Rot.Padrão',
     'database_name': 'Nome Banco',
-    'data_type': 'Tipo de Dado'
+    'data_type': 'Tipo de Dado',
+    'temporary_column': 'Coluna temporária'
 }
 
-class Protocol():
+class Protocol(object):
     ''' Protocol for table translation'''
     def __init__(self, in_file=None, columns=None):
         self._dataframe = None
@@ -73,23 +79,69 @@ class Protocol():
         if not indexes:
             return None
         if len(indexes) > 1:
-            return None
+            raise DuplicateColumnNameError(name)
         return self._remaped[indexes[0]]
 
+    def get_temporary_columns(self, year):
+        dataframe = self._dataframe
+        indexes = dataframe[dataframe[standard_columns['temporary_column']] == 1].index.tolist()
+
+        df = dataframe.iloc[indexes][[
+            standard_columns['database_name'],
+            standard_columns['data_type'],
+            year]
+        ]
+
+        return [l[1].tolist() for l in df.iterrows()]
 
     def dbcolumn_from_target(self, name):
         '''Gets database column from a target column name. Ouput is a list
-        with the column name, type and comment contents.
+        with the column name and type contents.
         Input example: **{'name': 'CEBMA015N0'}
-        output could look like ['cor_raca_id', 'TINYINT', 'Cor/raça', 'TP_COR_RACA'] '''
+        output could look like ['cor_raca_id', 'TINYINT'] '''
         indexes = self._dataframe[self._remaped == name].index.tolist()
-        if not indexes or len(indexes) > 1:
-            return [None, None, None, None]
-        comment = self._dataframe[standard_columns['description']][indexes[0]].strip()
-        standard = self._dataframe[standard_columns['standard_name']][indexes[0]].strip()
+        if len(indexes) > 1:
+            indexes = None
+        if indexes:
+            try:
+                is_temp = self._dataframe[standard_columns['temporary_column']]
+                is_temp = is_temp[indexes[0]]
+            except KeyError:
+                logger.warning("Protocol doesn't have temporary identifier")
+                is_temp = None
+
+        if not indexes:
+            raise InvalidTargetError(name)
         column_name = self._dataframe[standard_columns['database_name']][indexes[0]].strip()
         column_type = self._dataframe[standard_columns['data_type']][indexes[0]].strip()
-        return [column_name, column_type, comment, standard]
+        if not column_name or not column_type:
+            raise InvalidTargetError(name)
+        return [column_name, column_type]
+
+    def get_comment(self, target):
+        indexes = self._dataframe[self._remaped == target].index.tolist()
+        if len(indexes) > 1:
+            indexes = None
+        if indexes:
+            try:
+                is_temp = self._dataframe[standard_columns['temporary_column']]
+                is_temp = is_temp[indexes[0]]
+            except KeyError:
+                logger.warning("Protocol doesn't have temporary identifier")
+                is_temp = None
+
+        if not indexes or is_temp:
+            raise InvalidTargetError(target)
+        comment = self._dataframe[standard_columns['description']][indexes[0]]
+        return comment
+
+    def get_tabbed_mapping(self, year):
+        column_names = list(self._dataframe[self._dataframe['p0' + year] != ''][year])
+
+
+        column_mappings = [list(c) for _, c in
+                           self._dataframe[['p0' + year, 'pf' + year]].iterrows() if bool(c[0])]
+        return column_names, column_mappings
 
     def remap_from_protocol(self, new_protocol, column_list, reference_year='2015'):
         '''Method to update a mapping protocol from another file'''
