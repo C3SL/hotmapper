@@ -2,6 +2,17 @@
 
 This respository was created in order to make available the HOTMapper, a tool that allows the user to manage his historical data using a mapping protocol for demonstration purposes for the EDBT 2019. 
 
+## Table of content ##
+
+ [HOTMapper](#hotmapper)
+ - [Data](#data)
+ - [Requirements](#requirements)
+ - [Installation](#installation)
+ - [Command Line Interface](#command-line-interface)
+ - [Demo scenarios](#demo-scenarios)
+     - [Demo scenario 1](#demo-scenario-1)
+     - [Demo scenario 2](#demo-scenario-2)
+
 ## Data ##
 
 The original open data set can be found at the link: [INEP](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar" and "Censo da Educação Superior".
@@ -157,7 +168,7 @@ In this Section we will explain how to execute the demo. Demo scenario 1 uses th
 
 In both scnearios, we assume that you started the virtual environment as explained in Section `Installation - 5`
 
-### Demo scenario 1: ###
+### Demo scenario 1 ###
 
 This section contains the commands used in the scenario 1, which is the creation of a new data source and the inclusion of the corresponding data.
 
@@ -207,7 +218,7 @@ g) To insert 2016:
 $ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
 ```
 
-### Demo scenario 2: ###
+### Demo scenario 2 ###
 
 This section contains the commands used in the scenario 2, which is the update of an existing data source.
 
@@ -256,4 +267,4 @@ The above command will update the table `Fonte` and the schema from the table ma
 $ ./manage.py update_from_file /FILEPATH/2013_MATRICULA.csv matricula 2013 --columns="fundamental_af" --sep="|"
 ```
 
-The above command will update the data in the table matricula
+The above command will update the data in the table matricula.
