@@ -252,7 +252,7 @@ d) To insert 2016:
 $ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
 ```
 
-3) Change the matricula's mapping protocol. You can use the `matricula_remap.csv` (To do so, rename the current `matricula.csv` to something else and the `matricula_remap.csv` to `matricula.csv`). In that case, the only column that will change is the "fundamental_af" in the year 2013. 
+3) Change the matricula's mapping protocol. You can use the `matricula_remap.csv` (To do so, rename the current `matricula.csv` to something else and the `matricula_remap.csv` to `matricula.csv`). In that case, the only column that will change is the "profissionalizante", because now, instead of the ELSE returns 0 it returns 9. 
 
 4) Run the remap command
 
@@ -264,7 +264,7 @@ The above command will update the table `Fonte` and the schema from the table ma
 5) Update the table
 
 ```bash
-$ ./manage.py update_from_file /FILEPATH/2013_MATRICULA.csv matricula 2013 --columns="fundamental_af" --sep="|"
+$ ./manage.py update_from_file /FILEPATH/2013_MATRICULA.csv matricula 2013 --columns="profissionalizante" --sep="|"
 ```
 
 The above command will update the data in the table matricula.
