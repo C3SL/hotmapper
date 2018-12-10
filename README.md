@@ -230,7 +230,7 @@ $ ./manage.py create matricula
 
 2) Now, as we already have the mapping protocol, we need to insert the open data in the data base. To do it we must execute the following commands:
 
-**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/2013_MATRICULA`
+**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/MATRICULA_2013.CSV`
 
 a) To insert 2013:
 ```bash
@@ -264,7 +264,7 @@ The above command will update the table `Fonte` and the schema from the table ma
 5) Update the table
 
 ```bash
-$ ./manage.py update_from_file /FILEPATH/2013_MATRICULA.csv matricula 2013 --columns="profissionalizante" --sep="|"
+$ ./manage.py update_from_file /FILEPATH/MATRICULA_2013.CSV matricula 2013 --columns="profissionalizante" --sep="|"
 ```
 
 The above command will update the data in the table matricula.
