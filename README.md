@@ -225,31 +225,31 @@ This section contains the commands used in the scenario 2, which is an update of
 
 1) First we need to create the database, to do so execute the following command:
 ```bash
-$ ./manage.py create localoferta_ens_superior
+$ ./manage.py create matricula
 ```
 
 2) Now, as we already have the mapping protocol, we need to insert the open data in the data base. To do it we must execute the following commands:
 
-**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/DM_LOCAL_OFERTA_2010`
+**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/2013_MATRICULA`
 
 a) To insert 2013:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
+$ ./manage.py insert FILEPATH/MATRICULA_2013.CSV matricula 2013 --sep="|" 
 ```
 
 b) To insert 2014:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
+$ ./manage.py insert FILEPATH/MATRICULA_2014.CSV matricula 2014 --sep="|" 
 ```
 
 c) To insert 2015:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
+$ ./manage.py insert FILEPATH/MATRICULA_2015.CSV matricula 2015 --sep="|" 
 ```
 
 d) To insert 2016:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
+$ ./manage.py insert FILEPATH/MATRICULA_2016.CSV matricula 2016 --sep="|" 
 ```
 
 3) Change the matricula's mapping protocol. You can use the `matricula_remap.csv` (To do so, rename the current `matricula.csv` to something else and the `matricula_remap.csv` to `matricula.csv`). In that case, the only column that will change is the "profissionalizante", because now, instead of the ELSE returns 0 it returns 9. 
