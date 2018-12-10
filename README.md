@@ -1,6 +1,6 @@
 # HOTMapper #
 
-This respository was created in order to make available the HOTMapper, a tool that allows the user to manage his historical data using a mapping protocol for demonstration purposes for the EDBT 2019. 
+This respository contains the HOTMapper tool, a tool that allows the user to manage his historical data using a mapping protocol. This specific version is freezed for demonstration purposes for the EDBT 2019 conference. 
 
 ## Table of content ##
 
@@ -15,22 +15,22 @@ This respository was created in order to make available the HOTMapper, a tool th
 
 ## Data ##
 
-The original open data set can be found at the link: [INEP](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar" and "Censo da Educação Superior".
+The Open Data sources extracted and processed by the tool can be found at the link: [INEP](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar" and "Censo da Educação Superior".
 
-Additionaly for increase the convenience, all data from "Local Oferta" is in the directory open_data.
+To make it easier to execute the tool, we have dowloaded all data from "Local Oferta" is in the directory open_data. This way it is not necessary to search for the original sources.
 
-**NOTE**: It's important that you verify ith there is a column identifying the year of the dataset;
+**NOTE**: It's important to verify if there is a column identifying the year of the dataset;
 
 ## Requirements ##
 
-* Python 3 (It's recommended that you use a virtual environment, such as virtualenv)
+* Python 3 (It's recommended to use a virtual environment, such as virtualenv)
 * MonetDB (We plan to make other databases to work with HOTMapper in the future)
 
 ## Installation ##
 
 ----
 **NOTICE:**
-We suppose that you already have Python 3.x installed in you computer and that all the following commands that use Python will use the Python 3.x
+We assume thatPython 3.x is installed in the local computer and that all the following commands that use Python will use Python 3.x.
 --
 
 1) Install virtualenv
@@ -87,7 +87,7 @@ $ pip install -r requirements.txt
 
 ## Command Line Interface ##
 
-The CLI (Command Line Interface) uses the standart of the manage.py package, which means that to invoke a command you should use the following pattern:
+The CLI (Command Line Interface) uses the standard actions provided by manage.py, which means that to invoke a command it follows the following patterns:
 
 ```bash
 $ python manage.py [COMMAND] [POSITIONAL ARGUMENTS] [OPTIONAL ARGUMENTS]
@@ -95,7 +95,7 @@ $ python manage.py [COMMAND] [POSITIONAL ARGUMENTS] [OPTIONAL ARGUMENTS]
 
 Where COMMAND can be:
 
-* create: Create a table using the mapping protocol.
+* create: Creates a table using the mapping protocol.
 
 ```bash
 $ python manage.py create <table_name>
@@ -104,7 +104,7 @@ $ python manage.py create <table_name>
 **Notice** that the HOTMapper will use the name of the protocol as the name of the table.
 
 
-* insert: Insert a CSV file in an existing table.
+* insert: Inserts a CSV file in an existing table.
 
 ```bash
 $ python manage.py insert <full/path/for/the/file> <table_name> <year> [--sep separator] [--null null_value]
@@ -131,24 +131,24 @@ $ python manage.py insert <full/path/for/the/file> <table_name> <year> [--sep se
 $ python manage.py drop <table_name>
 ```
 
-**NOTICE:** The command does not take care of foreign keys that points to the table that are being deleted. Therefore, the database can produce errors.
+**NOTICE:** The command does not handle foreign keys that points to the table that are being deleted.
 
-* remap: syncronize a table with the mapping protocol.
+* remap: syncronizes a table with the mapping definition.
 
 ```bash
 $ python manage.py remap <table_name>
 ```
-You should use this command everytime a mapping protocol is updated.
+This command should be run everytime a mapping definition is updated.
 
-The remap allows the creation of new columns, the drop of existent columns, the renaming of columns and the change of type of columns. Be aware that the bigger the table the bigger the usegae of RAM memory.
+The remap allows the creation of new columns, the exclusion of existing columns, the renaming of columns and the modification of the type of columns. Be aware that the bigger the table the bigger the useage of RAM memory.
 
-* update_from_file: Update the data in the table
+* update_from_file: Updates the data in the table
 
 ```bash
 $ python manage.py update_from_file <csv_file> <table_name> <year> [--columns="column_name1","column_name2"] [--sep=separator]
 ```
 
-* generate_pairing_report: generate reports to compare data from diferent years.
+* generate_pairing_report: generates reports to compare data from diferent years.
 
 ```bash
 $ python manage.py generate_pairing_report [--output xlsx|csv]
@@ -164,7 +164,7 @@ $ python manage.py generate_backup
 ```
 ## Demo scenarios ##
 
-In this Section we will explain how to execute the demo. Demo scenario 1 uses the dataset "local oferta", which is included in the directory open_data. Demo scenario 2 uses the dataset "matricula" which can be downloaded from the [INEP's Link ](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar".
+In this Section we will explain how to execute the demo scenarios that were submitted to EDBT 2019. Demo scenario 1 uses the dataset "local oferta", which is included in the directory open_data. Demo scenario 2 uses the dataset "matricula" which can be downloaded from the [INEP's Link ](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar".
 
 In both scnearios, we assume that you started the virtual environment as explained in Section `Installation - 5`
 
@@ -173,12 +173,12 @@ In both scnearios, we assume that you started the virtual environment as explain
 This section contains the commands used in the scenario 1, which is the creation of a new data source and the inclusion of the corresponding data.
 
 
-1) First we need to create the database, to do so execute the following command:
+1) First we need to create the database, to do so we execute the following command:
 ```bash
 $ ./manage.py create localoferta_ens_superior
 ```
 
-2) Now, as we already have the mapping protocol, we need to insert the open data in the data base. To do it we must execute the following commands:
+2) Now, as we already have the mapping definition, we need to insert the open data in the data base. To do it we must execute the following commands:
 
 **NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/DM_LOCAL_OFERTA_2010`
 
@@ -220,7 +220,7 @@ $ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 
 
 ### Demo scenario 2 ###
 
-This section contains the commands used in the scenario 2, which is the update of an existing data source.
+This section contains the commands used in the scenario 2, which is an update of an existing data source.
 
 
 1) First we need to create the database, to do so execute the following command:
