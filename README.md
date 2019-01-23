@@ -1,126 +1,270 @@
-# Administrador de base de dados SimCAQ/SMPPIR #
+# HOTMapper #
 
-Esse repositório implementa a classe DatabaseTable e funções para verificar pareamento entre
-diferentes anos inseridos no banco de dados. A ferramenta é desenvolvida em Python 3, e usa
-como base arquivos de mapeamento em formato CSV.
+This respository contains the HOTMapper tool, a tool that allows the user to manage his historical data using a mapping protocol. This specific version is freezed for demonstration purposes for the EDBT 2019 conference. 
 
-Para a utilização a partir da linha de comando, a CLI manage.py pode ser utilizada sem
-que se invoque manualmente as funções a partir da linha de comando Python.
+## Table of content ##
 
-## Requisitos ##
+ [HOTMapper](#hotmapper)
+ - [Data](#data)
+ - [Requirements](#requirements)
+ - [Installation](#installation)
+ - [Command Line Interface](#command-line-interface)
+ - [Demo scenarios](#demo-scenarios)
+     - [Demo scenario 1](#demo-scenario-1)
+     - [Demo scenario 2](#demo-scenario-2)
 
-O utilitário foi desenvolvido em Python 3 usando a biblioteca SQLAlchemy com vistas ao banco
-de dados MonetDB. Versões futuras podem ter modificações visando a compatibilidade com outros
-bancos de dados, aproveitando as capacidades da biblioteca base.
+## Data ##
 
-Para a instalação dos requisitos conforme usados durante o desenvolvimento, o arquivo
-requirements.txt pode ser usado como base (Recomenda-se o uso de um ambiente virtual).
+The Open Data sources extracted and processed by the tool can be found at the link: [INEP](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar" and "Censo da Educação Superior".
 
-```bash
-(env) $ pip install -r requirements.txt
-```
+To make it easier to execute the tool, we have dowloaded all data from "Local Oferta" is in the directory open_data. This way it is not necessary to search for the original sources.
 
-A CLI depende do módulo manage.py. Demais dependências serão listadas a seguir.
+**NOTE**: It's important to verify if there is a column identifying the year of the dataset;
 
-### Requisitos para a interface com a base de dados ###
+## Requirements ##
 
-* pymonetdb
-* SQLAlchemy
-* sqlalchemy-monetdb
+* Python 3 (It's recommended to use a virtual environment, such as virtualenv)
+* MonetDB (We plan to make other databases to work with HOTMapper in the future)
 
-### Requisitos para geração de pareamentos ###
+## Installation ##
 
-* numpy
-* pandas
-* xlrd
-* XlsxWriter
+----
+**NOTICE:**
+We assume thatPython 3.x is installed in the local computer and that all the following commands that use Python will use Python 3.x.
+--
 
-## Interface de linha de comando ##
+1) Install virtualenv
 
-A invocação da CLI utiliza o padrão do pacote manage.py, que é:
+1a) On Linux/macOS
 
 ```bash
-$ python manage.py [commando] [argumentos posicionais] [argumentos opcionais com valor]
+$ sudo -H pip install virtualenv
 ```
 
-Os comandos já implementados são:
+1b) On Windows (with administrator privilleges)
 
-* create: Cria a tabela conforme definido no protocolo de mapeamento.
+```cmd
+$ pip install virtualenv
+```
+
+
+2) Clone this repository
+```bash
+$ git clone git@gitlab.c3sl.ufpr.br:tools/hotmapper.git
+```
+
+3) Go to the repository
 
 ```bash
-$ python manage.py create <nome da tabela>
+$ cd hotmapper
 ```
 
-O único argumento usado é o nome da tabela. O script procurará por um protocolo de
-mapeamento com o mesmo nome para a busca do esquema das colunas.
+4) Create a virtual environment
+ 
+```bash
+$ virtualenv env
+```
 
-* insert: insere um arquivo de dados em formato CSV ou similar em uma tabela existente.
+5) Start the virtual environment
+
+5a) On Linux/macOS
 
 ```bash
-$ python manage.py insert <caminho para o arquivo> <nome da tabela> <ano> [--sep separador] [--null valor_nulo]
+$ source env/bin/activate
 ```
 
-O caminho para o arquivo deve ser absoluto. A tabela utilizada deve existir e estar
-sincronizada com o protocolo de mapeamento correspondente. O separador padrão utilizado
-é ponto e vírgula (';'); caso outros separadores sejam utilizados pelo arquivo fonte,
-devem ser especificados com --sep (por exemplo --sep \\| para pipe). O valor nulo padrão
-é string vazia. Caso outro valor seja usado, deve ser especificado com --null.
+5b) On Windows (with administrator privilleges)
 
-* drop: derruba uma tabela do banco de dados.
+```cmd
+$ .\env\Scripts/activate
+```
+
+6) Install dependencies
+ 
+```bash
+$ pip install -r requirements.txt
+```
+
+## Command Line Interface ##
+
+The CLI (Command Line Interface) uses the standard actions provided by manage.py, which means that to invoke a command it follows the following patterns:
 
 ```bash
-$ python manage.py drop <nome da tabela>
+$ python manage.py [COMMAND] [POSITIONAL ARGUMENTS] [OPTIONAL ARGUMENTS]
 ```
 
-O comando não contorna chaves estrangeiras que apontem para a tabela, e o banco de dados
-pode retornar um erro caso exista alguma.
+Where COMMAND can be:
 
-* remap: sincroniza uma tabela com o protocolo de mapeamento.
+* create: Creates a table using the mapping protocol.
 
 ```bash
-$ python manage.py remap <nome da tabela>
+$ python manage.py create <table_name>
 ```
 
-Esse comando deve ser utilizado sempre que um protocolo de mapeamento for atualizado.
+**Notice** that the HOTMapper will use the name of the protocol as the name of the table.
 
-O remapeamento permite a criação de novas colunas, derrubada de colunas existentes,
-renomeamento de colunas e mudança de tipo. Dependendo do tamanho da tabela, o uso de
-memória primária pode ser intenso.
 
-* generate_pairing_report: gera relatórios de pareamento para comparação de dados ano
-a ano.
+* insert: Inserts a CSV file in an existing table.
+
+```bash
+$ python manage.py insert <full/path/for/the/file> <table_name> <year> [--sep separator] [--null null_value]
+```
+
+```
+<full/path/for/the/file> : The absolute file path
+
+<table_name>: The name of the table where the file will be inserted
+
+<year>: The column of the mapping protocol that the HOTMapper should use to insert data
+
+[--sep separator]: The custom separtor of the CSV. To change it you should just replace 'separator' with the token your file uses
+
+[--null null_value]: Define what will replace the null value. Replace the 'null_value' with what you wish to do.
+
+```
+
+
+
+* drop: Delete a table from the database
+
+```bash
+$ python manage.py drop <table_name>
+```
+
+**NOTICE:** The command does not handle foreign keys that points to the table that are being deleted.
+
+* remap: syncronizes a table with the mapping definition.
+
+```bash
+$ python manage.py remap <table_name>
+```
+This command should be run everytime a mapping definition is updated.
+
+The remap allows the creation of new columns, the exclusion of existing columns, the renaming of columns and the modification of the type of columns. Be aware that the bigger the table the bigger the useage of RAM memory.
+
+* update_from_file: Updates the data in the table
+
+```bash
+$ python manage.py update_from_file <csv_file> <table_name> <year> [--columns="column_name1","column_name2"] [--sep=separator]
+```
+
+* generate_pairing_report: generates reports to compare data from diferent years.
 
 ```bash
 $ python manage.py generate_pairing_report [--output xlsx|csv]
 ```
 
-Os relatórios são criados na pasta pairing. Caso o formato não seja especificado,
-csv será utilizado (um arquivo será criado para cada tabela). Caso xlsx seja o formato
-utilizado, um arquivo será criado com todas as tabelas separadas em diferentes planilhas.
+The reports will be created in the folder "pairing" 
 
-* generate_backup: Cria/Atualiza o arquivo monitorado para o backup.
+
+* generate_backup: Create/Update a file to backup the database.
 
 ```bash
 $ python manage.py generate_backup
 ```
+## Demo scenarios ##
 
-O arquivo é criado ou atualizado na máquina onde o banco de dados da produção está,
-o procedimento de backup da equipe de infraestrutura o monitora para realizar o procedimento.
+In this Section we will explain how to execute the demo scenarios that were submitted to EDBT 2019. Demo scenario 1 uses the dataset "local oferta", which is included in the directory open_data. Demo scenario 2 uses the dataset "matricula" which can be downloaded from the [INEP's Link ](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar".
 
-# Script para criar o Banco de Dados e adicionar entradas #
+In both scnearios, we assume that you started the virtual environment as explained in Section `Installation - 5`
 
-O script auto.sh pode ser utilizado para criar as tabelas base do banco de dados, como
-também as tabelas dos protocolos de mapeamento e inserir dados nelas. O objetivo do script
-é facilitar a criação do banco para os desenvolvedores.
+### Demo scenario 1 ###
 
-O script apresenta um texto de ajuda quando é executado sem parâmetros. Para o funcionamento
-correto é necessário seguir o padrão dos parâmetros para cada comando.
+This section contains the commands used in the scenario 1, which is the creation of a new data source and the inclusion of the corresponding data.
 
-1. Observação: É importante verificar o arquivo de configurações para verificar o nome do
-banco que será utilizado pelo script.
-2. Observação: A execução dos comandos da biblioteca não são interrompidos por erros.
 
-Exemplo de execução:
+1) First we need to create the database, to do so we execute the following command:
 ```bash
-$ ./auto.sh all testdb /home/username/Documents/c3sl/datafiles/ 2016 2016
+$ ./manage.py create localoferta_ens_superior
 ```
+
+2) Now, as we already have the mapping definition, we need to insert the open data in the data base. To do it we must execute the following commands:
+
+**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/DM_LOCAL_OFERTA_2010`
+
+
+a) To insert 2010:
+```bash
+$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2010.CSV localoferta_ens_superior 2010 --sep="|" 
+```
+
+b) To insert 2011:
+```bash
+$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2011.CSV localoferta_ens_superior 2011 --sep="|" 
+```
+
+c) To insert 2012:
+```bash
+$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2012.CSV localoferta_ens_superior 2012 --sep="|" 
+```
+
+d) To insert 2013:
+```bash
+$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
+```
+
+e) To insert 2014:
+```bash
+$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
+```
+
+f) To insert 2015:
+```bash
+$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
+```
+
+g) To insert 2016:
+```bash
+$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
+```
+
+### Demo scenario 2 ###
+
+This section contains the commands used in the scenario 2, which is an update of an existing data source.
+
+
+1) First we need to create the database, to do so execute the following command:
+```bash
+$ ./manage.py create matricula
+```
+
+2) Now, as we already have the mapping protocol, we need to insert the open data in the data base. To do it we must execute the following commands:
+
+**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/MATRICULA_2013.CSV`
+
+a) To insert 2013:
+```bash
+$ ./manage.py insert FILEPATH/MATRICULA_2013.CSV matricula 2013 --sep="|" 
+```
+
+b) To insert 2014:
+```bash
+$ ./manage.py insert FILEPATH/MATRICULA_2014.CSV matricula 2014 --sep="|" 
+```
+
+c) To insert 2015:
+```bash
+$ ./manage.py insert FILEPATH/MATRICULA_2015.CSV matricula 2015 --sep="|" 
+```
+
+d) To insert 2016:
+```bash
+$ ./manage.py insert FILEPATH/MATRICULA_2016.CSV matricula 2016 --sep="|" 
+```
+
+3) Change the matricula's mapping protocol. You can use the `matricula_remap.csv` (To do so, rename the current `matricula.csv` to something else and the `matricula_remap.csv` to `matricula.csv`). In that case, the only column that will change is the "profissionalizante", because now, instead of the ELSE returns 0 it returns 9. 
+
+4) Run the remap command
+
+```bash
+$ ./manage.py remap matricula
+```
+The above command will update the table `Fonte` and the schema from the table matricula
+
+5) Update the table
+
+```bash
+$ ./manage.py update_from_file /FILEPATH/MATRICULA_2013.CSV matricula 2013 --columns="profissionalizante" --sep="|"
+```
+
+The above command will update the data in the table matricula.
