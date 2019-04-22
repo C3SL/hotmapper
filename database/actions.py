@@ -87,12 +87,12 @@ def drop(table):
 
     table.drop()
 
-def remap(table):
+def remap(table, auto_confirmation=True):
     '''Applies change made in mapping protocols to database'''
     table = gen_data_table(table, META)
     table.map_from_database()
 
-    table.remap()
+    table.remap(auto_confirmation)
 
 def csv_from_tabbed(table_name, input_file, output_file, year, sep=';'):
     table = gen_data_table(table_name, META)
