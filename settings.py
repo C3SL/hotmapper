@@ -1,5 +1,5 @@
-"""
-Copyright (C) 2018 Centro de Computacao Cientifica e Software Livre
+'''
+Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
 Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
 
 This file is part of HOTMapper.
@@ -15,10 +15,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with simcaq-cdn.  If not, see <https://www.gnu.org/licenses/>.
-
-"""
-
+along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
+'''
 
 '''Settings used by the database module'''
 import logging
@@ -35,7 +33,7 @@ DATABASE_USER_PASSWORD = 'monetdb'
 DATABASE_HOST = 'localhost'
 
 # Database to connect to
-DATABASE = 'hotmapper_demo'
+DATABASE = 'dev_simcaq'
 
 # URI structure. Standards to login:password model, but can be changed as needed.
 DATABASE_URI = '{}://{}:{}@{}/{}'.format(DATABASE_DIALECT, DATABASE_USER,
@@ -49,6 +47,9 @@ MAPPING_PROTOCOLS_FOLDER = 'mapping_protocols'
 
 # Folder for table definitions files
 TABLE_DEFINITIONS_FOLDER = 'table_definitions'
+
+# Folder for scripts and sql tables
+SCRIPTS_FOLDER = 'sql'
 
 # Source table definitions
 SOURCE_TABLE_NAME = 'fonte'

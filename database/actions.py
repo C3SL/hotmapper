@@ -1,5 +1,5 @@
-"""
-Copyright (C) 2018 Centro de Computacao Cientifica e Software Livre
+'''
+Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
 Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
 
 This file is part of HOTMapper.
@@ -15,23 +15,25 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with simcaq-cdn.  If not, see <https://www.gnu.org/licenses/>.
-
-"""
+along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
+'''
 
 '''Database manipulation actions - these can be used as models for other modules.'''
 import logging
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine, MetaData, text
 from os import chdir
 from datetime import datetime
 from database.base import MissingTableError
 from database.database_table import gen_data_table, copy_tabbed_to_csv
+import database.groups
 import settings
+from database.groups import DATA_GROUP, DATABASE_TABLE_NAME
 
 ENGINE = create_engine(settings.DATABASE_URI, echo=settings.ECHO)
 META = MetaData(bind=ENGINE)
 
 logging.basicConfig(format = settings.LOGGING_FORMAT)
+logger = logging.getLogger(__name__)
 
 database_table_logger = logging.getLogger('database.database_table')
 database_table_logger.setLevel(settings.LOGGING_LEVEL)
@@ -101,7 +103,7 @@ def csv_from_tabbed(table_name, input_file, output_file, year, sep=';'):
     copy_tabbed_to_csv(input_file, column_mappings, settings.CHUNK_SIZE, output_file,
                        column_names=column_names, sep=sep)
 
-def update_from_file(file_name, table, year, columns=None, target_list=None,
+def update_from_file(file_name, table, year, columns=None,
                      offset=2, delimiters=[';', '\\n', '"'], null=''):
     '''Updates table columns from an input csv file'''
     table = gen_data_table(table, META)
@@ -140,3 +142,37 @@ def generate_backup():
     f = open(settings.BACKUP_FILE,"w")
     f.write(str(datetime.now()))
     f.close()
+
+def execute_sql_script(sql_scripts, sql_path=settings.SCRIPTS_FOLDER):
+    if type(sql_scripts) == str:
+        sql_scripts = [sql_scripts]
+    with ENGINE.connect() as connection:
+        trans = connection.begin()
+        for script in sql_scripts:
+            with open(sql_path + '/' + script) as sql:
+                connection.execute(text(sql.read()))
+        trans.commit()
+
+def execute_sql_group(script_group, sql_path=settings.SCRIPTS_FOLDER, files=False):
+    if not files:
+        sql_script = [DATA_GROUP[group.upper()] for group in script_group.split(",")]
+    else:
+        sql_script = script_group.split(",")
+    for sql in sql_script:
+        execute_sql_script(sql, sql_path + '/')
+
+def drop_group(script_group, files=False):
+    script_group = script_group.split(",")
+    selected_tables = []
+    if not files:
+        for group in script_group:
+            selected_tables += DATA_GROUP[group.upper()]
+    else:
+        selected_tables = script_group
+
+    for table in reversed(selected_tables):
+        if table in DATABASE_TABLE_NAME:
+            table_name = DATABASE_TABLE_NAME[table]
+        else:
+            table_name = table.replace('.sql', '')
+        drop(table_name)

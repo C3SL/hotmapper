@@ -1,4 +1,4 @@
-'''
+/*
 Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
 Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
 
@@ -16,5 +16,17 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
-'''
+*/
 
+CREATE TABLE regiao
+(
+    id serial,
+    nome text not null
+);
+
+COPY 5 RECORDS INTO regiao FROM stdin USING DELIMITERS ',','\n';
+1,Norte
+2,Nordeste
+3,Sudeste
+4,Sul
+5,Centro-Oeste
