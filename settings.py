@@ -33,7 +33,7 @@ DATABASE_USER_PASSWORD = 'monetdb'
 DATABASE_HOST = 'localhost'
 
 # Database to connect to
-DATABASE = 'dev_simcaq'
+DATABASE = 'hotmapper_demo'
 
 # URI structure. Standards to login:password model, but can be changed as needed.
 DATABASE_URI = '{}://{}:{}@{}/{}'.format(DATABASE_DIALECT, DATABASE_USER,
