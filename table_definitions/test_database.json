@@ -1,0 +1,12 @@
+{
+    "pairing_description": "Tabela de turmas",
+    "data_source": "Microdados do Censo Escolar/INEP (arquivo Turmas)",
+    "pk": ["id"],
+    "foreign_keys": [
+        {
+            "keys": ["id"],
+            "reference_columns": ["id"],
+            "reference_table": "test_reference"
+        }
+    ]
+}
