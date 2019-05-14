@@ -45,9 +45,9 @@ def drop(table):
     database.actions.drop(table)
 
 @manager.command
-def remap(table):
+def remap(table, auto_confirmation=False):
     '''Restructures a table to match the mapping protocol.'''
-    database.actions.remap(table)
+    database.actions.remap(table, auto_confirmation)
 
 @manager.command
 def update_from_file(csv_file, table, year, columns=None, target_list=None, offset=2, sep=';',

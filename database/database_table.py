@@ -599,7 +599,7 @@ class DatabaseTable(Table):
         results = self.metadata.bind.execute(query).fetchall()
         db_target_list = [t[1] for t in results]
 
-        new_columns = [c for c in protocol_target_list if c not in db_target_list]
+        new_columns = [c for c in protocol_target_list if c not in db_target_list and c != '']
         to_drop_columns = [c for c in db_target_list if c not in protocol_target_list]
 
         update_columns = []
@@ -627,7 +627,7 @@ class DatabaseTable(Table):
 
         return new_columns, to_drop_columns, update_columns
 
-    def remap(self):
+    def remap(self, auto_confirmation=True):
         '''
         Checks mapping protocol for differences in table structure - then
         attempts to apply differences according to what is recorded in the
@@ -651,27 +651,47 @@ class DatabaseTable(Table):
 
         new_columns, to_drop_columns, update_columns = self.compare_mapping()
 
+        accept_new_columns, accept_drop_columns, accept_update_columns = [True for _ in range(3)]
+        if not auto_confirmation:
+            if new_columns:
+                print('The following columns will be CREATED:', ', '.join(new_columns))
+                prompt = input('Is it right (yes or no)? ')
+                accept_new_columns = prompt == 'yes' or prompt == 'y' or prompt == 1
+            if to_drop_columns:
+                print('The following columns will be DROPPED:', ', '.join(to_drop_columns))
+                prompt = input('Is it right (yes or no)? ')
+                accept_drop_columns = prompt == 'yes' or prompt == 'y' or prompt == 1
+            if update_columns:
+                update_list = [update_dict['name'] + ' -new name: ' + update_dict['new_name']
+                               + ' -new type: ' + update_dict['new_type'] for update_dict in update_columns]
+                print('The following columns will be UPDATED:', ', '.join(update_list))
+                prompt = input('Is it right (yes or no)? ')
+                accept_update_columns = prompt == 'yes' or prompt == 'y' or prompt == 1
+
         with self.metadata.bind.connect() as connection:
             # Create new columns
-            for column in new_columns:
-                try:
-                    dbcolumn = self._protocol.dbcolumn_from_target(column)
-                except InvalidTargetError:
-                    continue
+            if accept_new_columns:
+                for column in new_columns:
+                    try:
+                        dbcolumn = self._protocol.dbcolumn_from_target(column)
+                    except InvalidTargetError:
+                        continue
 
-                self.add_column(dbcolumn[0], dbcolumn[1], column, bind=connection)
+                    self.add_column(dbcolumn[0], dbcolumn[1], column, bind=connection)
 
             # Drop columns
-            for column in to_drop_columns:
-                column_name = select([mtable.c.name]).where(mtable.c.target_name == column)
-                column_name = connection.execute(column_name).fetchone()[0]
-                if not column_name:
-                    continue
+            if accept_drop_columns:
+                for column in to_drop_columns:
+                    column_name = select([mtable.c.name]).where(mtable.c.target_name == column)
+                    column_name = connection.execute(column_name).fetchone()[0]
+                    if not column_name:
+                        continue
 
-                self.drop_column(column_name, column, bind=connection)
+                    self.drop_column(column_name, column, bind=connection)
 
             # Update existing columns
-            self.transfer_data(connection, update_columns)
+            if accept_update_columns:
+                self.transfer_data(connection, update_columns)
 
     def _get_variable_target(self, original, year):
         '''
