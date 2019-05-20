@@ -1,6 +1,6 @@
 {
-    "pairing_description": "Tabela de turmas",
-    "data_source": "Microdados do Censo Escolar/INEP (arquivo Turmas)",
+    "pairing_description": "Tabela utilizada para testes",
+    "data_source": "Massa d' Água Região Hidrográfica Parana - ANA - dados.gov.br",
     "pk": ["id"],
     "foreign_keys": [
         {
