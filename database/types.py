@@ -19,7 +19,7 @@ along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
 '''
 
 import re
-from sqlalchemy_monetdb.types import MONETDB_TYPE_MAP, TINYINT, DOUBLE_PRECISION
+from sqlalchemy_monetdb.monetdb_types import MONETDB_TYPE_MAP, TINYINT, DOUBLE_PRECISION
 from sqlalchemy.ext.compiler import compiles
 
 

@@ -570,10 +570,10 @@ class DatabaseTable(Table):
 
         values = {}
         for item in transfer_list:
-            values[item['new_name']] = ttable.columns.get(item['new_name'])
+            temp_columns = [column for column in ttable.columns if column.key == item['new_name']]
+            values[item['new_name']] = select(temp_columns).where(list(self.primary_key.columns) == temp_pk_columns)
         base_update = update(self).values(**values)
-        for original_pk, temp_pk in zip(list(self.primary_key.columns), temp_pk_columns):
-            base_update = base_update.where(original_pk == temp_pk)
+
         connection.execute(base_update)
 
         trans.commit()
