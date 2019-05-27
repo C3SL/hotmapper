@@ -532,13 +532,13 @@ class DatabaseTable(Table):
 
     def transfer_data(self, connection, transfer_list):
         '''
-             Receives a list of columns to be transfered. Transfered columns are backed up,
-             removed, added with new parameters and then repopulated.
-             transfer_list must be a list of dictionaries with the following fields:
-             name - the name of the original column;
-             new_name - name for the new column. If None is passed, original name is used;
-             new_type - type for the new column. If None is passed, original type is used.
-             '''
+        Receives a list of columns to be transfered. Transfered columns are backed up,
+        removed, added with new parameters and then repopulated.
+        transfer_list must be a list of dictionaries with the following fields:
+        name - the name of the original column;
+        new_name - name for the new column. If None is passed, original name is used;
+        new_type - type for the new column. If None is passed, original type is used.
+        '''
         if not transfer_list:
             return
         pk_columns = list(self.primary_key.columns)
