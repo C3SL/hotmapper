@@ -532,13 +532,13 @@ class DatabaseTable(Table):
 
     def transfer_data(self, connection, transfer_list):
         '''
-        Receives a list of columns to be transfered. Transfered columns are backed up,
-        removed, added with new parameters and then repopulated.
-        transfer_list must be a list of dictionaries with the following fields:
-        name - the name of the original column;
-        new_name - name for the new column. If None is passed, original name is used;
-        new_type - type for the new column. If None is passed, original type is used.
-        '''
+             Receives a list of columns to be transfered. Transfered columns are backed up,
+             removed, added with new parameters and then repopulated.
+             transfer_list must be a list of dictionaries with the following fields:
+             name - the name of the original column;
+             new_name - name for the new column. If None is passed, original name is used;
+             new_type - type for the new column. If None is passed, original type is used.
+             '''
         if not transfer_list:
             return
         pk_columns = list(self.primary_key.columns)
@@ -570,9 +570,10 @@ class DatabaseTable(Table):
 
         values = {}
         for item in transfer_list:
-            temp_columns = [column for column in ttable.columns if column.key == item['new_name']]
-            values[item['new_name']] = select(temp_columns).where(list(self.primary_key.columns) == temp_pk_columns)
+            values[item['new_name']] = ttable.columns.get(item['new_name'])
         base_update = update(self).values(**values)
+        for original_pk, temp_pk in zip(list(self.primary_key.columns), temp_pk_columns):
+            base_update = base_update.where(original_pk == temp_pk)
 
         connection.execute(base_update)
 
