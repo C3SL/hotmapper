@@ -112,7 +112,7 @@ def update_from_file(file_name, table, year, columns=None,
         raise MissingTableError(table.name)
 
     if columns is None:
-        columns = []
+        columns = [c.name for c in table.columns]
 
     with ENGINE.connect() as connection:
         trans = connection.begin()
