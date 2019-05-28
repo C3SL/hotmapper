@@ -135,7 +135,7 @@ def test_update_from_file():
     database.actions.update_from_file(csvpath, table_test, '2018', delimiters=[',', '\\n', '"'])
 
     table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
-    compare_data(table, './tests/database_test_data/verify_data_insert.csv', 'UPDATE FROM FILE VERIFICATION FAILED')
+    compare_data(table, './tests/database_test_data/verify_data_update.csv', 'UPDATE FROM FILE VERIFICATION FAILED')
     print('UPDATE FROM FILE SUCCESS!\n\n')
 
 def test_drop():
