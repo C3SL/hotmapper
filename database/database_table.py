@@ -574,6 +574,7 @@ class DatabaseTable(Table):
         base_update = update(self).values(**values)
         for original_pk, temp_pk in zip(list(self.primary_key.columns), temp_pk_columns):
             base_update = base_update.where(original_pk == temp_pk)
+
         connection.execute(base_update)
 
         trans.commit()
