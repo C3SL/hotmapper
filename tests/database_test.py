@@ -62,6 +62,18 @@ def compare_columns(table, verify_csv, error_string):
                                              str(c.type), verify_columns_df[verify_columns_df['name'] == c.name]['type'])
             print(c.name, c.type)
 
+def compare_data(table, verify_csv, error_string):
+    print("Executing fetchall query:")
+    with ENGINE.connect() as connection:
+        sel = select([table]).order_by(table.c.id)
+        result = connection.execute(sel)
+        content = result.fetchall()
+        print('Initializing data verification:\n')
+        verify_table = pd.read_csv(verify_csv, sep='|')
+        verify_content = list(verify_table.itertuples(index=False, name=None))
+        if verify_content != content:
+            raise VerificationFailed('Something went wrong, please rerun in debug mode.' + error_string)
+
 def test_creation():
     if not ENGINE.dialect.has_table(ENGINE, 'test_reference'):
         database.actions.execute_sql_script('test_reference.sql')
@@ -84,22 +96,10 @@ def test_creation():
 def test_insert():
     print('Testing insert of data', csvpath)
     database.actions.insert(csvpath, table_test, '2018', delimiters=[',', '\\n', '"'], null='')
-    print("Executing fetchall query:")
-    with ENGINE.connect() as connection:
-        table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
-        sel = select([table]).order_by(table.c.id)
-        result = connection.execute(sel)
-        content = result.fetchall()
-        if content:
-            print('Initializing data verification:\n')
-            verify_table = pd.read_csv('./tests/database_test_data/verify_data_insert.csv', sep='|')
-            verify_content = list(verify_table.itertuples(index=False, name=None))
-            if verify_content == content:
-                print('INSERTION SUCCESS!\n\n')
-            else:
-                raise VerificationFailed('Something went wrong, Verification failed during insert')
-        else:
-            raise VerificationFailed("Something went wrong. Please rerun in DEBUG mod. INSERTION FAILED")
+
+    table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
+    compare_data(table, './tests/database_test_data/verify_data_insert.csv', 'INSERTION VERIFICATION FAILED')
+    print('INSERTION SUCCESS!\n\n')
 
 def test_remap_without_changes():
     print('Testing a remap without changes:')
@@ -130,6 +130,14 @@ def test_remap_with_all_changes():
         mapping_df_original.to_csv(protocol_path)
     print('REMAP WITH ALL POSSIBLE CHANGES CHANGES SUCCESS!\n\n')
 
+def test_update_from_file():
+    print('\nTesting an update from file:')
+    database.actions.update_from_file(csvpath, table_test, '2018', delimiters=[',', '\\n', '"'])
+
+    table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
+    compare_data(table, './tests/database_test_data/verify_data_insert.csv', 'UPDATE FROM FILE VERIFICATION FAILED')
+    print('UPDATE FROM FILE SUCCESS!\n\n')
+
 def test_drop():
     print("Dropping table", table_test)
     database.actions.drop(table_test)
@@ -153,6 +161,7 @@ def test_all():
 @manager.command()
 def remap_all():
     test_remap_with_all_changes()
+    test_update_from_file()
     test_drop()
 
 
