@@ -881,7 +881,12 @@ class DatabaseTable(Table):
         referred_table.map_from_database()
         selecter = select([getattr(func, aggregation)(source_column)])
 
-        for fk_column, fkey in referred_table.get_relations(self):
+        try:
+            fk_dict = [(fk_column, fkey) for fk_column, fkey in referred_table.get_relations(self)]
+        except MissingForeignKeyError:
+            fk_dict = [(fk_column, fkey) for fk_column, fkey in self.get_relations(referred_table)]
+
+        for fk_column, fkey in fk_dict:
             selecter = selecter.where(fk_column == fkey)
         if year:
             selecter = selecter.where(self.c.ano_censo == year)
