@@ -227,6 +227,21 @@ class DatabaseTable(Table):
 
         return query
 
+    def create_temporary_mirror(self, year, bind=None):
+        '''
+        Creates a new temporary table where its data mirrors the original, taken directly from the database
+        '''
+        ttable = self.get_temporary(year=year)
+        ttable.create(bind)
+        if bind is None:
+            bind = self.metadata.bind
+
+        original_columns = list(self.columns)
+        query = ttable.insert().from_select(original_columns, select(original_columns))
+        bind.execute(query)
+
+        return ttable
+
     def check_protocol(self):
         '''
         Raises MissingProtocolError if no protocol is loaded.
@@ -789,7 +804,7 @@ class DatabaseTable(Table):
 
     def _resolv_derivative(self, original, year):
         '''
-        Populates self._derivatives with all necessary derivatives to satify original in a given
+        Populates self._derivatives with all necessary derivatives to satisfy original in a given
         year.
         '''
         if not hasattr(self, '_derivatives'):
@@ -855,6 +870,7 @@ class DatabaseTable(Table):
                     query[derivative['dbcolumn'][0]] = text(derivative['processed'])
 
                 query = update(ttable).values(**query)
+                print(query)
                 bind.execute(query)
 
         return self._derivatives
@@ -882,11 +898,11 @@ class DatabaseTable(Table):
         selecter = select([getattr(func, aggregation)(source_column)])
 
         try:
-            fk_dict = [(fk_column, fkey) for fk_column, fkey in referred_table.get_relations(self)]
+            fk_tuples = [(fk_column, fkey) for fk_column, fkey in referred_table.get_relations(self)]
         except MissingForeignKeyError:
-            fk_dict = [(fk_column, fkey) for fk_column, fkey in self.get_relations(referred_table)]
+            fk_tuples = [(fk_column, fkey) for fk_column, fkey in self.get_relations(referred_table)]
 
-        for fk_column, fkey in fk_dict:
+        for fk_column, fkey in fk_tuples:
             selecter = selecter.where(fk_column == fkey)
         if year:
             selecter = selecter.where(self.c.ano_censo == year)
@@ -915,6 +931,11 @@ class DatabaseTable(Table):
             if source_column is not None:
                 query = self._aggregate(column, func, source_column, year)
                 bind.execute(query)
+
+        # Run derivatives
+        ttable = self.create_temporary_mirror(year, bind)
+        self.apply_derivatives(ttable, ttable.columns.keys(), year, bind)
+        self.update_from_temporary(ttable, ttable.columns.keys(), bind)
 
     def get_relations(self, table):
         '''
