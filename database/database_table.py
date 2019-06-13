@@ -773,7 +773,8 @@ class DatabaseTable(Table):
             if table is self:
                 return self._derivative_recursion(column, year, recursion_list)
             derivative = table._resolv_derivative(column, year)
-            self._derivatives[target] = {'original': original, 'dbcolumn': dbcolumn, 'level': 0,
+
+            self._derivatives[target] = {'original': original, 'dbcolumn': dbcolumn, 'level': 0, 'dbmapped': True,
                                          'new': '.'.join([table.name, derivative['dbcolumn'][0]])}
             return self._derivatives[target]
 
@@ -796,10 +797,12 @@ class DatabaseTable(Table):
                 level = derivative['level'] + 1
 
         processed = original
+        dbmapped = False   # column neded to execute the derivative is present on table or need a file.
         for substitution in substitutions:
             processed = re.sub(substitution['original'], substitution['new'], processed)
+            dbmapped = True
         self._derivatives[target] = {'original': original, 'dbcolumn': dbcolumn, 'level': level,
-                                     'processed': processed}
+                                     'processed': processed, 'dbmapped': dbmapped}
         return self._derivatives[target]
 
     def _resolv_derivative(self, original, year):
@@ -836,7 +839,7 @@ class DatabaseTable(Table):
                 query = query.where(ttable.c.ano_censo == year)
             yield query
 
-    def apply_derivatives(self, ttable, columns, year, bind=None):
+    def apply_derivatives(self, ttable, columns, year, bind=None, dbonly=False):
         '''
         Given a list of columns, searches for derivatives and denormalizations and applies them
         in the appropriate order. Dependencies will be updated regardless of being or not in the
@@ -860,17 +863,17 @@ class DatabaseTable(Table):
         ttable.schema = t_schema
         if len(self._derivatives) > 0:
             max_level = max([self._derivatives[d]['level'] for d in self._derivatives])
-            derivative_levels = []
             for i in range(max_level):
                 i = i+1
                 query = {}
                 level = [self._derivatives[d] for d in self._derivatives if\
                          self._derivatives[d]['level'] == i]
                 for derivative in level:
-                    query[derivative['dbcolumn'][0]] = text(derivative['processed'])
+                    if not dbonly or derivative['dbmapped']:
+                        query[derivative['dbcolumn'][0]] = text(derivative['processed'])
 
                 query = update(ttable).values(**query)
-                print(query)
+
                 bind.execute(query)
 
         return self._derivatives
@@ -934,7 +937,7 @@ class DatabaseTable(Table):
 
         # Run derivatives
         ttable = self.create_temporary_mirror(year, bind)
-        self.apply_derivatives(ttable, ttable.columns.keys(), year, bind)
+        self.apply_derivatives(ttable, ttable.columns.keys(), year, bind, dbonly=True)
         self.update_from_temporary(ttable, ttable.columns.keys(), bind)
 
     def get_relations(self, table):
