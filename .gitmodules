@@ -1,0 +1,3 @@
+[submodule "table-definitions"]
+	path = table-definitions
+	url = git@gitlab.c3sl.ufpr.br:tools/table-definitions.git

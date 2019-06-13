@@ -46,7 +46,7 @@ BACKUP_FILE = 'backupdadoseducacionais'
 MAPPING_PROTOCOLS_FOLDER = 'mapping_protocols'
 
 # Folder for table definitions files
-TABLE_DEFINITIONS_FOLDER = 'table_definitions'
+TABLE_DEFINITIONS_FOLDER = 'table-definitions'
 
 # Folder for scripts and sql tables
 SCRIPTS_FOLDER = 'sql'
