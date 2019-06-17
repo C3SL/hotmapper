@@ -1,0 +1,9 @@
+[submodule "table-definitions"]
+	path = table-definitions
+	url = git@gitlab.c3sl.ufpr.br:tools/table-definitions.git
+[submodule "mapping-protocols-hotmapper"]
+	path = mapping-protocols
+	url = git@gitlab.c3sl.ufpr.br:tools/mapping-protocols-hotmapper.git
+[submodule "sql-scripts"]
+	path = sql-scripts
+	url = git@gitlab.c3sl.ufpr.br:tools/sql-scripts.git

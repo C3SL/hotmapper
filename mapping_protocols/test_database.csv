@@ -1,9 +1,0 @@
-Var.Lab,Rot.Padrão,Novo Rótulo,Coluna temporária,Nome Banco,Tipo de Dado,2018
-OBJID,objectid,ID,0,id,INT,objectid
-ANO,ano,Ano,0,ano_censo,INT,ano
-NOMEOG,mpprogomaç,Nome,0,nome,VARCHAR(64),nooriginal
-ESPCD,esp_cd,Código da massa,0,massa_id,INT,esp_cd
-TIPOMASS,detipomass,Tipo,0,tipo,VARCHAR(16),detipomass
-TIPOADM,dedominial,Tipo Administrativo,0,adm,VARCHAR(16),dedominial
-CODADM,,Código Administrativo,0,adm_id,INT,"~CASE WHEN (""dedominial"" = 'Federal') THEN 1 WHEN (""dedominial"" = 'Estadual') THEN 2 END"
-CODTIPO,,Código do tipo,0,tipo_id,INT,~CASE WHEN (tipo = 'Natural') THEN 1 WHEN (tipo = 'Artificial') THEN 0 END
