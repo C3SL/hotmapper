@@ -37,12 +37,13 @@ sqlalchemy_logger.setLevel(logging.ERROR)
 
 table_test = 'test_database'
 csvpath = os.path.join(os.getcwd(), 'tests/database_test_data', 'test_database_data.csv')
+protocol_path = os.path.join(settings.MAPPING_PROTOCOLS_FOLDER, table_test + '.csv')
+mapping_df_original = pd.read_csv(protocol_path, index_col=0)
 
 class VerificationFailed(Exception):
     '''Raised when the verification fails, automatically drops the test table'''
     def __init__(self, *args):
         database.actions.drop("test_database")
-
 
 def compare_columns(table, verify_csv, error_string):
     with ENGINE.connect():
@@ -69,10 +70,23 @@ def compare_data(table, verify_csv, error_string):
         result = connection.execute(sel)
         content = result.fetchall()
         print('Initializing data verification:\n')
-        verify_table = pd.read_csv(verify_csv, sep='|')
+        verify_table = pd.read_csv(verify_csv, sep=',')
+        verify_table = verify_table.replace({pd.np.nan: None})
         verify_content = list(verify_table.itertuples(index=False, name=None))
         if verify_content != content:
-            raise VerificationFailed('Something went wrong, please rerun in debug mode.' + error_string)
+            raise VerificationFailed('Something went wrong, please rerun in debug mode. ' + error_string)
+
+def modify_mapping_protocol():
+    mapping_df = pd.read_csv(protocol_path, index_col=0)
+
+    mapping_df = mapping_df.drop('TIPOMASS')  # remove tipo_id
+    mapping_df.loc['RDREF'] = ['', 'Texto aleatório da test_reference', 0, 'random_string', 'VARCHAR(16)',
+                               '~test_reference.random_string']
+    mapping_df.loc['CODTIPO'] = ['', 'Código do tipo', 0, 'tipo_id', 'INT',
+                                '~CASE WHEN ("detipomass" =' + " 'Natural') THEN 1 ELSE 0 END"]
+    mapping_df.at['ESPCD', 'Nome Banco'] = 'esp_id'  # rename massa_id to esp_id
+    mapping_df.to_csv(protocol_path)
+
 
 def test_creation():
     if not ENGINE.dialect.has_table(ENGINE, 'test_reference'):
@@ -112,16 +126,7 @@ def test_remap_without_changes():
 def test_remap_with_all_changes():
     print('\nTesting a remap with all possible changes:')
 
-    protocol_path = os.path.join(settings.MAPPING_PROTOCOLS_FOLDER, table_test + '.csv')
-    mapping_df = pd.read_csv(protocol_path, index_col=0)
-    mapping_df_original = mapping_df                       # saves a copy of the original protocol to be restored later
-    mapping_df = mapping_df.drop('CODTIPO')                # remove tipo_id
-    mapping_df.loc['RDREF'] = ['', 'Texto aleatório da test_reference', 0, 'random_string', 'VARCHAR(16)',
-                               '~test_reference.random_string']
-    mapping_df.at['ESPCD', 'Nome Banco'] = 'esp_id'        # rename massa_id to esp_id
-    mapping_df.to_csv(protocol_path)
-    for _ in range(100):
-        pass
+    modify_mapping_protocol()
     try:
         database.actions.remap(table_test)
         table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
@@ -130,12 +135,30 @@ def test_remap_with_all_changes():
         mapping_df_original.to_csv(protocol_path)
     print('REMAP WITH ALL POSSIBLE CHANGES CHANGES SUCCESS!\n\n')
 
+def test_run_aggregations():
+    print('\nRunning aggregations and denormalizations:')
+
+    modify_mapping_protocol()
+    try:
+        database.actions.run_aggregations(table_test, '2018')
+        table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
+        compare_data(table, './tests/database_test_data/verify_data_aggregations.csv',
+                     'RUN AGGREGATIONS VERIFICATION FAILED')
+    finally:
+        mapping_df_original.to_csv(protocol_path)
+    print('RUN AGGREGATIONS SUCCESS!\n\n')
+
 def test_update_from_file():
     print('\nTesting an update from file:')
-    database.actions.update_from_file(csvpath, table_test, '2018', delimiters=[',', '\\n', '"'])
 
-    table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
-    compare_data(table, './tests/database_test_data/verify_data_update.csv', 'UPDATE FROM FILE VERIFICATION FAILED')
+    modify_mapping_protocol()
+    try:
+        database.actions.update_from_file(csvpath, table_test, '2018', delimiters=[',', '\\n', '"'])
+        table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
+        compare_data(table, './tests/database_test_data/verify_data_update.csv', 'UPDATE FROM FILE VERIFICATION FAILED')
+    finally:
+        mapping_df_original.to_csv(protocol_path)
+
     print('UPDATE FROM FILE SUCCESS!\n\n')
 
 def test_drop():
@@ -161,6 +184,15 @@ def test_all():
 @manager.command()
 def remap_all():
     test_remap_with_all_changes()
+    os.execl(sys.executable, 'python', '-m', 'tests.database_test', 'run_aggregations_all')
+
+@manager.command()
+def run_aggregations_all():
+    test_run_aggregations()
+    os.execl(sys.executable, 'python', '-m', 'tests.database_test', 'update_data_all')
+
+@manager.command()
+def update_data_all():
     test_update_from_file()
     test_drop()
 
