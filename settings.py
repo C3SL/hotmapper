@@ -35,6 +35,9 @@ DATABASE_HOST = 'localhost'
 # Database to connect to
 DATABASE = 'hotmapper_demo'
 
+# Column used to run aggregations and denormalizations
+YEAR_COLUMN = 'ano_censo'
+
 # URI structure. Standards to login:password model, but can be changed as needed.
 DATABASE_URI = '{}://{}:{}@{}/{}'.format(DATABASE_DIALECT, DATABASE_USER,
                                          DATABASE_USER_PASSWORD, DATABASE_HOST, DATABASE)

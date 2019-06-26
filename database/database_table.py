@@ -836,7 +836,7 @@ class DatabaseTable(Table):
                 fk_column = ttable.columns.get(fk_column.name)
                 query = query.where(fk_column == fkey)
             if year:
-                query = query.where(ttable.c.ano_censo == year)
+                query = query.where(ttable.columns.get(settings.YEAR_COLUMN) == year)
             yield query
 
     def apply_derivatives(self, ttable, columns, year, bind=None, dbonly=False):
@@ -908,7 +908,7 @@ class DatabaseTable(Table):
         for fk_column, fkey in fk_tuples:
             selecter = selecter.where(fk_column == fkey)
         if year:
-            selecter = selecter.where(self.c.ano_censo == year)
+            selecter = selecter.where(self.columns.get(settings.YEAR_COLUMN) == year)
 
         query = update(self).values(**{column.name: selecter})
 
