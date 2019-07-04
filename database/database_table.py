@@ -24,6 +24,7 @@ import time
 import json
 import re
 import logging
+import jsbeautifier
 from sqlalchemy import Table, Column, inspect, Integer, String, Boolean,\
                        PrimaryKeyConstraint, ForeignKeyConstraint, text
 from sqlalchemy.sql import select, insert, update, delete, func
@@ -306,6 +307,20 @@ class DatabaseTable(Table):
 
         return definitions
 
+    def update_defintions(self, definitions):
+        '''
+        Update the table definitions with an altered definitions object
+        '''
+        logger.debug("Updating table definitions from %s", definitions)
+        definitions_json = self.name + '.json'
+        definitions_json = os.path.join(settings.TABLE_DEFINITIONS_FOLDER, definitions_json)
+
+        new_definitions_json = jsbeautifier.beautify(json.dumps(definitions, ensure_ascii=False))
+        with open(definitions_json, "w") as def_json:
+            def_json.write(new_definitions_json)
+
+        logger.debug("Definitions Updated")
+
     def load_protocol(self, protocol):
         '''
         Takes a Protocol instance and loads it for further use
@@ -396,17 +411,25 @@ class DatabaseTable(Table):
             bind = self.metadata.bind
 
         definitions = self.get_definitions()
+        column_dict = definitions.get('columns')
+        if not column_dict:
+            column_dict = {}
 
         for column in self._protocol.get_targets():
             try:
                 column = self._protocol.dbcolumn_from_target(column)
             except InvalidTargetError:
                 continue
+            if column[0] not in column_dict.keys():
+                column_dict[column[0]] = column[1]
             if column[0]:
                 column[0] = column[0].strip()
             column = Column(column[0], get_type(column[1]))
 
             self.append_column(column)
+
+        definitions['columns'] = column_dict
+        self.update_defintions(definitions)
 
         primary_key = [self.columns.get(c) for c in definitions['pk']]
         if primary_key:
