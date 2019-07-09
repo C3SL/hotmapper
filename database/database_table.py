@@ -321,6 +321,35 @@ class DatabaseTable(Table):
 
         logger.debug("Definitions Updated")
 
+    def get_columns_to_create(self, tdef_columns):
+        if self._protocol is None:
+            if not tdef_columns:
+                raise MissingProtocolError("You must first load a protocol or add columns to the table definition")
+            else:
+                logger.warning("Table creation will be entirely based on the table definition")
+                return tdef_columns
+        else:
+            column_dict = {}
+            for column in self._protocol.get_targets():
+                try:
+                    column = self._protocol.dbcolumn_from_target(column)
+                except InvalidTargetError:
+                    continue
+                if column[0]:
+                    column[0] = column[0].strip()
+                    column_dict[column[0]] = [column[1], self._protocol.target_from_dbcolumn(column[0])]
+
+            for c_name, c_type in tdef_columns.items():
+                if c_name not in column_dict.keys():
+                    prompt = input("The column {} is not present on the mapping protocol but is on the table definition,"
+                                   "should it still be created ? (Y/n): ".format(c_name))
+                    if prompt.upper() in ['', 'Y']:
+                        print("Column {} will be created, please update the protocol later".format(c_name))
+                        column_dict[c_name] = c_type
+                    else:
+                        print("Column {} will be removed from the table_definitions.".format(c_name))
+            return column_dict
+
     def load_protocol(self, protocol):
         '''
         Takes a Protocol instance and loads it for further use
@@ -341,7 +370,6 @@ class DatabaseTable(Table):
         '''
         Creates the mapping table in the database
         '''
-        self.check_protocol()
         if bind is None:
             bind = self.metadata.bind
 
@@ -352,9 +380,10 @@ class DatabaseTable(Table):
         with bind.connect() as connection:
             logger.info("Populating mapping table")
             columns = [c[1] for c in self.columns.items()]
+            definitions = self.get_definitions()
             for c in columns:
                 column = {}
-                column['target_name'] = self._protocol.target_from_dbcolumn(c.name)
+                column['target_name'] = definitions['columns'][c.name][1]
                 if not column['target_name']:
                     continue
                 column['name'] = c.name
@@ -403,7 +432,6 @@ class DatabaseTable(Table):
         be defined to allow primary key and foreign keys addition.
         Useful for table creation.
         '''
-        self.check_protocol()
         if self.columns.keys():
             logger.warning("Table mapping already has columns. Nothing done.")
             return
@@ -411,21 +439,10 @@ class DatabaseTable(Table):
             bind = self.metadata.bind
 
         definitions = self.get_definitions()
-        column_dict = definitions.get('columns')
-        if not column_dict:
-            column_dict = {}
+        column_dict = self.get_columns_to_create(definitions.get('columns'))
 
-        for column in self._protocol.get_targets():
-            try:
-                column = self._protocol.dbcolumn_from_target(column)
-            except InvalidTargetError:
-                continue
-            if column[0] not in column_dict.keys():
-                column_dict[column[0]] = column[1]
-            if column[0]:
-                column[0] = column[0].strip()
-            column = Column(column[0], get_type(column[1]))
-
+        for c_name, c_type in column_dict.items():
+            column = Column(c_name, get_type(c_type[0]))
             self.append_column(column)
 
         definitions['columns'] = column_dict
