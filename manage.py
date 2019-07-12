@@ -35,9 +35,11 @@ def insert(csv_file, table, year, sep=';', null='',notifybackup=None):
     if notifybackup:
         database.actions.generate_backup()
 @manager.command
-def create(table):
-    '''Creates table using mapping protocols'''
-    database.actions.create(table)
+def create(table, ignore_definitions=False):
+    '''Creates table using mapping protocols
+    If ignore_definitions is set, it will ignore the columns from table definition if both, table_definitions and
+    mapping_protocol, exists (though it will still get primary_key, foreign_key and source information)'''
+    database.actions.create(table, ignore_definitions)
 
 @manager.command
 def drop(table):
@@ -45,9 +47,11 @@ def drop(table):
     database.actions.drop(table)
 
 @manager.command
-def remap(table, auto_confirmation=False):
-    '''Restructures a table to match the mapping protocol.'''
-    database.actions.remap(table, auto_confirmation)
+def remap(table, auto_confirmation=False, verify_definitions=False):
+    '''Restructures a table to match the mapping protocol.
+    If auto_confirmation is set it will not ask before doing any operation
+    If verify_definitions is set it will ask any difference between mapping_protocol and table_definition'''
+    database.actions.remap(table, auto_confirmation, verify_definitions)
 
 @manager.command
 def update_from_file(csv_file, table, year, columns=None, target_list=None, offset=2, sep=';',

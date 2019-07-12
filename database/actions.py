@@ -70,13 +70,13 @@ def insert(file_name, table, year, offset=2, delimiters=[';', '\\n', '"'], null=
 
         trans.commit()
 
-def create(table):
+def create(table, ignore_definitions=False):
     '''Creates table from mapping_protocol metadata'''
     table = gen_data_table(table, META)
 
     with ENGINE.connect() as connection:
         trans = connection.begin()
-        table.create(bind=connection)
+        table.create(bind=connection, ignore_definitions=ignore_definitions)
         table.set_source(bind=connection)
         table.create_mapping_table(bind=connection)
         trans.commit()
@@ -87,12 +87,12 @@ def drop(table):
 
     table.drop()
 
-def remap(table, auto_confirmation=True):
+def remap(table, auto_confirmation=True, verify_definitions=False):
     '''Applies change made in mapping protocols to database'''
     table = gen_data_table(table, META)
     table.map_from_database()
 
-    table.remap(auto_confirmation)
+    table.remap(auto_confirmation, verify_definitions)
 
 def csv_from_tabbed(table_name, input_file, output_file, year, sep=';'):
     table = gen_data_table(table_name, META)

@@ -91,7 +91,7 @@ def modify_mapping_protocol():
 def test_creation():
     if not ENGINE.dialect.has_table(ENGINE, 'test_reference'):
         database.actions.execute_sql_script('test_reference.sql')
-    database.actions.create(table_test)
+    database.actions.create(table_test, ignore_definitions=True)
     print("Executing fetchall query:")
     with ENGINE.connect() as connection:
         table = Table(table_test, META, autoload=True, autoload_with=ENGINE)
