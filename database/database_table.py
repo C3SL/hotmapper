@@ -24,6 +24,7 @@ import time
 import json
 import re
 import logging
+import jsbeautifier
 from sqlalchemy import Table, Column, inspect, Integer, String, Boolean,\
                        PrimaryKeyConstraint, ForeignKeyConstraint, text
 from sqlalchemy.sql import select, insert, update, delete, func
@@ -306,6 +307,82 @@ class DatabaseTable(Table):
 
         return definitions
 
+    def update_defintions(self, definitions):
+        '''
+        Update the table definitions with an altered definitions object
+        '''
+        logger.debug("Updating table definitions from %s", definitions)
+        definitions_json = self.name + '.json'
+        definitions_json = os.path.join(settings.TABLE_DEFINITIONS_FOLDER, definitions_json)
+
+        new_definitions_json = jsbeautifier.beautify(json.dumps(definitions, ensure_ascii=False))
+        with open(definitions_json, "w") as def_json:
+            def_json.write(new_definitions_json)
+
+        logger.debug("Definitions Updated")
+
+    def get_columns_dict(self, tdef_columns, ignore_diff=False):
+        '''
+        Get a dictionary of columns, comparing the columns of the associated protocol with those the columns in table
+        definition.
+        :param tdef_columns: column dict from table definitions
+        :param ignore_diff: when set True will ignore differences in table_definition and get the data only from
+        mapping_protocol when both exists
+        :return: {"column_name": ["column_type(str)", "target"]}
+        '''
+        if self._protocol is None:
+            if not tdef_columns:
+                raise MissingProtocolError("You must first load a protocol or add columns to the table definition")
+            else:
+                logger.warning("Table creation will be entirely based on the table definition")
+                return tdef_columns
+        else:
+            column_dict = {}
+            for column in self._protocol.get_targets():
+                try:
+                    column = self._protocol.dbcolumn_from_target(column)
+                except InvalidTargetError:
+                    continue
+                if column[0]:
+                    column[0] = column[0].strip()
+                    column_dict[column[0]] = [column[1], self._protocol.target_from_dbcolumn(column[0])]
+
+            if not ignore_diff:
+                for c_name, c_type in tdef_columns.items():
+                    if c_name not in column_dict.keys():
+                        prompt = input("The column {} is not present on the mapping protocol but is on the table definition,"
+                                       " should it exist ? (Y/n): ".format(c_name))
+                        if prompt.upper() in ['', 'Y']:
+                            print("Column {} will be created, please update the protocol later".format(c_name))
+                            column_dict[c_name] = c_type
+                        else:
+                            print("Column {} will be removed from the table_definitions.".format(c_name))
+
+            return column_dict
+
+    def get_targets_from_definitions(self):
+        '''
+        Get a list containing all the targets from table definition
+        '''
+        targets = []
+        definitions = self.get_definitions()
+        for column_name, parameter_list in definitions['columns'].items():
+            targets.append(parameter_list[1])
+
+        return targets
+
+    def get_dbcolumn_from_target_definition(self, target):
+        '''
+        Gets database column from a target column name. Ouput is a list
+        with the column name and type contents.
+        :return: ['column_name','column_type']
+        '''
+        definitions = self.get_definitions()
+        for column_name, parameter_list in definitions['columns'].items():
+            if parameter_list[1] == target:
+                return [column_name, parameter_list[0]]
+
+
     def load_protocol(self, protocol):
         '''
         Takes a Protocol instance and loads it for further use
@@ -326,7 +403,6 @@ class DatabaseTable(Table):
         '''
         Creates the mapping table in the database
         '''
-        self.check_protocol()
         if bind is None:
             bind = self.metadata.bind
 
@@ -337,9 +413,10 @@ class DatabaseTable(Table):
         with bind.connect() as connection:
             logger.info("Populating mapping table")
             columns = [c[1] for c in self.columns.items()]
+            definitions = self.get_definitions()
             for c in columns:
                 column = {}
-                column['target_name'] = self._protocol.target_from_dbcolumn(c.name)
+                column['target_name'] = definitions['columns'][c.name][1]
                 if not column['target_name']:
                     continue
                 column['name'] = c.name
@@ -382,13 +459,13 @@ class DatabaseTable(Table):
 
         bind.execute(base_query)
 
-    def map_from_protocol(self, create=False, bind=None):
+    def map_from_protocol(self, create=False, bind=None, ignore_defintions=False):
         '''
-        Uses information from a protocol to generate self columns. Table definitions must also
-        be defined to allow primary key and foreign keys addition.
+        Uses information from a protocol or, if protocol is not present, from table definitions
+        to generate self columns.
+        Table definitions must also be defined to allow primary key and foreign keys addition.
         Useful for table creation.
         '''
-        self.check_protocol()
         if self.columns.keys():
             logger.warning("Table mapping already has columns. Nothing done.")
             return
@@ -396,17 +473,14 @@ class DatabaseTable(Table):
             bind = self.metadata.bind
 
         definitions = self.get_definitions()
+        column_dict = self.get_columns_dict(definitions.get('columns'), ignore_defintions)
 
-        for column in self._protocol.get_targets():
-            try:
-                column = self._protocol.dbcolumn_from_target(column)
-            except InvalidTargetError:
-                continue
-            if column[0]:
-                column[0] = column[0].strip()
-            column = Column(column[0], get_type(column[1]))
-
+        for c_name, c_type in column_dict.items():
+            column = Column(c_name, get_type(c_type[0]))
             self.append_column(column)
+
+        definitions['columns'] = column_dict
+        self.update_defintions(definitions)
 
         primary_key = [self.columns.get(c) for c in definitions['pk']]
         if primary_key:
@@ -435,7 +509,7 @@ class DatabaseTable(Table):
 
             self.constraints.add(ForeignKeyConstraint(keys, fkeys))
 
-    def create(self, bind=None, checkfirst=False):
+    def create(self, bind=None, checkfirst=False, ignore_definitions=False):
         '''
         Overrides sqlalchemy's create method to use map_from_protocol before creating.
         '''
@@ -445,7 +519,7 @@ class DatabaseTable(Table):
             logger.error("Table %s already exists", self.name)
             return
 
-        self.map_from_protocol(create=True, bind=bind)
+        self.map_from_protocol(create=True, bind=bind, ignore_defintions=ignore_definitions)
 
         super().create(bind=bind, checkfirst=checkfirst)
 
@@ -596,7 +670,7 @@ class DatabaseTable(Table):
 
     def compare_mapping(self):
         '''
-        Compares contents of mapping table to protocol and returns tuple with differences in
+        Compares contents of mapping table to table definitions and returns tuple with differences in
         the following format:
         new_columns, to_drop_columns, update_columns
 
@@ -607,19 +681,17 @@ class DatabaseTable(Table):
 
         The method uses target_names as the criteria to decide if columns are the same or not.
         '''
-        self.check_protocol()
-
-        protocol_target_list = self._protocol.get_targets()
+        target_list = self.get_targets_from_definitions()
 
         query = self._mapping_table.select()
         results = self.metadata.bind.execute(query).fetchall()
         db_target_list = [t[1] for t in results]
 
-        new_columns = [c for c in protocol_target_list if c not in db_target_list and c != '']
-        to_drop_columns = [c for c in db_target_list if c not in protocol_target_list]
+        new_columns = [c for c in target_list if c not in db_target_list and c != '']
+        to_drop_columns = [c for c in db_target_list if c not in target_list]
 
         update_columns = []
-        for target in protocol_target_list:
+        for target in target_list:
             query = select([self._mapping_table.c.name, self._mapping_table.c.type])\
                    .where(self._mapping_table.c.target_name == target)
             result = self.metadata.bind.execute(query).fetchone()
@@ -627,7 +699,7 @@ class DatabaseTable(Table):
                 continue
             name, field_type = result
             try:
-                new_name, new_type = self._protocol.dbcolumn_from_target(target)
+                new_name, new_type = self.get_dbcolumn_from_target_definition(target)
             except InvalidTargetError:
                 to_drop_columns.append(target)
                 continue
@@ -643,19 +715,23 @@ class DatabaseTable(Table):
 
         return new_columns, to_drop_columns, update_columns
 
-    def remap(self, auto_confirmation=True):
+    def remap(self, auto_confirmation=True, verify_definitions=False):
         '''
         Checks mapping protocol for differences in table structure - then
         attempts to apply differences according to what is recorded in the
-        mapping table
+        mapping table.
+        If verify_definitions is set it will ask any difference between mapping_protocol and table_definition
         '''
         if not self.exists():
             print("Table {} doesn't exist".format(self.name))
             return
 
-        self.check_protocol()
-
         mtable = self._mapping_table
+
+        # Update table definitions
+        definitions = self.get_definitions()
+        definitions['columns'] = self.get_columns_dict(definitions.get('columns'), ignore_diff=not verify_definitions)
+        self.update_defintions(definitions)
 
         if not mtable.exists():
             print("Mapping table for {} not found.".format(self.name))
