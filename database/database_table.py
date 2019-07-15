@@ -347,7 +347,7 @@ class DatabaseTable(Table):
                     column[0] = column[0].strip()
                     column_dict[column[0]] = [column[1], self._protocol.target_from_dbcolumn(column[0])]
 
-            if not ignore_diff:
+            if not ignore_diff and tdef_columns:
                 for c_name, c_type in tdef_columns.items():
                     if c_name not in column_dict.keys():
                         prompt = input("The column {} is not present on the mapping protocol but is on the table definition,"
