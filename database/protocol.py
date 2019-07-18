@@ -74,8 +74,18 @@ class Protocol(object):
         if not indexes:
             return None
         if len(indexes) > 1:
-            return None
+            self.resolve_duplicates(year, indexes)
+
         return self._remaped[indexes[0]]
+
+    def resolve_duplicates(self, year, indexes):
+        '''
+        Transforms a dbcolumn that gets the data from the same header to a denormalization of the first column.
+        '''
+        original_dbcolumn = self.dbcolumn_from_target(self._remaped[indexes[0]])[0]
+
+        for i in range(1, len(indexes)):
+            self._dataframe.loc[indexes[i], year] = '~' + original_dbcolumn
 
     def original_from_target(self, name, year):
         '''Gets original column from target column and a year
