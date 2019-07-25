@@ -698,17 +698,17 @@ class DatabaseTable(Table):
         if not auto_confirmation:
             if new_columns:
                 print('The following columns will be CREATED:', ', '.join(new_columns))
-                prompt = input('Is it right (yes or no)? ')
+                prompt = input('Is it right (y/N)? ')
                 accept_new_columns = prompt == 'yes' or prompt == 'y' or prompt == 1
             if to_drop_columns:
                 print('The following columns will be DROPPED:', ', '.join(to_drop_columns))
-                prompt = input('Is it right (yes or no)? ')
+                prompt = input('Is it right (y/N)? ')
                 accept_drop_columns = prompt == 'yes' or prompt == 'y' or prompt == 1
             if update_columns:
                 update_list = [update_dict['name'] + ' -new name: ' + update_dict['new_name']
                                + ' -new type: ' + update_dict['new_type'] for update_dict in update_columns]
                 print('The following columns will be UPDATED:', ', '.join(update_list))
-                prompt = input('Is it right (yes or no)? ')
+                prompt = input('Is it right (y/N)? ')
                 accept_update_columns = prompt == 'yes' or prompt == 'y' or prompt == 1
 
         with self.metadata.bind.connect() as connection:
