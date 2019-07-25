@@ -41,6 +41,11 @@ class MissingProtocolError(DatabaseError):
        requires a protocol while there is none loaded'''
     pass
 
+class MissingDefinitionsError(DatabaseError):
+    '''This exception should be raised if the program tries to use methods that
+    requires the table Definitions while there is none loaded'''
+    pass
+
 class MissingForeignKeyError(DatabaseError):
     '''This exception should be raised if an expected foreign key is not found.'''
     def __init__(self, referred_table=None):
