@@ -73,6 +73,7 @@ def insert(file_name, table, year, offset=2, delimiters=[';', '\\n', '"'], null=
 def create(table, ignore_definitions=False):
     '''Creates table from mapping_protocol metadata'''
     table = gen_data_table(table, META)
+    table.gen_definitions()
 
     with ENGINE.connect() as connection:
         trans = connection.begin()
@@ -90,6 +91,7 @@ def drop(table):
 def remap(table, auto_confirmation=True, verify_definitions=False):
     '''Applies change made in mapping protocols to database'''
     table = gen_data_table(table, META)
+    table.gen_definitions()
     table.map_from_database()
 
     table.remap(auto_confirmation, verify_definitions)
