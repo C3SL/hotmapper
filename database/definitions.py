@@ -80,7 +80,11 @@ class Definitions(object):
         self.description = definitions[keys['description']]
         self.pkcolumns = definitions[keys['pkcolumns']]
         self.fkcolumns = definitions[keys['fkcolumns']]
-        self.columns = definitions[keys['columns']]
+
+        try:
+            self.columns = definitions[keys['columns']]
+        except KeyError:
+            self.columns = None
         logger.debug("Definitions loaded")
 
     def to_dict(self, keys=None):
