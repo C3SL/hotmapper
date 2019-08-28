@@ -28,6 +28,7 @@ from database.database_table import gen_data_table, copy_tabbed_to_csv
 import database.groups
 import settings
 from database.groups import DATA_GROUP, DATABASE_TABLE_NAME
+import pandas as pd
 
 ENGINE = create_engine(settings.DATABASE_URI, echo=settings.ECHO)
 META = MetaData(bind=ENGINE)
@@ -44,8 +45,8 @@ sqlalchemy_logger.setLevel(settings.LOGGING_LEVEL)
 
 def temporary_data(connection, file_name, table, year, offset=2,
                    delimiters=[';', '\\n', '"'], null=''):
-    header = open(file_name, encoding="ISO-8859-9").readline().strip()
-    header = header.split(delimiters[0])
+    header = pd.read_csv(file_name, encoding="ISO-8859-9", sep=delimiters[0])
+    header = [h.strip() for h in header.columns.values]
 
     ttable = table.get_temporary(header, year)
     ttable.create(bind=connection)
