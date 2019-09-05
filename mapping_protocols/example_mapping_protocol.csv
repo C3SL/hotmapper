@@ -1,0 +1,8 @@
+Var.Lab,Novo Rótulo,Nome Banco,Tipo de Dado,2016
+CODECOUNTRY,Code of the country,cod_country,VARCHAR(3),COUNTRY
+NAMECOUNTRY,Name of the country,country_name,VARCHAR(32),Country
+YEAR,Year,year,INT,Year
+GRADUATIONRATES,Graduation rates represent an estimated percentage of an age group expected to graduate/enter a certain level of education at least once in their lifetime.,graduation_rate,DOUBLE,Value
+ISCEDLEVEL,"Isced level, program in the format: L""X""_C""X""",isced,VARCHAR(5),ISC11_LEVEL_CAT
+SEXCOD,"Code for the sex, F=Womam, M=Male",cod_sex,VARCHAR(1),SEX
+SEXID,"Sex id, 0 = female 1 = male.",sex_id,TINYINT,"~CASE WHEN (""SEX"" = 'F') THEN 0 ELSE 1 END"

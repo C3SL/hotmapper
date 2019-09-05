@@ -1,0 +1,6 @@
+ {
+  "pairing_description": "Table with the graduation rates, which represent a percentage of students expected to graduate, used to learn the HOTMapper Tool",
+  "data_source": "Organisation for Economic Co-operation and development",
+  "pk": ["cod_country", "year", "cod_sex", "isced"],
+  "foreign_keys": []
+}
