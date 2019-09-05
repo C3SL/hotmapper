@@ -241,7 +241,8 @@ class DatabaseTable(Table):
             bind = self.metadata.bind
 
         original_columns = list(self.columns)
-        query = ttable.insert().from_select(original_columns, select(original_columns))
+        query = ttable.insert().from_select(original_columns, select(original_columns)
+                                                                    .where(self.c[settings.YEAR_COLUMN] == year))
         bind.execute(query)
 
         return ttable
