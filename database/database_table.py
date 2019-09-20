@@ -447,6 +447,7 @@ class DatabaseTable(Table):
             try:
                 protocol.load_csv(protocol_path)
                 ref_table.load_protocol(protocol)
+                ref_table.gen_definitions()
                 ref_table.map_from_protocol(create=create, bind=bind)
                 if create:
                     ref_table.create(bind=bind)
