@@ -45,7 +45,7 @@ sqlalchemy_logger.setLevel(settings.LOGGING_LEVEL)
 
 def temporary_data(connection, file_name, table, year, offset=2,
                    delimiters=[';', '\\n', '"'], null=''):
-    header = pd.read_csv(file_name, encoding="ISO-8859-9", sep=delimiters[0])
+    header = pd.read_csv(file_name, encoding="ISO-8859-9", sep=delimiters[0], nrows=1)
     header = [h.strip() for h in header.columns.values]
 
     ttable = table.get_temporary(header, year)
