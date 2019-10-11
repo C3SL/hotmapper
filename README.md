@@ -2,6 +2,9 @@
 
 This respository contains the HOTMapper tool, a tool that allows the user to manage his historical data using a mapping protocol.
 
+Bellow we have a simple usage tutorial, if you want a more complete tutorial or know more about all HOTMapper aspects, 
+please head to our [wiki page.](https://gitlab.c3sl.ufpr.br/tools/hotmapper/wikis/home)
+
 ## Table of content ##
 
  [HOTMapper](#hotmapper)
