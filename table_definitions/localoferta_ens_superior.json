@@ -1,7 +1,0 @@
-{
-    "pairing_description": "Tabela do censo do INEP - Ensino Superior",
-    "data_source": "Dados abertos INEP - Microdados do Ensino Superior",
-    "pk": ["ano_censo", "cod_local_oferta", "cod_curso"],
-    "foreign_keys": [ ]
-}
-

@@ -1,0 +1,1059 @@
+ano,objectid_1,objectid,nooriginal,dedominial,detipomass,esp_cd
+2018,1,2,Represa do Descoberto,Federal,Artificial,8255
+2018,2,14,UHE Rosana,Federal,Artificial,8107
+2018,3,23,UHE Canoas II,Federal,Artificial,22900
+2018,4,27,UHE Salto Osório,Federal,Artificial,7673
+2018,5,39,Represa Santa Maria,Federal,Artificial,3946
+2018,6,67,Lagoa São João,Federal,Natural,11871
+2018,7,70,UHE Salto Grande,Federal,Artificial,8053
+2018,8,80,Represa Hercílio Nardi e Albino Perin,Federal,Artificial,3912
+2018,9,157,UHE Ourinhos,Federal,Artificial,23122
+2018,10,159,UHE Paranapanema,Federal,Artificial,23088
+2018,11,173,UHE Canoas I,Federal,Artificial,23036
+2018,12,175,UHE Porto Colômbia,Federal,Artificial,8276
+2018,13,207,UHE Americana,Federal,Artificial,3494
+2018,14,247,UHE Governador Bento Munhoz da Rocha Neto,Federal,Artificial,7659
+2018,15,248,Lagoa do Sossego,Federal,Natural,11727
+2018,16,251, ,Federal,Artificial,4083
+2018,17,258,UHE Furnas,Federal,Artificial,3460
+2018,18,260,UHE Governador José Richa,Federal,Artificial,7674
+2018,19,264,UHE Emborcação,Federal,Artificial,21665
+2018,20,266,UHE Salto Santiago,Federal,Artificial,7664
+2018,21,288,UHE Batalha,Federal,Artificial,23060
+2018,22,309,Represa Agriter I,Federal,Artificial,3921
+2018,23,321, ,Federal,Natural,11868
+2018,24,328,UHE Corumbá I,Federal,Artificial,8240
+2018,25,329,UHE Itumbiara,Federal,Artificial,8228
+2018,26,339,UHE Caconde,Federal,Artificial,3434
+2018,27,351,UHE Marechal Mascarenhas de Moraes,Federal,Artificial,3529
+2018,28,355,UHE São Simão,Federal,Artificial,8293
+2018,29,366,UHE Porto Primavera,Federal,Artificial,7773
+2018,30,414,UHE Marimbondo,Federal,Artificial,8042
+2018,31,419,UHE Água Vermelha,Federal,Artificial,8292
+2018,32,433,UHE Chavantes,Federal,Artificial,7994
+2018,33,437,UHE Serra do Facão,Federal,Artificial,23059
+2018,34,450,UHE Governador Ney Aminthas de Barros Braga,Federal,Artificial,7337
+2018,35,458,UHE Jurumirim,Federal,Artificial,8217
+2018,36,464,UHE Camargos,Federal,Artificial,3578
+2018,37,468,UHE Capivara,Federal,Artificial,8074
+2018,38,480,UHE Ilha Solteira,Federal,Artificial,8242
+2018,39,487,UHE Itutinga,Federal,Artificial,3595
+2018,40,489,UHE Cachoeira Dourada,Federal,Artificial,8398
+2018,41,490,Represa Fazenda Pamplona,Federal,Artificial,3922
+2018,42,495,UHE Jupiá,Federal,Artificial,8124
+2018,43,507,UHE Paranoá,Federal,Artificial,3945
+2018,44,528,UHE Jaguara,Federal,Artificial,3793
+2018,45,547,UHE Funil,Federal,Artificial,3581
+2018,46,549,UHE Volta Grande,Federal,Artificial,21663
+2018,47,596,Barragem Fazenda Poço Claro ou Lamerão,Federal,Artificial,3934
+2018,48,610,Barragem na Área A Módulo 12 do PADF,Federal,Artificial,23126
+2018,49,645,UHE Taquaruçu,Federal,Artificial,8106
+2018,50,719,UHE Estreito,Federal,Artificial,3792
+2018,51,725,UHE Euclides da Cunha,Federal,Artificial,3522
+2018,52,733,Represa no Ribeirão das Antas,Federal,Artificial,3551
+2018,53,741,UHE Piraju,Federal,Artificial,7990
+2018,54,764,UHE Limoeiro,Federal,Artificial,3523
+2018,55,807,UHE Igarapava,Federal,Artificial,23037
+2018,56,855,UHE Itaipu,Federal,Artificial,11735
+2018,57,970,UHE Rolador,Federal,Artificial,23114
+2018,58,982,Barragem Rio Cachoeira,Federal,Artificial,3549
+2018,59,1039,UHE Eloy Chaves,Federal,Artificial,23113
+2018,60,1047,Represa Usina de Atibaia,Federal,Artificial,3545
+2018,61,1048,PCH Padre Carlos,Federal,Artificial,23117
+2018,62,1077,PCH Retiro Velho,Federal,Artificial,23052
+2018,63,1096, ,Federal,Natural,11742
+2018,64,1117,Barragem no Ribeirão Samambaia,Federal,Artificial,3938
+2018,65,1128,CGH São José,Federal,Artificial,3449
+2018,66,1208, ,Federal,Natural,8263
+2018,67,1252,Lagoa dos Padres,Federal,Natural,11726
+2018,68,1355,Lagoa do Jacaré,Federal,Natural,11872
+2018,69,1491,Lagoa Jatobá,Federal,Natural,11869
+2018,70,1767,PCH Planalto,Federal,Artificial,23053
+2018,71,1782,Represa Agriter II,Federal,Artificial,3913
+2018,72,1824, ,Federal,Natural,3588
+2018,73,1834,Barragem Rio Jacareí-Jaguari,Federal,Artificial,3458
+2018,74,1839,UHE Jaguari,Federal,Artificial,23115
+2018,75,1945, ,Estadual,Artificial,7894
+2018,76,2382,PCH Antas I,Federal,Artificial,23129
+2018,77,2447,Lagoa Azul,Federal,Natural,11743
+2018,78,2461, ,Estadual,Natural,7715
+2018,79,2531, ,Estadual,Artificial,3937
+2018,80,2544, ,Estadual,Artificial,8205
+2018,81,2571,CGH Bortolan,Federal,Artificial,3524
+2018,82,2578,Lagoa Xambré,Federal,Natural,11870
+2018,83,2581, ,Estadual,Artificial,3935
+2018,84,2593,Reservatório Penha,Estadual,Artificial,3534
+2018,85,2618,PCH Mogi-Guaçu,Federal,Artificial,3436
+2018,86,2668,Barragem Fazenda São Jacó,Federal,Artificial,3939
+2018,87,2761,Lagoa Saraiva,Federal,Natural,11866
+2018,88,2792, ,Estadual,Natural,7734
+2018,89,2793,Lagoa do Chato,Estadual,Natural,8359
+2018,90,2796, ,Estadual,Natural,8235
+2018,91,2804, ,Estadual,Natural,7901
+2018,92,2815, ,Estadual,Natural,7961
+2018,93,2826, ,Estadual,Natural,8080
+2018,94,2831, ,Estadual,Natural,8273
+2018,95,2862, ,Estadual,Natural,8266
+2018,96,2869,Lagoa Segunda,Estadual,Natural,8155
+2018,97,2908, ,Estadual,Artificial,8483
+2018,98,2921,Lago Rio Tietê,Estadual,Natural,3440
+2018,99,2924,Lagoa do Tabuão,Estadual,Natural,3433
+2018,100,2933, ,Estadual,Natural,8186
+2018,101,2957, ,Estadual,Natural,8114
+2018,102,2976,Lagoa Limpa,Estadual,Natural,8038
+2018,103,2985, ,Estadual,Natural,7784
+2018,104,2995, ,Estadual,Artificial,8181
+2018,105,3008, ,Estadual,Artificial,8143
+2018,106,3023, ,Estadual,Natural,7732
+2018,107,3046, ,Estadual,Natural,7820
+2018,108,3075, ,Estadual,Natural,8103
+2018,109,3102,PCH Bom Jardim,Estadual,Artificial,8279
+2018,110,3118, ,Estadual,Natural,7739
+2018,111,3125, ,Estadual,Natural,7838
+2018,112,3155, ,Estadual,Artificial,3891
+2018,113,3157, ,Estadual,Natural,3552
+2018,114,3161, ,Estadual,Natural,8136
+2018,115,3167, ,Estadual,Natural,3929
+2018,116,3202, ,Estadual,Natural,8174
+2018,117,3209, ,Estadual,Natural,7788
+2018,118,3248, ,Estadual,Natural,7798
+2018,119,3250, ,Estadual,Artificial,8340
+2018,120,3275, ,Estadual,Natural,11755
+2018,121,3289,Lago Rio Tietê,Estadual,Natural,3441
+2018,122,3311, ,Estadual,Natural,8264
+2018,123,3383,Lago Maracá,Estadual,Natural,8025
+2018,124,3386, ,Estadual,Natural,7833
+2018,125,3408, ,Estadual,Artificial,3888
+2018,126,3412, ,Estadual,Natural,7872
+2018,127,3461, ,Estadual,Artificial,7979
+2018,128,3465,Lagoa Bonita,Estadual,Natural,3949
+2018,129,3469, ,Estadual,Natural,8215
+2018,130,3475, ,Estadual,Artificial,8396
+2018,131,3498, ,Estadual,Artificial,8005
+2018,132,3535, ,Estadual,Artificial,8006
+2018,133,3537, ,Estadual,Natural,8078
+2018,134,3568, ,Estadual,Artificial,7991
+2018,135,3596, ,Estadual,Artificial,8140
+2018,136,3629, ,Estadual,Natural,3487
+2018,137,3631, ,Estadual,Natural,8204
+2018,138,3644,Lago Rio Tietê,Estadual,Natural,3443
+2018,139,3669, ,Estadual,Natural,7678
+2018,140,3688, ,Estadual,Natural,7697
+2018,141,3696, ,Estadual,Artificial,8043
+2018,142,3742, ,Estadual,Artificial,8258
+2018,143,3769, ,Estadual,Artificial,8192
+2018,144,3772, ,Estadual,Artificial,8127
+2018,145,3780, ,Estadual,Natural,8060
+2018,146,3801, ,Estadual,Natural,11788
+2018,147,3808, ,Estadual,Natural,7776
+2018,148,3813, ,Estadual,Natural,7769
+2018,149,3820, ,Estadual,Natural,3516
+2018,150,3822, ,Estadual,Natural,7775
+2018,151,3836, ,Estadual,Natural,7949
+2018,152,3873,Barragem Guariroba,Estadual,Artificial,11799
+2018,153,3905,Represa de José Jorge,Estadual,Artificial,8054
+2018,154,3913,Represa Ribeirão do Alegre,Estadual,Artificial,8055
+2018,155,3921,Represa Usina Severínia,Estadual,Artificial,8039
+2018,156,3927, ,Estadual,Natural,8032
+2018,157,3950,Lagoa do Grilo,Estadual,Natural,8303
+2018,158,4007,Represa Usina Colombo,Estadual,Artificial,8010
+2018,159,4016, ,Estadual,Natural,8339
+2018,160,4018, ,Estadual,Natural,7857
+2018,161,4019, ,Estadual,Natural,7964
+2018,162,4033, ,Estadual,Natural,7813
+2018,163,4050, ,Estadual,Natural,7834
+2018,164,4053,Barragem Rio Harmonia,Estadual,Artificial,8047
+2018,165,4091, ,Estadual,Natural,8355
+2018,166,4129,Represa Três Barras,Estadual,Artificial,8051
+2018,167,4138, ,Estadual,Natural,7939
+2018,168,4155,Represa Usina Nardini,Estadual,Artificial,8009
+2018,169,4160, ,Estadual,Natural,7698
+2018,170,4171, ,Estadual,Natural,22731
+2018,171,4183, ,Estadual,Natural,11763
+2018,172,4204,Lagoa do Jacaré,Estadual,Natural,8360
+2018,173,4209, ,Estadual,Natural,11781
+2018,174,4220, ,Estadual,Natural,7844
+2018,175,4226, ,Estadual,Natural,7835
+2018,176,4261, ,Estadual,Natural,7996
+2018,177,4274, ,Estadual,Natural,7919
+2018,178,4282, ,Estadual,Natural,7829
+2018,179,4288,Lagoa Bambu,Estadual,Natural,7843
+2018,180,4301, ,Estadual,Artificial,3798
+2018,181,4310, ,Estadual,Artificial,8000
+2018,182,4316, ,Estadual,Natural,8203
+2018,183,4325, ,Estadual,Natural,7740
+2018,184,4333,Lagoa do Quilim,Estadual,Natural,7824
+2018,185,4340, ,Estadual,Artificial,7884
+2018,186,4350, ,Estadual,Natural,7921
+2018,187,4360, ,Estadual,Natural,3788
+2018,188,4371, ,Estadual,Natural,7873
+2018,189,4403,Lagoa da Cana,Estadual,Artificial,8023
+2018,190,4411, ,Estadual,Natural,7855
+2018,191,4427, ,Estadual,Natural,7868
+2018,192,4428, ,Estadual,Natural,11798
+2018,193,4437, ,Estadual,Natural,3582
+2018,194,4454, ,Estadual,Natural,7848
+2018,195,4472, ,Estadual,Natural,8164
+2018,196,4476, ,Estadual,Artificial,7989
+2018,197,4487, ,Estadual,Natural,7751
+2018,198,4510, ,Estadual,Artificial,7981
+2018,199,4578, ,Estadual,Natural,7748
+2018,200,4579, ,Estadual,Natural,7691
+2018,201,4616, ,Estadual,Natural,7749
+2018,202,4650, ,Estadual,Natural,7747
+2018,203,4680, ,Estadual,Natural,7745
+2018,204,4725,Lagoa Escondida,Estadual,Natural,8363
+2018,205,4751,Lagoa da Brejaúba,Estadual,Natural,8223
+2018,206,4760, ,Estadual,Natural,7736
+2018,207,4778, ,Estadual,Natural,8502
+2018,208,4787, ,Estadual,Natural,3585
+2018,209,4833, ,Estadual,Natural,3576
+2018,210,4843, ,Estadual,Natural,7701
+2018,211,4865, ,Estadual,Artificial,8157
+2018,212,4886, ,Estadual,Natural,7864
+2018,213,4891, ,Estadual,Natural,7771
+2018,214,4903,Represa Rio Iratim,Estadual,Artificial,7631
+2018,215,4918, ,Estadual,Natural,7861
+2018,216,4921, ,Estadual,Natural,7772
+2018,217,4931, ,Estadual,Natural,8036
+2018,218,4942, ,Estadual,Natural,7744
+2018,219,4946, ,Estadual,Natural,7719
+2018,220,4950,Lagoa do Canto,Estadual,Natural,8230
+2018,221,4966, ,Estadual,Artificial,7645
+2018,222,4982, ,Estadual,Natural,11779
+2018,223,4985, ,Estadual,Natural,7762
+2018,224,4997,Lagoa dos Peixes,Estadual,Natural,3475
+2018,225,5012, ,Estadual,Natural,8145
+2018,226,5060, ,Estadual,Natural,7746
+2018,227,5167, ,Estadual,Natural,7680
+2018,228,5179, ,Estadual,Artificial,3797
+2018,229,5194, ,Estadual,Natural,7787
+2018,230,5200, ,Estadual,Natural,7702
+2018,231,5211, ,Estadual,Natural,7856
+2018,232,5219, ,Estadual,Natural,7830
+2018,233,5222, ,Estadual,Natural,7845
+2018,234,5225, ,Estadual,Natural,7962
+2018,235,5264, ,Estadual,Natural,8142
+2018,236,5283, ,Estadual,Natural,8171
+2018,237,5290,Lagoa de São Lourenço,Estadual,Natural,8289
+2018,238,5341, ,Estadual,Natural,7822
+2018,239,5355, ,Estadual,Natural,8394
+2018,240,5395, ,Estadual,Natural,8068
+2018,241,5411, ,Estadual,Natural,7766
+2018,242,5422, ,Estadual,Artificial,3917
+2018,243,5430, ,Estadual,Natural,8356
+2018,244,5458, ,Estadual,Natural,7918
+2018,245,5490, ,Estadual,Natural,11795
+2018,246,5505, ,Estadual,Natural,3514
+2018,247,5535, ,Estadual,Natural,7920
+2018,248,5567, ,Estadual,Natural,7764
+2018,249,5568, ,Estadual,Natural,8272
+2018,250,5572, ,Estadual,Natural,8163
+2018,251,5576, ,Estadual,Natural,3513
+2018,252,5590, ,Estadual,Natural,7804
+2018,253,5672, ,Estadual,Natural,7879
+2018,254,5675, ,Estadual,Natural,8294
+2018,255,5682, ,Estadual,Natural,7954
+2018,256,5694, ,Estadual,Natural,8188
+2018,257,5759, ,Estadual,Natural,7952
+2018,258,5774, ,Estadual,Natural,8104
+2018,259,5842,Lagoa Feia,Estadual,Natural,8274
+2018,260,5861, ,Estadual,Natural,3479
+2018,261,5876,Lagoa Seca,Estadual,Natural,8048
+2018,262,5943, ,Estadual,Natural,7818
+2018,263,6011, ,Estadual,Natural,11839
+2018,264,6020, ,Estadual,Natural,8134
+2018,265,6080, ,Estadual,Natural,3789
+2018,266,6146,Lagoa da Chapada,Estadual,Natural,8336
+2018,267,6218, ,Estadual,Natural,8501
+2018,268,6245, ,Estadual,Natural,8059
+2018,269,6264, ,Estadual,Natural,8297
+2018,270,6289, ,Estadual,Natural,7869
+2018,271,6292, ,Estadual,Natural,7875
+2018,272,6296, ,Estadual,Natural,8081
+2018,273,6327, ,Estadual,Natural,11774
+2018,274,6332, ,Estadual,Natural,8151
+2018,275,6406,Lagoa do Peroba,Estadual,Natural,8187
+2018,276,6437, ,Estadual,Natural,11791
+2018,277,6438, ,Estadual,Natural,7714
+2018,278,6451, ,Estadual,Natural,8182
+2018,279,6460, ,Estadual,Natural,7676
+2018,280,6527, ,Estadual,Natural,8090
+2018,281,6534, ,Estadual,Artificial,3550
+2018,282,6543, ,Estadual,Natural,7731
+2018,283,6552, ,Estadual,Natural,11862
+2018,284,6595, ,Estadual,Natural,7756
+2018,285,6597, ,Estadual,Natural,7765
+2018,286,6605, ,Estadual,Natural,7971
+2018,287,6637,Lagoa Ouro Verde,Estadual,Natural,8102
+2018,288,6673, ,Estadual,Natural,7763
+2018,289,6721, ,Estadual,Natural,11756
+2018,290,6743, ,Estadual,Natural,8135
+2018,291,6771, ,Estadual,Natural,3991
+2018,292,6774, ,Estadual,Natural,7693
+2018,293,6784, ,Estadual,Natural,8092
+2018,294,6802, ,Estadual,Natural,8191
+2018,295,6816, ,Estadual,Natural,7726
+2018,296,6817, ,Estadual,Natural,7654
+2018,297,6821,Lagoa Grande,Estadual,Natural,11731
+2018,298,6840, ,Estadual,Natural,11748
+2018,299,6844, ,Estadual,Natural,11747
+2018,300,6850, ,Estadual,Artificial,4032
+2018,301,6856,Lagoa do Varjão,Estadual,Natural,8232
+2018,302,6859,UHE Barra,Estadual,Artificial,7662
+2018,303,6863,Lagoa do Jaburu,Estadual,Natural,3942
+2018,304,6987, ,Estadual,Natural,7811
+2018,305,6989, ,Estadual,Natural,11746
+2018,306,6991, ,Estadual,Natural,7854
+2018,307,7014, ,Estadual,Natural,7733
+2018,308,7015, ,Estadual,Natural,7761
+2018,309,7053, ,Estadual,Natural,8224
+2018,310,7057, ,Estadual,Natural,22799
+2018,311,7068, ,Estadual,Natural,11773
+2018,312,7082, ,Estadual,Natural,7716
+2018,313,7119, ,Estadual,Natural,7878
+2018,314,7122, ,Estadual,Natural,7852
+2018,315,7123, ,Estadual,Natural,3784
+2018,316,7127, ,Estadual,Natural,8122
+2018,317,7141, ,Estadual,Natural,7706
+2018,318,7195, ,Estadual,Natural,8185
+2018,319,7220, ,Estadual,Natural,7836
+2018,320,7221, ,Estadual,Natural,7760
+2018,321,7232, ,Estadual,Natural,7837
+2018,322,7246, ,Estadual,Natural,7791
+2018,323,7259, ,Estadual,Natural,8226
+2018,324,7295, ,Estadual,Natural,8311
+2018,325,7319,Lagoa Linda,Estadual,Natural,8165
+2018,326,7343,Lagoa do Mato,Estadual,Natural,8333
+2018,327,7348, ,Estadual,Natural,7792
+2018,328,7381, ,Estadual,Natural,8105
+2018,329,7405,Represa Golfe Campo Alto,Estadual,Artificial,3504
+2018,330,7420, ,Estadual,Natural,11752
+2018,331,7449, ,Estadual,Natural,7951
+2018,332,7500, ,Estadual,Natural,7793
+2018,333,7523, ,Estadual,Artificial,7968
+2018,334,7537,Lagoa da Anta,Estadual,Natural,8318
+2018,335,7572, ,Estadual,Natural,8198
+2018,336,7581,Represa Rio Iraí,Estadual,Artificial,7681
+2018,337,7591, ,Estadual,Artificial,3510
+2018,338,7624,Lagoa do Jambo,Estadual,Natural,8300
+2018,339,7643, ,Estadual,Natural,7956
+2018,340,7654, ,Estadual,Natural,8167
+2018,341,7662, ,Estadual,Artificial,8253
+2018,342,7690, ,Estadual,Natural,11796
+2018,343,7709, ,Estadual,Natural,7876
+2018,344,7768, ,Estadual,Artificial,22801
+2018,345,7783,Represa Bom Sucesso,Estadual,Artificial,8503
+2018,346,7910, ,Estadual,Natural,7874
+2018,347,7925, ,Estadual,Natural,7825
+2018,348,7936, ,Estadual,Artificial,8084
+2018,349,8002, ,Estadual,Artificial,8088
+2018,350,8081,Lagoa Escura,Estadual,Artificial,8041
+2018,351,8115, ,Estadual,Natural,11783
+2018,352,8145,Lagoa Pó de Mico,Estadual,Natural,8241
+2018,353,8184, ,Estadual,Natural,3880
+2018,354,8187, ,Estadual,Artificial,8094
+2018,355,8195, ,Estadual,Natural,7863
+2018,356,8199,Lagoa do Caracol,Estadual,Natural,8222
+2018,357,8203, ,Estadual,Artificial,8113
+2018,358,8250, ,Estadual,Natural,11790
+2018,359,8304, ,Estadual,Artificial,8015
+2018,360,8355,Lagoa do Mato,Estadual,Natural,8338
+2018,361,8363, ,Estadual,Natural,8218
+2018,362,8374, ,Estadual,Natural,7786
+2018,363,8388, ,Estadual,Natural,7950
+2018,364,8397, ,Estadual,Natural,3781
+2018,365,8519,Lagoa do Curral,Estadual,Natural,22805
+2018,366,8567,Represa LDC Bioenergia,Estadual,Natural,3437
+2018,367,8568, ,Estadual,Artificial,23066
+2018,368,8642, ,Estadual,Natural,8184
+2018,369,8648, ,Estadual,Natural,8076
+2018,370,8695, ,Estadual,Natural,8031
+2018,371,8711, ,Estadual,Natural,7797
+2018,372,8716, ,Estadual,Natural,11760
+2018,373,8775, ,Estadual,Natural,7717
+2018,374,8790, ,Estadual,Artificial,4116
+2018,375,8830, ,Estadual,Natural,7692
+2018,376,8860, ,Estadual,Natural,7823
+2018,377,8876, ,Estadual,Natural,3675
+2018,378,8949, ,Estadual,Natural,3673
+2018,379,9020, ,Estadual,Natural,8110
+2018,380,9090,Barragem Ponte Nova,Estadual,Artificial,3563
+2018,381,9098, ,Estadual,Natural,3785
+2018,382,9104,Barragem Rio Santo Anastácio,Estadual,Artificial,8073
+2018,383,9146,Lagoinha,Estadual,Natural,8220
+2018,384,9173, ,Estadual,Natural,7758
+2018,385,9177, ,Estadual,Natural,8077
+2018,386,9201, ,Estadual,Natural,7974
+2018,387,9236, ,Estadual,Natural,8146
+2018,388,9262, ,Estadual,Natural,7695
+2018,389,9263, ,Estadual,Natural,7741
+2018,390,9270, ,Estadual,Artificial,8061
+2018,391,9328,Represa Balneário de Rancharia,Estadual,Artificial,8070
+2018,392,9331, ,Estadual,Natural,7675
+2018,393,9334, ,Estadual,Natural,7753
+2018,394,9365, ,Estadual,Natural,11744
+2018,395,9372, ,Estadual,Natural,7805
+2018,396,9398, ,Estadual,Natural,7907
+2018,397,9474, ,Estadual,Natural,11750
+2018,398,9486,Represa Usina Nova América,Estadual,Artificial,8050
+2018,399,9498,Lagoa de Ouro,Estadual,Natural,11766
+2018,400,9522, ,Estadual,Natural,11793
+2018,401,9584, ,Estadual,Natural,3778
+2018,402,9585, ,Estadual,Artificial,8083
+2018,403,9616, ,Estadual,Natural,11749
+2018,404,9656,Lagoa da Boa Vista,Estadual,Natural,3512
+2018,405,9658, ,Estadual,Natural,7892
+2018,406,9709,Lagoa Francisco Schmidt,Estadual,Natural,7938
+2018,407,9735, ,Estadual,Natural,7934
+2018,408,9759,Lagoa do Pintado,Estadual,Natural,8139
+2018,409,9789, ,Estadual,Artificial,7899
+2018,410,9812, ,Estadual,Natural,7688
+2018,411,9817, ,Estadual,Natural,7728
+2018,412,9837, ,Estadual,Natural,7729
+2018,413,9893, ,Estadual,Natural,7867
+2018,414,9908, ,Estadual,Natural,7713
+2018,415,9948, ,Estadual,Natural,7689
+2018,416,9973, ,Estadual,Natural,7752
+2018,417,9980,Represa Pilão d'Água,Estadual,Artificial,7887
+2018,418,10009,Lagoa Formosa,Estadual,Natural,22806
+2018,419,10019, ,Estadual,Natural,7862
+2018,420,10114, ,Estadual,Natural,11765
+2018,421,10122,Lagoa Feia,Estadual,Natural,8393
+2018,422,10155, ,Estadual,Natural,7720
+2018,423,10182, ,Estadual,Natural,7998
+2018,424,10183, ,Estadual,Natural,8307
+2018,425,10216, ,Estadual,Natural,7721
+2018,426,10228, ,Estadual,Natural,11838
+2018,427,10256, ,Estadual,Natural,8225
+2018,428,10287, ,Estadual,Natural,8097
+2018,429,10324, ,Estadual,Natural,8117
+2018,430,10326, ,Estadual,Natural,8128
+2018,431,10386, ,Estadual,Natural,8132
+2018,432,10391, ,Estadual,Natural,8069
+2018,433,10403,UHE Espora,Estadual,Artificial,23051
+2018,434,10447,Represa Usina São Carlos,Estadual,Artificial,7943
+2018,435,10460, ,Estadual,Natural,8130
+2018,436,10469, ,Estadual,Natural,7789
+2018,437,10489,UHE Miranda,Estadual,Artificial,21664
+2018,438,10494,Lagoa Bebedouro,Estadual,Artificial,3986
+2018,439,10519, ,Estadual,Artificial,8098
+2018,440,10522, ,Estadual,Natural,7795
+2018,441,10524, ,Estadual,Natural,8180
+2018,442,10530, ,Estadual,Natural,7725
+2018,443,10535, ,Estadual,Natural,8282
+2018,444,10536,Lagoa Rasa,Estadual,Natural,8301
+2018,445,10546,Lagoa do Rodrigo,Estadual,Natural,8150
+2018,446,10585,Lago dos Patos,Estadual,Natural,8189
+2018,447,10590, ,Estadual,Natural,8281
+2018,448,10595,Lagoa da Olaria,Estadual,Natural,8221
+2018,449,10607, ,Estadual,Natural,8298
+2018,450,10612, ,Estadual,Natural,7865
+2018,451,10613, ,Estadual,Natural,7866
+2018,452,10614, ,Estadual,Natural,7963
+2018,453,10620, ,Estadual,Natural,11761
+2018,454,10623, ,Estadual,Natural,8207
+2018,455,10628, ,Estadual,Natural,7782
+2018,456,10642,Córrego Lafon,Estadual,Natural,8089
+2018,457,10675, ,Estadual,Natural,7704
+2018,458,10698,Lagoa Segunda,Estadual,Natural,8161
+2018,459,10713, ,Estadual,Natural,8162
+2018,460,10715,Lagoa Bonita,Estadual,Natural,8317
+2018,461,10735, ,Estadual,Natural,7860
+2018,462,10736, ,Estadual,Natural,7882
+2018,463,10752,UHE Corumbá III,Estadual,Artificial,23069
+2018,464,10760, ,Estadual,Natural,8357
+2018,465,10781, ,Estadual,Artificial,8395
+2018,466,10789,Lagoa Bonita,Estadual,Natural,11728
+2018,467,10790, ,Estadual,Natural,8206
+2018,468,10839, ,Estadual,Natural,8141
+2018,469,10840, ,Estadual,Natural,8057
+2018,470,10962, ,Estadual,Natural,7738
+2018,471,11003,Lagoa do Recanto,Estadual,Natural,8306
+2018,472,11055, ,Estadual,Natural,8012
+2018,473,11061,Lago Rio Tietê,Estadual,Natural,3442
+2018,474,11083, ,Estadual,Natural,7870
+2018,475,11112,Lagoa do Fundo,Estadual,Natural,8316
+2018,476,11145, ,Estadual,Natural,8116
+2018,477,11168, ,Estadual,Natural,7917
+2018,478,11254, ,Estadual,Natural,4113
+2018,479,11260,Barragem de Rejeito Mineração Catalão,Estadual,Artificial,8286
+2018,480,11286, ,Estadual,Natural,8131
+2018,481,11291, ,Estadual,Natural,8331
+2018,482,11296,Lagoa Caaporã,Estadual,Natural,7840
+2018,483,11307, ,Estadual,Natural,8337
+2018,484,11311, ,Estadual,Natural,8324
+2018,485,11313, ,Estadual,Natural,7742
+2018,486,11321,Lagoa do Marruco,Estadual,Natural,8308
+2018,487,11328,Lagoa Cabeceira do Mandengo,Estadual,Natural,8312
+2018,488,11340,Lagoa Limpa,Estadual,Natural,8358
+2018,489,11389, ,Estadual,Natural,8335
+2018,490,11390, ,Estadual,Natural,8365
+2018,491,11406,Lagoa do Rufino,Estadual,Natural,8231
+2018,492,11445,Lagoa da Estrada,Estadual,Natural,8390
+2018,493,11459,Represa São Lourenço,Estadual,Natural,7653
+2018,494,11471, ,Estadual,Natural,8313
+2018,495,11505, ,Estadual,Natural,11730
+2018,496,11517, ,Estadual,Natural,7755
+2018,497,11521, ,Estadual,Natural,8265
+2018,498,11525, ,Estadual,Natural,11787
+2018,499,11532, ,Estadual,Natural,8112
+2018,500,11545, ,Estadual,Natural,8154
+2018,501,11546,Lagoa Segunda,Estadual,Natural,8158
+2018,502,11585, ,Estadual,Natural,11784
+2018,503,11590, ,Estadual,Natural,7705
+2018,504,11593, ,Estadual,Natural,8175
+2018,505,11596, ,Estadual,Natural,7781
+2018,506,11615,Lagoa Bambu,Estadual,Natural,8153
+2018,507,11635, ,Estadual,Natural,8172
+2018,508,11645, ,Estadual,Natural,22963
+2018,509,11655, ,Estadual,Artificial,4071
+2018,510,11658, ,Estadual,Natural,8109
+2018,511,11659, ,Estadual,Natural,7768
+2018,512,11662,Lagoa do Potreiro,Estadual,Natural,8219
+2018,513,11671, ,Estadual,Natural,7730
+2018,514,11673, ,Estadual,Natural,8115
+2018,515,11742, ,Estadual,Natural,8108
+2018,516,11767, ,Estadual,Natural,3777
+2018,517,11783, ,Estadual,Natural,8030
+2018,518,11788, ,Estadual,Natural,8257
+2018,519,11815,Barragem CBMM,Estadual,Artificial,4109
+2018,520,11841, ,Estadual,Artificial,4111
+2018,521,11863, ,Estadual,Natural,7853
+2018,522,11875,UHE Nova Avanhandava,Estadual,Artificial,8063
+2018,523,11876, ,Estadual,Natural,7710
+2018,524,11881, ,Estadual,Natural,7828
+2018,525,11882, ,Estadual,Artificial,4076
+2018,526,11893, ,Estadual,Natural,11778
+2018,527,11900,Barragem de Rejeito Ácido Sulfúrico Bunge,Estadual,Artificial,4110
+2018,528,11916, ,Estadual,Natural,8169
+2018,529,11917, ,Estadual,Natural,11864
+2018,530,11940, ,Estadual,Artificial,4117
+2018,531,12018, ,Estadual,Artificial,3790
+2018,532,12055,PCH Edgard de Souza (Repotenciação),Estadual,Artificial,23082
+2018,533,12069, ,Estadual,Natural,7727
+2018,534,12072,Barragem Fosfértil,Estadual,Artificial,4107
+2018,535,12079, ,Estadual,Natural,7754
+2018,536,12081, ,Estadual,Natural,7737
+2018,537,12097,Córrego da Onça,Estadual,Natural,8120
+2018,538,12101, ,Estadual,Natural,7759
+2018,539,12122, ,Estadual,Natural,7707
+2018,540,12128, ,Estadual,Natural,7819
+2018,541,12134,Lagoa do Valinho,Estadual,Natural,7995
+2018,542,12144, ,Estadual,Natural,7966
+2018,543,12147,Lagoa Grande,Estadual,Natural,7941
+2018,544,12171, ,Estadual,Natural,8085
+2018,545,12261, ,Estadual,Natural,8244
+2018,546,12291, ,Estadual,Artificial,3508
+2018,547,12295, ,Estadual,Natural,7859
+2018,548,12300, ,Estadual,Natural,7814
+2018,549,12305, ,Estadual,Natural,8058
+2018,550,12310, ,Estadual,Natural,7767
+2018,551,12316, ,Estadual,Natural,8304
+2018,552,12320, ,Estadual,Natural,3674
+2018,553,12353,Barragem Rio Passaúna,Estadual,Artificial,7953
+2018,554,12366, ,Estadual,Natural,7827
+2018,555,12427, ,Estadual,Artificial,8126
+2018,556,12484, ,Estadual,Natural,8160
+2018,557,12552, ,Estadual,Natural,8176
+2018,558,12622, ,Estadual,Natural,7849
+2018,559,12643,Rio Baía,Estadual,Natural,8168
+2018,560,12734, ,Estadual,Natural,11772
+2018,561,12848,Barragem Fosfértil,Estadual,Artificial,4104
+2018,562,12877, ,Estadual,Natural,7877
+2018,563,12913, ,Estadual,Natural,7718
+2018,564,12916, ,Estadual,Natural,7712
+2018,565,12938,Lagoa do Português,Estadual,Natural,8118
+2018,566,12957, ,Estadual,Artificial,3890
+2018,567,12972, ,Estadual,Natural,7871
+2018,568,12994,Represa Billings,Estadual,Artificial,3454
+2018,569,13013,Lagoa Paraguaia,Estadual,Natural,8148
+2018,570,13025, ,Estadual,Natural,7975
+2018,571,13052, ,Estadual,Natural,7774
+2018,572,13061,UHE Corumbá IV,Estadual,Artificial,8252
+2018,573,13093,Lagoa Itararé,Estadual,Natural,7933
+2018,574,13139, ,Estadual,Artificial,8016
+2018,575,13165, ,Estadual,Natural,7700
+2018,576,13177, ,Estadual,Natural,8392
+2018,577,13239, ,Estadual,Natural,7936
+2018,578,13265, ,Estadual,Natural,11732
+2018,579,13299,Barragem CBMM,Estadual,Artificial,4108
+2018,580,13316,UHE Nova Ponte,Estadual,Artificial,3794
+2018,581,13324, ,Estadual,Natural,11782
+2018,582,13333, ,Estadual,Artificial,11800
+2018,583,13338, ,Estadual,Natural,7955
+2018,584,13395,Lagoa Santa Maria,Estadual,Natural,8291
+2018,585,13423, ,Estadual,Natural,7831
+2018,586,13442,UHE Caçu,Estadual,Artificial,23050
+2018,587,13446, ,Estadual,Natural,7832
+2018,588,13449,Barragem Fosfértil,Estadual,Artificial,4105
+2018,589,13460,Córrego da Divisa,Estadual,Natural,8261
+2018,590,13473, ,Estadual,Artificial,3985
+2018,591,13481,Lagoa Segunda,Estadual,Natural,8159
+2018,592,13485, ,Estadual,Natural,7965
+2018,593,13521, ,Estadual,Natural,3506
+2018,594,13526, ,Estadual,Artificial,11860
+2018,595,13582, ,Estadual,Natural,7708
+2018,596,13639, ,Estadual,Natural,3783
+2018,597,13782,Lagoa Fazenda Rio das Pedras,Estadual,Artificial,3493
+2018,598,13798, ,Estadual,Natural,7903
+2018,599,13803, ,Estadual,Natural,7826
+2018,600,13830,Barragem de Rejeito Mineração Catalão,Estadual,Artificial,8285
+2018,601,13841, ,Estadual,Natural,8290
+2018,602,13859,UHE Três Irmãos,Estadual,Artificial,8099
+2018,603,13926, ,Estadual,Artificial,3799
+2018,604,13993,UHE Amador Aguiar I,Estadual,Artificial,23047
+2018,605,14125, ,Estadual,Natural,3677
+2018,606,14245, ,Estadual,Natural,7750
+2018,607,14335,Represa Guarapiranga,Estadual,Artificial,3531
+2018,608,14458, ,Estadual,Natural,7694
+2018,609,14462, ,Estadual,Artificial,7802
+2018,610,14486,Represa Usina Santa Luiza,Estadual,Artificial,7942
+2018,611,14506, ,Estadual,Natural,11745
+2018,612,14532, ,Estadual,Artificial,8482
+2018,613,14638, ,Estadual,Natural,7778
+2018,614,14710, ,Estadual,Natural,11759
+2018,615,14718, ,Estadual,Natural,7967
+2018,616,14730, ,Estadual,Natural,7960
+2018,617,14792, ,Estadual,Natural,7780
+2018,618,14846,Represa Ribeirão Cachoeirinha,Estadual,Artificial,3498
+2018,619,14860, ,Estadual,Natural,8183
+2018,620,14871, ,Estadual,Natural,3786
+2018,621,14872, ,Estadual,Natural,11797
+2018,622,14927,Córrego das Éguas,Estadual,Natural,8091
+2018,623,14973, ,Estadual,Natural,3519
+2018,624,14988, ,Estadual,Artificial,3787
+2018,625,14994, ,Estadual,Natural,8133
+2018,626,15003,UHE Promissão,Estadual,Artificial,8013
+2018,627,15067, ,Estadual,Artificial,7988
+2018,628,15075,Lagoa Joaquim Medeiros,Estadual,Natural,3948
+2018,629,15146, ,Estadual,Natural,3584
+2018,630,15149, ,Estadual,Natural,8149
+2018,631,15160, ,Estadual,Natural,11792
+2018,632,15168,Represa Doutor José Bonifácio Viana,Estadual,Artificial,7896
+2018,633,15169, ,Estadual,Artificial,7891
+2018,634,15198,Lagoa do Mimoso,Estadual,Natural,8302
+2018,635,15204, ,Estadual,Artificial,7898
+2018,636,15205, ,Estadual,Artificial,7897
+2018,637,15211,Lagoa de Carapicuíba,Estadual,Natural,3533
+2018,638,15213, ,Estadual,Artificial,7904
+2018,639,15220, ,Estadual,Natural,8364
+2018,640,15243, ,Estadual,Artificial,7779
+2018,641,15275,Represa Córrego Vendinha,Estadual,Artificial,7932
+2018,642,15289,Lagoão,Estadual,Natural,22803
+2018,643,15371, ,Estadual,Natural,7880
+2018,644,15399, ,Estadual,Natural,8325
+2018,645,15412, ,Estadual,Artificial,4033
+2018,646,15430, ,Estadual,Artificial,7983
+2018,647,15432, ,Estadual,Natural,7757
+2018,648,15450, ,Estadual,Natural,7722
+2018,649,15472,UHE Barra dos Coqueiros,Estadual,Artificial,23049
+2018,650,15514, ,Estadual,Natural,7724
+2018,651,15623, ,Estadual,Artificial,8210
+2018,652,15652, ,Estadual,Artificial,3906
+2018,653,15664, ,Estadual,Natural,11768
+2018,654,15722, ,Estadual,Natural,11780
+2018,655,15749, ,Estadual,Natural,7817
+2018,656,15752,Barragem SIX Petrobrás,Estadual,Artificial,7655
+2018,657,15769,Lago Guanabara,Estadual,Natural,3575
+2018,658,15784, ,Estadual,Natural,22802
+2018,659,15785, ,Estadual,Natural,7902
+2018,660,15787, ,Estadual,Natural,8173
+2018,661,15797, ,Estadual,Artificial,7660
+2018,662,15832, ,Estadual,Artificial,7699
+2018,663,15880, ,Estadual,Artificial,7685
+2018,664,15884, ,Estadual,Artificial,7980
+2018,665,15911,Lagoa Iturama,Estadual,Natural,8288
+2018,666,15913, ,Estadual,Artificial,8179
+2018,667,15933, ,Estadual,Natural,7796
+2018,668,15968,Represa Balneário da Amizade,Estadual,Artificial,8072
+2018,669,15970, ,Estadual,Artificial,7982
+2018,670,16011,Represa Rio Novo,Estadual,Artificial,7978
+2018,671,16012,Represa de Sant'Ana,Estadual,Artificial,7912
+2018,672,16019, ,Estadual,Natural,8018
+2018,673,16025,Represa Usina Santa Adélia,Estadual,Artificial,7948
+2018,674,16061, ,Estadual,Natural,7723
+2018,675,16071, ,Estadual,Natural,7847
+2018,676,16121, ,Estadual,Natural,7970
+2018,677,16188, ,Estadual,Artificial,7992
+2018,678,16222,Lagoa do Clube,Estadual,Natural,3557
+2018,679,16255, ,Estadual,Natural,8027
+2018,680,16276, ,Estadual,Artificial,8002
+2018,681,16286,Lagoa Maior,Estadual,Natural,8123
+2018,682,16291, ,Estadual,Natural,4115
+2018,683,16308, ,Estadual,Natural,8011
+2018,684,16320, ,Estadual,Natural,7846
+2018,685,16369, ,Estadual,Artificial,8195
+2018,686,16441, ,Estadual,Natural,8320
+2018,687,16444,Lagoa Quarenta e Um,Estadual,Natural,7841
+2018,688,16467, ,Estadual,Artificial,7661
+2018,689,16483,Represa Ribeirão das Tabocas,Estadual,Artificial,7928
+2018,690,16485,Represa de São José do Rio Preto,Estadual,Artificial,7816
+2018,691,16491,Lagoa Bonita,Estadual,Natural,8202
+2018,692,16522, ,Estadual,Natural,7858
+2018,693,16536, ,Estadual,Artificial,7905
+2018,694,16539, ,Estadual,Natural,11776
+2018,695,16566, ,Estadual,Natural,7839
+2018,696,16583,Lagoa Comprida,Estadual,Natural,3476
+2018,697,16585, ,Estadual,Artificial,7806
+2018,698,16611, ,Estadual,Natural,7735
+2018,699,16628, ,Estadual,Artificial,8037
+2018,700,16629, ,Estadual,Natural,8170
+2018,701,16669,Lagoa das Bichas,Estadual,Natural,8310
+2018,702,16715, ,Estadual,Natural,8323
+2018,703,16891, ,Estadual,Natural,8034
+2018,704,16944,Lagoa Assombrada,Estadual,Natural,7850
+2018,705,16998, ,Estadual,Artificial,7883
+2018,706,17023, ,Estadual,Natural,8086
+2018,707,17062, ,Estadual,Natural,8079
+2018,708,17081, ,Estadual,Artificial,11762
+2018,709,17118,UHE Salto do Rio Verdinho,Estadual,Artificial,23048
+2018,710,17161, ,Estadual,Natural,8329
+2018,711,17233, ,Estadual,Natural,8138
+2018,712,17248, ,Estadual,Natural,7785
+2018,713,17269, ,Estadual,Artificial,4079
+2018,714,17292, ,Estadual,Natural,8330
+2018,715,17329, ,Estadual,Artificial,11786
+2018,716,17331, ,Estadual,Artificial,3990
+2018,717,17345, ,Estadual,Natural,8129
+2018,718,17405,UHE Santa Clara,Estadual,Artificial,7663
+2018,719,17423,Lagoa Embaúba,Estadual,Natural,8391
+2018,720,17474, ,Estadual,Natural,8144
+2018,721,17499, ,Estadual,Natural,7770
+2018,722,17544, ,Estadual,Natural,7652
+2018,723,17558, ,Estadual,Natural,4112
+2018,724,17607,Lagoa Formosa,Estadual,Natural,8227
+2018,725,17635, ,Estadual,Natural,7997
+2018,726,17648,UHE Mauá,Estadual,Artificial,23081
+2018,727,17650, ,Estadual,Artificial,4046
+2018,728,17655,Lagoa do Ouro Branco,Estadual,Natural,8033
+2018,729,17694, ,Estadual,Natural,8194
+2018,730,17704, ,Estadual,Natural,3894
+2018,731,17750, ,Estadual,Artificial,8178
+2018,732,17766, ,Estadual,Artificial,7690
+2018,733,17770, ,Estadual,Natural,7672
+2018,734,17787,PCH Mourão I,Estadual,Artificial,8101
+2018,735,17794, ,Estadual,Artificial,8177
+2018,736,17797, ,Estadual,Artificial,3779
+2018,737,17833, ,Estadual,Artificial,4073
+2018,738,17844, ,Estadual,Artificial,3782
+2018,739,17864,Represa Rio Verde,Estadual,Artificial,7957
+2018,740,17866,Açude da Bomba,Estadual,Artificial,7944
+2018,741,17870, ,Estadual,Artificial,3928
+2018,742,17872, ,Estadual,Artificial,3884
+2018,743,17883,Lago Paulo Gorski,Estadual,Artificial,8125
+2018,744,17888,PCH Ribeirão do Pinhal,Estadual,Artificial,3435
+2018,745,17913, ,Estadual,Artificial,8147
+2018,746,17923,CGH São João II,Estadual,Artificial,11770
+2018,747,17928, ,Estadual,Artificial,8287
+2018,748,17930, ,Estadual,Artificial,3984
+2018,749,17932,CGH PG2,Estadual,Artificial,3883
+2018,750,17934,PCH São Jorge,Estadual,Artificial,7679
+2018,751,17975, ,Estadual,Artificial,8319
+2018,752,17976, ,Estadual,Artificial,8197
+2018,753,17978, ,Estadual,Artificial,22800
+2018,754,17993,Ribeirão Mimoso,Estadual,Artificial,8399
+2018,755,17995, ,Estadual,Artificial,3931
+2018,756,18002, ,Estadual,Artificial,8087
+2018,757,18010,Represa Usina São Luiz,Estadual,Artificial,8052
+2018,758,18011,PCH Apucaraninha,Estadual,Artificial,8066
+2018,759,18026, ,Estadual,Artificial,3474
+2018,760,18030,UHE Barra Bonita,Estadual,Artificial,7922
+2018,761,18032,UHE Assis Chateaubriand,Estadual,Artificial,8216
+2018,762,18093, ,Estadual,Natural,8166
+2018,763,18107,Lagoa Água Doce,Estadual,Natural,8362
+2018,764,18155,Represa do Córrego da Cabeceira Comprida,Estadual,Artificial,8096
+2018,765,18258,Lagoa da Vaca,Estadual,Natural,8334
+2018,766,18275,UHE Bariri,Estadual,Artificial,22759
+2018,767,18309,Represa Goiás Verde,Estadual,Artificial,3926
+2018,768,18316, ,Estadual,Artificial,11753
+2018,769,18322, ,Estadual,Artificial,3887
+2018,770,18336, ,Estadual,Artificial,3900
+2018,771,18337, ,Estadual,Artificial,3902
+2018,772,18343, ,Estadual,Artificial,8082
+2018,773,18345, ,Estadual,Artificial,3927
+2018,774,18353, ,Estadual,Artificial,3910
+2018,775,18383, ,Estadual,Artificial,3923
+2018,776,18393,CGH Laranja Doce,Estadual,Artificial,8071
+2018,777,18394,Represa Nova,Estadual,Artificial,3544
+2018,778,18419,Lago Fishing Park,Estadual,Artificial,7895
+2018,779,18439, ,Estadual,Artificial,3909
+2018,780,18440, ,Estadual,Artificial,3908
+2018,781,18453, ,Estadual,Artificial,8075
+2018,782,18486, ,Estadual,Artificial,8095
+2018,783,18499, ,Estadual,Artificial,3914
+2018,784,18516, ,Estadual,Artificial,11956
+2018,785,18542, ,Estadual,Artificial,8315
+2018,786,18559,Barragem Lago Igapó I,Estadual,Artificial,8067
+2018,787,18578, ,Estadual,Artificial,7670
+2018,788,18580,Represa Rio Tatuí,Estadual,Artificial,7890
+2018,789,18598,CGH Itaquerê,Estadual,Artificial,7810
+2018,790,18602, ,Estadual,Artificial,8024
+2018,791,18608,PCH Salto Curucaca II,Estadual,Artificial,8064
+2018,792,18609, ,Estadual,Artificial,7987
+2018,793,18632, ,Estadual,Artificial,3989
+2018,794,18650, ,Estadual,Artificial,7993
+2018,795,18656,CGH Rio Preto,Estadual,Artificial,7651
+2018,796,18665, ,Estadual,Artificial,8019
+2018,797,18666, ,Estadual,Artificial,7783
+2018,798,18677, ,Estadual,Artificial,8309
+2018,799,18694,Represa Fazenda Pizzato,Estadual,Artificial,7657
+2018,800,18696, ,Estadual,Artificial,3876
+2018,801,18740,Represa Usina São Martinho,Estadual,Artificial,7940
+2018,802,18759, ,Estadual,Artificial,7935
+2018,803,18828,Lagoa do Mato,Estadual,Artificial,8022
+2018,804,18830, ,Estadual,Artificial,3916
+2018,805,18831, ,Estadual,Artificial,8046
+2018,806,18842, ,Estadual,Artificial,7945
+2018,807,18890, ,Estadual,Artificial,8062
+2018,808,18891, ,Estadual,Artificial,8193
+2018,809,18928, ,Estadual,Artificial,4063
+2018,810,18945,PCH Jaguaricatu I,Estadual,Artificial,7972
+2018,811,18962,Represa Paramirim,Estadual,Artificial,3499
+2018,812,18972, ,Estadual,Artificial,8211
+2018,813,18993, ,Estadual,Artificial,3924
+2018,814,19000, ,Estadual,Artificial,7973
+2018,815,19006, ,Estadual,Artificial,3988
+2018,816,19013,Represa Fazenda da Grama,Estadual,Artificial,3489
+2018,817,19065,Represa Córrego Consulta,Estadual,Artificial,8035
+2018,818,19081,Represa Parque do Sabiá,Estadual,Artificial,8278
+2018,819,19092, ,Estadual,Artificial,3526
+2018,820,19106, ,Estadual,Artificial,3879
+2018,821,19113, ,Estadual,Artificial,3885
+2018,822,19116,Represa São Luís,Estadual,Artificial,3446
+2018,823,19143, ,Estadual,Artificial,4114
+2018,824,19145, ,Estadual,Artificial,3877
+2018,825,19150, ,Estadual,Artificial,7800
+2018,826,19159, ,Estadual,Artificial,8250
+2018,827,19163, ,Estadual,Artificial,3886
+2018,828,19206, ,Estadual,Artificial,3898
+2018,829,19235, ,Estadual,Artificial,3901
+2018,830,19277, ,Estadual,Artificial,4070
+2018,831,19283, ,Estadual,Artificial,3911
+2018,832,19288, ,Estadual,Artificial,7900
+2018,833,19332,PCH Pirapora,Estadual,Artificial,3542
+2018,834,19356, ,Estadual,Artificial,3930
+2018,835,19362,UHE Rasgão,Estadual,Artificial,3444
+2018,836,19380,Represa Cillos,Estadual,Artificial,3445
+2018,837,19393, ,Estadual,Artificial,11771
+2018,838,19446,Represa Usina São João,Estadual,Artificial,3503
+2018,839,19494, ,Estadual,Artificial,7889
+2018,840,19495,Açude Vidal Dias (PCH Xicão),Estadual,Artificial,3577
+2018,841,19497, ,Estadual,Artificial,3517
+2018,842,19511, ,Estadual,Artificial,3987
+2018,843,19537, ,Estadual,Artificial,8251
+2018,844,19544,PCH Cascata,Estadual,Artificial,3536
+2018,845,19565, ,Estadual,Artificial,8259
+2018,846,19568, ,Estadual,Artificial,8111
+2018,847,19569, ,Estadual,Artificial,8065
+2018,848,19593,PCH Jorda Flor,Estadual,Artificial,3480
+2018,849,19596, ,Estadual,Artificial,3554
+2018,850,19624, ,Estadual,Artificial,3892
+2018,851,19642, ,Estadual,Artificial,11861
+2018,852,19645, ,Estadual,Artificial,8196
+2018,853,19667, ,Estadual,Artificial,11740
+2018,854,19669,Represa Paraitinga,Estadual,Artificial,3562
+2018,855,19684,Represa Córrego Cruzeiro,Estadual,Artificial,3477
+2018,856,19715, ,Estadual,Artificial,3993
+2018,857,19721, ,Estadual,Artificial,3899
+2018,858,19758,Represa Areia Branca,Estadual,Artificial,3492
+2018,859,19766, ,Estadual,Artificial,8209
+2018,860,19790,Represa do Vinte e Nove,Estadual,Artificial,7927
+2018,861,19792, ,Estadual,Artificial,3541
+2018,862,19794,Represa Ribeirão Claro,Estadual,Artificial,3509
+2018,863,19812, ,Estadual,Artificial,3488
+2018,864,19818, ,Estadual,Artificial,8343
+2018,865,19826, ,Estadual,Artificial,8397
+2018,866,19855, ,Estadual,Artificial,11777
+2018,867,19892, ,Estadual,Artificial,3515
+2018,868,19897, ,Estadual,Artificial,8040
+2018,869,19908, ,Estadual,Artificial,7777
+2018,870,19918, ,Estadual,Artificial,3889
+2018,871,19922, ,Estadual,Artificial,3561
+2018,872,19938,PCH Santa Maria,Estadual,Artificial,7886
+2018,873,19939, ,Estadual,Artificial,8028
+2018,874,19948, ,Estadual,Artificial,7794
+2018,875,19966, ,Estadual,Artificial,7807
+2018,876,19983,Represa Usina Albertina,Estadual,Artificial,7937
+2018,877,20014, ,Estadual,Artificial,8029
+2018,878,20016, ,Estadual,Artificial,11764
+2018,879,20062, ,Estadual,Artificial,7656
+2018,880,20073,PCH Paraíso II,Estadual,Artificial,8262
+2018,881,20081,UHE Itupararanga,Estadual,Artificial,3439
+2018,882,20089, ,Estadual,Artificial,3457
+2018,883,20091, ,Estadual,Artificial,4075
+2018,884,20119, ,Estadual,Artificial,7984
+2018,885,20148,Represa Euclides Morelli,Estadual,Artificial,3511
+2018,886,20154, ,Estadual,Artificial,3893
+2018,887,20172, ,Estadual,Artificial,7969
+2018,888,20180,Barragem Pedro Beicht,Estadual,Artificial,3530
+2018,889,20193, ,Estadual,Artificial,11767
+2018,890,20213,Lago da Formiguinha,Estadual,Artificial,7658
+2018,891,20224,CGH Agropecuária Rio Paraíso,Estadual,Artificial,8504
+2018,892,20228, ,Estadual,Artificial,7946
+2018,893,20231, ,Estadual,Artificial,7801
+2018,894,20234,PCH Santa Helena,Estadual,Artificial,3490
+2018,895,20240, ,Estadual,Artificial,11769
+2018,896,20249,Represa Clube Náutico Araraquara,Estadual,Artificial,7931
+2018,897,20276, ,Estadual,Artificial,7696
+2018,898,20295, ,Estadual,Artificial,4064
+2018,899,20298,Represa Pesque e Pague Nello Zuntini,Estadual,Artificial,7999
+2018,900,20308,Barragem Usina Santa Rita,Estadual,Artificial,7923
+2018,901,20316, ,Estadual,Artificial,3915
+2018,902,20326,Represa da Barra,Estadual,Artificial,7925
+2018,903,20328, ,Estadual,Artificial,3540
+2018,904,20331,UHE Volta Grande,Estadual,Artificial,23139
+2018,905,20333, ,Estadual,Artificial,7885
+2018,906,20335, ,Estadual,Artificial,8026
+2018,907,20339, ,Estadual,Artificial,7812
+2018,908,20388, ,Estadual,Artificial,4001
+2018,909,20394, ,Estadual,Artificial,8213
+2018,910,20396, ,Estadual,Artificial,7986
+2018,911,20399, ,Estadual,Artificial,4062
+2018,912,20410, ,Estadual,Artificial,8007
+2018,913,20415, ,Estadual,Artificial,8326
+2018,914,20422, ,Estadual,Artificial,8152
+2018,915,20424,Barragem Fosfértil,Estadual,Artificial,4106
+2018,916,20433, ,Estadual,Artificial,8280
+2018,917,20451, ,Estadual,Artificial,11794
+2018,918,20457,Represa Horto Florestal de Sumaré,Estadual,Artificial,3491
+2018,919,20464,Represa Tabajara,Estadual,Artificial,3497
+2018,920,20466, ,Estadual,Artificial,4078
+2018,921,20469,Represa Usina Lambari,Estadual,Artificial,7916
+2018,922,20470, ,Estadual,Artificial,11789
+2018,923,20476, ,Estadual,Artificial,7809
+2018,924,20485, ,Estadual,Artificial,7929
+2018,925,20487,PCH São Bernardo,Estadual,Artificial,3574
+2018,926,20488,Represa Águas Claras,Estadual,Artificial,23077
+2018,927,20493,PCH Lago Azul,Estadual,Artificial,3882
+2018,928,20512, ,Estadual,Artificial,7888
+2018,929,20526,UHE Porto Góes,Estadual,Artificial,23109
+2018,930,20535, ,Estadual,Artificial,4061
+2018,931,20537, ,Estadual,Artificial,7914
+2018,932,20550,Represa Bom Retiro,Estadual,Artificial,7926
+2018,933,20553, ,Estadual,Artificial,8314
+2018,934,20577, ,Estadual,Artificial,7913
+2018,935,20586,Barragem Hermínio Ometto,Estadual,Artificial,3507
+2018,936,20602,Barragem do Rio Piuí,Estadual,Artificial,3556
+2018,937,20606,PCH Poço Fundo,Estadual,Artificial,3553
+2018,938,20636, ,Estadual,Artificial,8199
+2018,939,20644, ,Estadual,Artificial,8296
+2018,940,20649,Represa Ribeirão Boa Vista,Estadual,Artificial,3495
+2018,941,20680, ,Estadual,Artificial,8190
+2018,942,20714, ,Estadual,Natural,7711
+2018,943,20769, ,Estadual,Natural,8305
+2018,944,20780, ,Estadual,Artificial,3903
+2018,945,20783, ,Estadual,Natural,8137
+2018,946,20804,Barragem Rio Atibainha,Estadual,Artificial,3546
+2018,947,20835,Salto Rio Chopim,Estadual,Natural,7671
+2018,948,20837, ,Estadual,Natural,4103
+2018,949,20861, ,Estadual,Artificial,7976
+2018,950,20863, ,Estadual,Artificial,8214
+2018,951,20880, ,Estadual,Natural,11757
+2018,952,20891, ,Estadual,Natural,8093
+2018,953,20903,Represa Usina Vassununga,Estadual,Artificial,7924
+2018,954,20917, ,Estadual,Artificial,8014
+2018,955,20980,Lagoa Branca,Estadual,Natural,3520
+2018,956,20994, ,Estadual,Artificial,8056
+2018,957,21007, ,Estadual,Natural,7821
+2018,958,21033, ,Estadual,Natural,8212
+2018,959,21047, ,Estadual,Artificial,8208
+2018,960,21051,Represa Ribeirão do Campo,Estadual,Artificial,3564
+2018,961,21065,Represa Usina São João,Estadual,Artificial,3501
+2018,962,21073, ,Estadual,Artificial,4065
+2018,963,21077, ,Estadual,Artificial,11751
+2018,964,21084, ,Estadual,Artificial,8322
+2018,965,21088, ,Estadual,Artificial,8003
+2018,966,21100, ,Estadual,Artificial,7930
+2018,967,21105,Represa do Mirante,Estadual,Artificial,3500
+2018,968,21114, ,Estadual,Artificial,8017
+2018,969,21122, ,Estadual,Artificial,3936
+2018,970,21139, ,Estadual,Artificial,3432
+2018,971,21175,Represa Usina Lambari,Estadual,Artificial,7915
+2018,972,21193, ,Estadual,Natural,8021
+2018,973,21205, ,Estadual,Natural,11775
+2018,974,21218,Córrego das Lagoas,Estadual,Artificial,8119
+2018,975,21225, ,Estadual,Natural,8156
+2018,976,21242,Represa Rio Jundiaí,Estadual,Artificial,3462
+2018,977,21267,PCH Batista Pilar,Estadual,Artificial,3481
+2018,978,21293, ,Estadual,Artificial,7985
+2018,979,21302, ,Estadual,Artificial,8201
+2018,980,21408,Represa Lindolpho Pio da Silva Dias,Estadual,Artificial,3459
+2018,981,21412, ,Estadual,Artificial,4072
+2018,982,21463,PCH Lobo,Estadual,Artificial,7906
+2018,983,21475,Represa Córrego Santana,Estadual,Artificial,3478
+2018,984,21487, ,Estadual,Artificial,3791
+2018,985,21488, ,Estadual,Artificial,3919
+2018,986,21524, ,Estadual,Artificial,3925
+2018,987,21550,UHE Fundão,Estadual,Artificial,23104
+2018,988,21595, ,Estadual,Artificial,11801
+2018,989,21611,Represa Paulo de Paiva Castro,Estadual,Artificial,3537
+2018,990,21655,CGH Ester,Estadual,Artificial,3496
+2018,991,21666,Represa Taiaçupeba,Estadual,Artificial,3539
+2018,992,21675, ,Estadual,Artificial,7668
+2018,993,21704,CGH Justus,Estadual,Artificial,8044
+2018,994,21708, ,Estadual,Artificial,3907
+2018,995,21733, ,Estadual,Artificial,7977
+2018,996,21762, ,Estadual,Artificial,8342
+2018,997,21784,PCH Rochedo,Estadual,Artificial,8249
+2018,998,21820, ,Estadual,Artificial,8374
+2018,999,21823, ,Estadual,Artificial,8254
+2018,1000,21824,UHE Rio do Peixe,Estadual,Artificial,3525
+2018,1001,21863, ,Estadual,Artificial,8481
+2018,1002,21869,Reservatório Cebolão,Estadual,Artificial,23094
+2018,1003,21876, ,Estadual,Artificial,3438
+2018,1004,21907, ,Estadual,Artificial,3878
+2018,1005,21939,Represa Rio Piraquara I,Estadual,Artificial,7686
+2018,1006,21944, ,Estadual,Artificial,8020
+2018,1007,21963,Barragem Eduíno Sbardellini,Estadual,Artificial,3518
+2018,1008,21984, ,Estadual,Artificial,7703
+2018,1009,21992,Reservatório Traição,Estadual,Artificial,23091
+2018,1010,21993,Barragem João Leite,Estadual,Artificial,23062
+2018,1011,22009,Represa Usina Jacarezinho,Estadual,Artificial,8049
+2018,1012,22016, ,Estadual,Artificial,8004
+2018,1013,22041,Represa Usina Bonfim,Estadual,Artificial,7947
+2018,1014,22062, ,Estadual,Artificial,8200
+2018,1015,22074,Represa Usina Nova América,Estadual,Artificial,7815
+2018,1016,22130, ,Estadual,Natural,7743
+2018,1017,22135,PCH Jacaré Pepira,Estadual,Artificial,7911
+2018,1018,22138,Lagoa Bonita,Estadual,Natural,7842
+2018,1019,22162, ,Estadual,Artificial,3800
+2018,1020,22172, ,Estadual,Artificial,22804
+2018,1021,22183,Represa Velha,Estadual,Artificial,3543
+2018,1022,22201,UHE Ibitinga,Estadual,Artificial,8008
+2018,1023,22231, ,Estadual,Artificial,3521
+2018,1024,22253,Barragem de Rejeito Mineração Catalão,Estadual,Artificial,8284
+2018,1025,22278,Lagoa da Cerca,Estadual,Natural,8275
+2018,1026,22284,Represa Sucupira,Estadual,Artificial,8283
+2018,1027,22285, ,Estadual,Artificial,8045
+2018,1028,22288, ,Estadual,Natural,7881
+2018,1029,22292, ,Estadual,Natural,3586
+2018,1030,22357, ,Estadual,Artificial,8001
+2018,1031,22398,Represa Fazenda Pontal,Estadual,Artificial,8366
+2018,1032,22401, ,Estadual,Artificial,3920
+2018,1033,22409, ,Estadual,Artificial,11785
+2018,1034,22415, ,Estadual,Artificial,8373
+2018,1035,22419, ,Estadual,Artificial,3881
+2018,1036,22421, ,Estadual,Artificial,8295
+2018,1037,22427, ,Estadual,Artificial,8277
+2018,1038,22430, ,Estadual,Artificial,11859
+2018,1039,22448, ,Estadual,Artificial,8375
+2018,1040,22466, ,Estadual,Artificial,8376
+2018,1041,22468, ,Estadual,Artificial,8328
+2018,1042,22477, ,Estadual,Artificial,8361
+2018,1043,22503, ,Estadual,Artificial,8267
+2018,1044,22548, ,Estadual,Artificial,3904
+2018,1045,22562, ,Estadual,Artificial,3905
+2018,1046,22564,Açude do Moisés,Estadual,Artificial,8389
+2018,1047,22569, ,Estadual,Artificial,4077
+2018,1048,22578, ,Estadual,Artificial,8341
+2018,1049,22579, ,Estadual,Artificial,8332
+2018,1050,22581, ,Estadual,Artificial,8321
+2018,1051,22594, ,Estadual,Artificial,8299
+2018,1052,22606, ,Estadual,Artificial,11754
+2018,1053,22609, ,Estadual,Artificial,11758
+2018,1054,22657,PCH Salto Natal,Estadual,Artificial,8100
+2018,1055,22660, ,Estadual,Artificial,8260
+2018,1056,22699,UHE Amador Aguiar II,Estadual,Artificial,23045
+2018,1057,22702, ,Estadual,Artificial,8327
+2018,1058,22720, ,Estadual,Artificial,7893

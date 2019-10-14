@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-"""
-Copyright (C) 2018 Centro de Computacao Cientifica e Software Livre
+'''
+Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
 Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
 
 This file is part of HOTMapper.
@@ -17,9 +17,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with simcaq-cdn.  If not, see <https://www.gnu.org/licenses/>.
-
-"""
+along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
+'''
 
 '''Describes tests for the database.database_table module, concerning DatabaseTable objects
 and their manipulation'''
@@ -38,6 +37,7 @@ import database.protocol as protocol
 # Disable no-member warnings to silence false positives from Table instances dinamically generated
 # attributes. Disabled warning for access to protected member
 # pylint: disable=no-member,W0212
+# You'll also need python 3.6+
 
 
 class MainModuleTest(unittest.TestCase):
@@ -91,37 +91,6 @@ class MainModuleTest(unittest.TestCase):
 
         self.assertTrue(column1 in primary_keys)
         self.assertTrue(column2 in primary_keys)
-
-    @patch('database.database_table.Table')
-    @patch('database.database_table.get_type')
-    def test_gen_temporary(self, mocked_get_type, mocked_table):
-        '''Test temporary table object generation'''
-        name = MagicMock(str)
-        field_name = MagicMock(str)
-        field_type = MagicMock(str)
-        meta = MagicMock(sqlalchemy.MetaData)
-        columns = (field_name, field_type)
-
-        database_table.gen_temporary(name, meta, columns)
-
-        mocked_get_type.assert_called_with(field_type)
-        mocked_table.assert_called_with(name, meta, prefixes=['TEMPORARY'], schema='tmp')
-
-    def test_copy_to_temporary(self):
-        '''Test copy into temporary table'''
-        connection = MagicMock(sqlalchemy.engine.base.Engine._trans_ctx)
-        connection.execute = MagicMock(lambda query: None)
-        ttable = MagicMock(sqlalchemy.Table)
-
-        csv_file = ''.join([choice(string.ascii_lowercase) for _ in range(randint(1, 10))])
-        ttable.name = ''.join([choice(string.ascii_lowercase) for _ in range(randint(1, 10))])
-
-        database_table.copy_to_temporary(connection, csv_file, ttable)
-
-        query = connection.execute.call_args[0][0]
-        self.assertIn(csv_file, query)
-        self.assertIn(ttable.name, query)
-
 
 def gen_random_string(min_length, max_length):
     '''Generates a random string to use as name for some feature'''
@@ -187,34 +156,6 @@ class DatabaseTableTest(unittest.TestCase):
 
         self.assertEqual(definitions, test_dict)
 
-    def test_translate_header(self):
-        '''Tests translation of a header to local database names from a protocol'''
-        with self.assertRaises(base.MissingProtocolError):
-            self.table.columns_from_targets(None)
-
-        self.table._protocol = MagicMock(protocol.Protocol())
-        self.table._protocol.target_from_original = MagicMock(
-            self.table._protocol.target_from_original,
-            return_value='target')
-        self.table._protocol.dbcolumn_from_target = MagicMock(
-            self.table._protocol.dbcolumn_from_target, return_value=('column_name', 'column_type'))
-
-        self.assertEqual(self.table.translate_header([], []), {})
-
-        translated = self.table.translate_header(['title'], 2013)
-
-        self.table._protocol.target_from_original.assert_called_with('title', 2013)
-        self.table._protocol.dbcolumn_from_target.assert_called_with('target')
-        self.assertEqual(len(translated.keys()), 1)
-        self.assertEqual(translated['title'], {"column_name": 'column_name',
-                                               "column_type": 'column_type'})
-
-        size = randint(1, 10)
-        header = []
-        for i in range(0, size):
-            header.append('title'+str(i))
-        translated = self.table.translate_header(header, 2013)
-        self.assertEqual(len(translated.keys()), size)
 
     @patch('database.database_table.insert')
     def test_create_mapping_table(self, mocked_insert):
@@ -402,6 +343,9 @@ class DatabaseTableTest(unittest.TestCase):
         self.engine.execute.assert_not_called()
 
         self.table.primary_key = MagicMock(self.table.primary_key)
+        primary_column = MagicMock(sqlalchemy.Column)
+        self.table.primary_key.columns = [primary_column]
+
         self.table.redefine_column = MagicMock(self.table.redefine_column)
         transfer_list = []
         for _ in range(randint(2, 5)):
@@ -436,189 +380,9 @@ class DatabaseTableTest(unittest.TestCase):
         p = protocol.Protocol()
         self.table.load_protocol(p)
 
-        
-
-    def test_treat_derivative(self):
-        '''Tests the treatment of a derivative field'''
-        original = None
-        ret = self.table.treat_derivative(original)
-        self.assertIs(ret, None)
-
-        original = gen_random_string(4, 10)
-        ret = self.table.treat_derivative(original)
-        self.assertIs(ret, None)
-
-        original = '~' + original
-        ret = self.table.treat_derivative(original)
-        self.assertEqual('~'+str(ret), original)
-        self.assertIsInstance(ret, sqlalchemy.sql.elements.TextClause)
-
-    def test_set_temporary_primary_keys(self):
-        '''Tests the setup of primary keys in temporary tables'''
-        ttable = sqlalchemy.Table('t_' + self.name, self.meta)
-        with self.assertRaises(base.MissingProtocolError):
-            self.table.set_temporary_primary_keys(ttable)
-
-        pk_columns = []
-        for _ in range(randint(2, 5)):
-            column = Column(gen_random_string(5, 10), Integer())
-            pk_columns.append(column)
-            self.table.append_column(column)
-            ttable.append_column(column.copy())
-
-        not_pk_columns = []
-        for _ in range(randint(2, 5)):
-            column = Column(gen_random_string(5, 10), Integer())
-            not_pk_columns.append(column)
-            self.table.append_column(column)
-            ttable.append_column(column.copy())
-
-        self.table.primary_key = PrimaryKeyConstraint(*pk_columns)
-        self.table._protocol = MagicMock(protocol.Protocol())
-
-        self.table._protocol.target_from_dbcolumn = lambda name: name
-        self.table._protocol.original_from_target = lambda name, year: name
-
-        year = gen_random_string(2, 5)
-
-        self.table.set_temporary_primary_keys(ttable, year=year)
-
-        tpks = list(ttable.primary_key)
-        pks = list(self.table.primary_key)
-
-        for tpk, pk in zip(tpks, pks):
-            self.assertEqual(pk.name, tpk.name)
-
-    def test_set_temporary_primary_keys_no_year(self):
-        '''Tests the setup of primary keys in temporary tables'''
-        ttable = sqlalchemy.Table('t_' + self.name, self.meta)
-
-        pk_columns = []
-        for _ in range(randint(2, 5)):
-            column = Column(gen_random_string(5, 10), Integer())
-            pk_columns.append(column)
-            self.table.append_column(column)
-            ttable.append_column(column.copy())
-
-        not_pk_columns = []
-        for _ in range(randint(2, 5)):
-            column = Column(gen_random_string(5, 10), Integer())
-            not_pk_columns.append(column)
-            self.table.append_column(column)
-            ttable.append_column(column.copy())
-
-        self.table.primary_key = PrimaryKeyConstraint(*pk_columns)
-        self.table._protocol = MagicMock(protocol.Protocol())
-
-        self.table.set_temporary_primary_keys(ttable)
-
-        tpks = list(ttable.primary_key)
-        pks = list(self.table.primary_key)
-
-        for tpk, pk in zip(tpks, pks):
-            self.assertEqual(pk.name, tpk.name)
-
-    def test_mount_original_columns(self):
-        '''Tests the mounting of the original columns list for a given table'''
-        self.table.translate_header = MagicMock(self.table.translate_header)
-        header = []
-        year = randint(1, 10)
-        self.table.translate_header.return_value = {}
-        ret = self.table.mount_original_columns(header, year)
-        self.assertIsInstance(ret, list)
-        self.assertEqual(len(ret), 0)
-
-        header_len = randint(1, 10)
-        for _ in range(header_len):
-            header.append(gen_random_string(4, 10))
-
-        self.table.translate_header = lambda header, year:\
-            dict((k, {"column_type": gen_random_string(4, 10)}) for k in header)
-        ret = self.table.mount_original_columns(header, year)
-        self.assertIsInstance(ret, list)
-        self.assertEqual(len(ret), header_len)
-        for entry, header_entry in zip(ret, header):
-            self.assertEqual(entry[0], header_entry)
-
-    @patch('database.database_table.get_type')
-    @patch('database.database_table.Column')
-    @patch('database.database_table.Table')
-    @patch('database.database_table.select')
-    @patch('database.database_table.insert')
-    def test_set_temporary_columns(self, mocked_insert, mocked_select, mocked_table, mocked_column,
-                                   mocked_get_type):
-        '''Tests setup of temporary columns in temporary tables'''
-        ttable = sqlalchemy.Table('t_' + self.name, self.meta)
-        year = gen_random_string(2, 5)
-        with self.assertRaises(base.MissingProtocolError):
-            self.table.set_temporary_columns(self.engine, ttable, year)
-
-        self.table._protocol = MagicMock(protocol.Protocol)
-
-        # No assertions should be made for the original columns.
-        # This should be removed from the temporary columns table some time in future
-        columns = []
-        for _ in range(randint(2, 5)):
-            columns.append(MagicMock(Column()))
-
-        ttable.columns = columns
-
-        get_type_calls = []
-        column_calls = []
-        treat_derivative_calls = []
-
-        return_value = []
-        for _ in range(randint(2, 5)):
-            temporary_column = (gen_random_string(5, 10),
-                                gen_random_string(2, 5),
-                                gen_random_string(10, 20)
-                               )
-            return_value.append(temporary_column)
-            get_type_calls.append(call(temporary_column[1]))
-            column_calls.append(call(temporary_column[0], mocked_get_type()))
-            treat_derivative_calls.append(call(temporary_column[2]))
-
-        self.table._protocol.get_temporary_columns = lambda year: return_value
-        self.table.treat_derivative = MagicMock(self.table.treat_derivative)
-
-        self.table.set_temporary_columns(self.engine, ttable, gen_random_string(2, 5))
-
-        mocked_table.assert_called_once()
-        mocked_get_type.assert_has_calls(get_type_calls)
-        mocked_column.assert_has_calls(column_calls)
-        mocked_select.assert_called()
-        mocked_insert.assert_called()
-        self.table.treat_derivative.assert_has_calls(treat_derivative_calls)
-
     def test_insert_from_temporary(self):
         '''Tests insertion in table from a previously created temporary table'''
         pass
-
-    def test_columns_from_targets(self):
-        '''Tests capture of database columns from given targets on a table object'''
-        with self.assertRaises(base.MissingProtocolError):
-            self.table.columns_from_targets(None)
-
-        self.table._protocol = MagicMock(protocol.Protocol())
-        target_list = None
-        ret = self.table.columns_from_targets(target_list)
-        self.assertIsInstance(ret, list)
-        self.assertEqual(len(ret), 0)
-
-        target_list_len = randint(1, 10)
-        target_list = []
-        for _ in range(target_list_len):
-            target_list.append(gen_random_string(4, 10))
-        ret_column_name = gen_random_string(4, 10)
-        self.table._protocol.dbcolumn_from_target.return_value = (ret_column_name, str)
-        ret = self.table.columns_from_targets(target_list)
-        self.assertIsInstance(ret, list)
-        self.assertEqual(ret[0], ret_column_name)
-        self.assertEqual(len(ret), target_list_len)
-
-        self.table._protocol.dbcolumn_from_target.return_value = (ret_column_name, None)
-        with self.assertRaises(base.InvalidTargetError):
-            self.table.columns_from_targets(target_list)
 
     def test_update_from_temporary(self):
         '''Tests updating of given columns from a temporary table'''

@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
+# Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
+#
+# This file is part of HOTMapper.
+#
+# HOTMapper is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# HOTMapper is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
+
 # ---------------------------------------------------------------------------------------#
 # Esse script tem como objetivo facilitar a criação do banco de dados do projeto SIMCAQ,
 # conforme a necessidade dos desenvolvedores. O código é livre para modificações contanto
@@ -12,16 +30,7 @@
 # ---------------------------------------------------------------------------------------#
 fBase ()
 {
-    mclient -d $1 base/regiao.sql
-    mclient -d $1 base/estado.sql
-    mclient -d $1 base/municipio.sql
-    mclient -d $1 base/siope_uf.sql
-    mclient -d $1 base/siope_mun.sql
-    mclient -d $1 base/siope_mun_seed.sql
-    mclient -d $1 base/instituicao_superior.sql
-    mclient -d $1 base/formacao_superior.sql
-    mclient -d $1 base/formacao_superior_seed.sql
-    mclient -d $1 base/ibge_pib.sql
+    ./manage.py execute_sql_group base
 }
 # ---------------------------------------------------------------------------------------#
 
@@ -63,6 +72,15 @@ fInsert()
 # ---------------------------------------------------------------------------------------#
 
 # ---------------------------------------------------------------------------------------#
+# Função para criar tabelas agregadas a partir de sql
+# ---------------------------------------------------------------------------------------#
+fAggregate()
+{
+    ./manage.py execute_sql_group simcaq_aggregate
+}
+# ---------------------------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------#
 # Retorna uma ajuda caso não haja parâmetros de entrada
 # ---------------------------------------------------------------------------------------#
 if [ ! $1 ]; then
@@ -73,9 +91,9 @@ if [ ! $1 ]; then
     printf "# 3. create: execute the commands to create the tables.\n"
     printf "# 4. insert: execute the commands to insert data to tables.\n\n"
     printf "# Estructure of commands:\n"
-    printf "# 1. ./auto.sh all [database_name] [path_to_files] [initial_year]"
+    printf "# 1. ./auto.sh all [path_to_files] [initial_year]"
     printf " [final_year]\n"
-    printf "# 2. ./auto.sh base [database_name]\n"
+    printf "# 2. ./auto.sh base\n"
     printf "# 3. ./auto.sh create\n"
     printf "# 4. ./auto.sh insert [path_to_files] [initial_year] [final_year]\n\n"
     exit 0;
@@ -89,33 +107,29 @@ source ./env/bin/activate
 if [ $? = 0 ]; then
     printf "\n# Environment activated!\n"
     if [ "$1" = 'all' ]; then
-        if [ $2 ] && [ $3 ] && [ $4 ] && [ $5 ]; then
-            printf "\n# Initializing the creation of base tables (may need database"
-            printf " password)...\n"
+        if [ $2 ] && [ $3 ] && [ $4 ]; then
+            printf "\n# Initializing the creation of base tables...\n"
             sleep 1
-            fBase "$2"
+            fBase
             printf "\n# Initializing the creation of mapping tables...\n"
             sleep 1
             fCreate
             printf "\n# Initializing the insertion of data, this may take a while...\n"
             sleep 2
-            fInsert "$3" "$4" "$5"
+            fInsert "$2" "$3" "$4"
             sleep 1
+            printf "\n# Initializing the creation of aggregate tables...\n"
+            sleep 1
+            fAggregate
         else
             printf "# ERROR: Missing parameters!\n"
             exit -1;
         fi
     elif [ "$1" = 'base' ]; then
-        if [ $2 ]; then
-            printf "\n# Initializing the creation of base tables (may need database"
-            printf " password)...\n"
-            sleep 1
-            fBase "$2"
-            sleep 1
-        else
-            printf "# ERROR: Missing parameters!\n"
-            exit -1;
-        fi
+        printf "\n# Initializing the creation of base tables...\n"
+        sleep 1
+        fBase
+        sleep 1
     elif [ "$1" = 'create' ]; then
         printf "\n# Initializing the creation of tables...\n"
         sleep 1

@@ -1,5 +1,5 @@
-"""
-Copyright (C) 2018 Centro de Computacao Cientifica e Software Livre
+'''
+Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
 Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
 
 This file is part of HOTMapper.
@@ -15,12 +15,11 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with simcaq-cdn.  If not, see <https://www.gnu.org/licenses/>.
-
-"""
+along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
+'''
 
 import re
-from sqlalchemy_monetdb.types import MONETDB_TYPE_MAP, TINYINT, DOUBLE_PRECISION
+from sqlalchemy_monetdb.monetdb_types import MONETDB_TYPE_MAP, TINYINT, DOUBLE_PRECISION
 from sqlalchemy.ext.compiler import compiles
 
 

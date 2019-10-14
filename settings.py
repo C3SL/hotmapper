@@ -1,5 +1,5 @@
-"""
-Copyright (C) 2018 Centro de Computacao Cientifica e Software Livre
+'''
+Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
 Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
 
 This file is part of HOTMapper.
@@ -15,10 +15,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with simcaq-cdn.  If not, see <https://www.gnu.org/licenses/>.
-
-"""
-
+along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
+'''
 
 '''Settings used by the database module'''
 import logging
@@ -37,6 +35,9 @@ DATABASE_HOST = 'localhost'
 # Database to connect to
 DATABASE = 'hotmapper_demo'
 
+# Column used to run aggregations and denormalizations
+YEAR_COLUMN = 'ano_censo'
+
 # URI structure. Standards to login:password model, but can be changed as needed.
 DATABASE_URI = '{}://{}:{}@{}/{}'.format(DATABASE_DIALECT, DATABASE_USER,
                                          DATABASE_USER_PASSWORD, DATABASE_HOST, DATABASE)
@@ -45,10 +46,13 @@ BACKUP_FOLDER = '/home/banco/dumps/monetdb/'
 BACKUP_FILE = 'backupdadoseducacionais'
 
 # Folder where mapping protocols can be found - relative to root
-MAPPING_PROTOCOLS_FOLDER = 'mapping_protocols'
+MAPPING_PROTOCOLS_FOLDER = 'mapping-protocols'
 
 # Folder for table definitions files
-TABLE_DEFINITIONS_FOLDER = 'table_definitions'
+TABLE_DEFINITIONS_FOLDER = 'table-definitions'
+
+# Folder for scripts and sql tables
+SCRIPTS_FOLDER = 'sql-scripts'
 
 # Source table definitions
 SOURCE_TABLE_NAME = 'fonte'
