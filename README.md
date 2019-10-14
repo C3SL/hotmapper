@@ -27,7 +27,7 @@ To make it easier to execute the tool, we have dowloaded all data from "Local Of
 ## Requirements ##
 
 * Python 3 (It's recommended to use a virtual environment, such as virtualenv)
-* MonetDB (We plan to make other databases to work with HOTMapper in the future)
+* [MonetDB](https://www.monetdb.org/Downloads) (We plan to make other databases to work with HOTMapper in the future)
 
 ## Installation ##
 
@@ -41,7 +41,7 @@ We assume that Python 3.x is installed in the local computer and that all the fo
 1a) On Linux/macOS
 
 ```bash
-$ sudo -H pip install virtualenv
+$ sudo -H pip3 install virtualenv
 ```
 
 1b) On Windows (with administrator privilleges)
@@ -193,37 +193,37 @@ $ ./manage.py create localoferta_ens_superior
 
 a) To insert 2010:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2010.CSV localoferta_ens_superior 2010 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2010.CSV localoferta_ens_superior 2010 --sep="|" 
 ```
 
 b) To insert 2011:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2011.CSV localoferta_ens_superior 2011 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2011.CSV localoferta_ens_superior 2011 --sep="|" 
 ```
 
 c) To insert 2012:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2012.CSV localoferta_ens_superior 2012 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2012.CSV localoferta_ens_superior 2012 --sep="|" 
 ```
 
 d) To insert 2013:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
 ```
 
 e) To insert 2014:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
 ```
 
 f) To insert 2015:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
 ```
 
 g) To insert 2016:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
 ```
 
 ### Demo scenario 2 ###
