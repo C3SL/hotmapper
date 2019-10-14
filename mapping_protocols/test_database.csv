@@ -6,4 +6,3 @@ ESPCD,esp_cd,Código da massa,0,massa_id,INT,esp_cd
 TIPOMASS,detipomass,Tipo,0,tipo,VARCHAR(16),detipomass
 TIPOADM,dedominial,Tipo Administrativo,0,adm,VARCHAR(16),dedominial
 CODADM,,Código Administrativo,0,adm_id,INT,"~CASE WHEN (""dedominial"" = 'Federal') THEN 1 WHEN (""dedominial"" = 'Estadual') THEN 2 END"
-CODTIPO,,Código do tipo,0,tipo_id,INT,~CASE WHEN (tipo = 'Natural') THEN 1 WHEN (tipo = 'Artificial') THEN 0 END
