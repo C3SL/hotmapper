@@ -46,13 +46,13 @@ BACKUP_FOLDER = '/home/banco/dumps/monetdb/'
 BACKUP_FILE = 'backupdadoseducacionais'
 
 # Folder where mapping protocols can be found - relative to root
-MAPPING_PROTOCOLS_FOLDER = 'mapping-protocols'
+MAPPING_PROTOCOLS_FOLDER = 'mapping_protocols'
 
 # Folder for table definitions files
-TABLE_DEFINITIONS_FOLDER = 'table-definitions'
+TABLE_DEFINITIONS_FOLDER = 'table_definitions'
 
 # Folder for scripts and sql tables
-SCRIPTS_FOLDER = 'sql-scripts'
+SCRIPTS_FOLDER = 'sql'
 
 # Source table definitions
 SOURCE_TABLE_NAME = 'fonte'

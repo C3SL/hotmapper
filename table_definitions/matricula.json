@@ -1,0 +1,8 @@
+{
+    "pairing_description": "Tabela de matrículas",
+    "data_source": "Microdados do Censo Escolar/INEP (arquivo Matrículas)",
+    "pk": ["ano_censo", "id"],
+    "foreign_keys": [
+
+    ]
+}

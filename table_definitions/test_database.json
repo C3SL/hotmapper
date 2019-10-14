@@ -1,0 +1,12 @@
+{
+    "pairing_description": "Tabela utilizada para testes",
+    "data_source": "Massa d' Água Região Hidrográfica Parana - ANA - dados.gov.br",
+    "pk": ["id"],
+    "foreign_keys": [
+        {
+            "keys": ["id"],
+            "reference_columns": ["id"],
+            "reference_table": "test_reference"
+        }
+    ]
+}
