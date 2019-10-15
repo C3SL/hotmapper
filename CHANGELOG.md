@@ -15,6 +15,7 @@ remap is executed. This permits easier access to all the table information.
 you still won't be able to insert data without a mapping_protocol CSV.)
 * You can now, create, delete and rename columns by editing directly the `table_definition JSON`. (The mapping_protocol
 CSV won't be automatically updated and the insertion of data still requires the presence of the columns there.)
+* Added a confirmation prompt when doing a remap.
 
 ### Fixes
 * Fixed insertion error when the header of the data csv contains `"` (quotes).
