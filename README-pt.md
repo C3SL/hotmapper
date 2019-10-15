@@ -2,6 +2,9 @@
 
 Este repositório contem a ferramenta HOTMapper, o qual permite o usuário gerenciar seus dados históricos usando protocolos de mapeamento. 
 
+Abaixo encontra-se um guia simples de uso, caso você queira um tutorial mais completo ou deseje saber mais sobre todos os
+aspectos do HOTMapper, vá para a nossa [página na wiki(em inglês).](https://gitlab.c3sl.ufpr.br/tools/hotmapper/wikis/home)
+
 ## Dados ##
 
 Os dados abertos extraídos e processados pela ferramenta podem ser encontrados no link [INEP](http://portal.inep.gov.br/web/guest/microdados) na seção "Censo Escolar" e " Censo da Educação Superior".
@@ -13,7 +16,7 @@ Para facilitar a execução da ferramente, nós baixamos todos os dados de "Loca
 ## Requisitos ##
 
 * Python 3 (É recomendado o uso de um ambiente virtual, como o virtualenv)
-* MonetDB (Nós temos planos de expandir o suporte de bancos de dados que o HOTMapper suporta no futuro)
+* [MonetDB](https://www.monetdb.org/Downloads) (Nós temos planos de expandir o suporte de bancos de dados que o HOTMapper suporta no futuro)
 
 ## Installação ##
 
@@ -28,7 +31,7 @@ Nós assumimos queo Python 3.X está instalado na máquina que executará o HOTM
 1a) No Linux/macOS
 
 ```bash
-$ sudo -H pip install virtualenv
+$ sudo -H pip3 install virtualenv
 ```
 
 1b) No Windows (with administrator privilleges)
@@ -181,37 +184,37 @@ $ ./manage.py create localoferta_ens_superior
 
 a) Para inserir 2010:
 ```bash
-$ ./manage.py insert CAMINHO_DO_ARQUIVO/DM_LOCAL_OFERTA_2010.CSV localoferta_ens_superior 2010 --sep="|" 
+$ ./manage.py insert CAMINHO_DO_ARQUIVO/hotmapper/open_data/DM_LOCAL_OFERTA_2010.CSV localoferta_ens_superior 2010 --sep="|" 
 ```
 
 b) Para inserir 2011:
 ```bash
-$ ./manage.py insert CAMINHO_DO_ARQUIVO/DM_LOCAL_OFERTA_2011.CSV localoferta_ens_superior 2011 --sep="|" 
+$ ./manage.py insert CAMINHO_DO_ARQUIVO/hotmapper/open_data/DM_LOCAL_OFERTA_2011.CSV localoferta_ens_superior 2011 --sep="|" 
 ```
 
 c) Para inserir 2012:
 ```bash
-$ ./manage.py insert CAMINHO_DO_ARQUIVO/DM_LOCAL_OFERTA_2012.CSV localoferta_ens_superior 2012 --sep="|" 
+$ ./manage.py insert CAMINHO_DO_ARQUIVO/hotmapper/open_data/DM_LOCAL_OFERTA_2012.CSV localoferta_ens_superior 2012 --sep="|" 
 ```
 
 d) Para inserir 2013:
 ```bash
-$ ./manage.py insert CAMINHO_DO_ARQUIVO/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
+$ ./manage.py insert CAMINHO_DO_ARQUIVO/hotmapper/open_data/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
 ```
 
 e) Para inserir 2014:
 ```bash
-$ ./manage.py insert CAMINHO_DO_ARQUIVO/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
+$ ./manage.py insert CAMINHO_DO_ARQUIVO/hotmapper/open_data/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
 ```
 
 f) Para inserir 2015:
 ```bash
-$ ./manage.py insert CAMINHO_DO_ARQUIVO/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
+$ ./manage.py insert CAMINHO_DO_ARQUIVO/hotmapper/open_data/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
 ```
 
 g) Para inserir 2016:
 ```bash
-$ ./manage.py insert CAMINHO_DO_ARQUIVO/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
+$ ./manage.py insert CAMINHO_DO_ARQUIVO/hotmapper/open_data/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
 ```
 
 ### Cenário 2 ###
