@@ -1,6 +1,9 @@
 # HOTMapper #
 
-This respository contains the HOTMapper tool, a tool that allows the user to manage his historical data using a mapping protocol. This specific version is freezed for demonstration purposes for the EDBT 2019 conference. 
+This respository contains the HOTMapper tool, a tool that allows the user to manage his historical data using a mapping protocol.
+
+Bellow we have a simple usage tutorial, if you want a more complete tutorial or know more about all HOTMapper aspects, 
+please head to our [wiki page.](https://gitlab.c3sl.ufpr.br/tools/hotmapper/wikis/home)
 
 ## Table of content ##
 
@@ -17,20 +20,20 @@ This respository contains the HOTMapper tool, a tool that allows the user to man
 
 The Open Data sources extracted and processed by the tool can be found at the link: [INEP](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar" and "Censo da Educação Superior".
 
-To make it easier to execute the tool, we have dowloaded all data from "Local Oferta" is in the directory open_data. This way it is not necessary to search for the original sources.
+To make it easier to execute the tool, we have dowloaded all data from "Local Oferta" is in the directory `open_data`. This way it is not necessary to search for the original sources.
 
-**NOTE**: It's important to verify if there is a column identifying the year of the dataset;
+**NOTE**: It's important to verify if there is a column identifying the year of the dataset
 
 ## Requirements ##
 
 * Python 3 (It's recommended to use a virtual environment, such as virtualenv)
-* MonetDB (We plan to make other databases to work with HOTMapper in the future)
+* [MonetDB](https://www.monetdb.org/Downloads) (We plan to make other databases to work with HOTMapper in the future)
 
 ## Installation ##
 
 ----
 **NOTICE:**
-We assume thatPython 3.x is installed in the local computer and that all the following commands that use Python will use Python 3.x.
+We assume that Python 3.x is installed in the local computer and that all the following commands that use Python will use Python 3.x.
 --
 
 1) Install virtualenv
@@ -38,7 +41,7 @@ We assume thatPython 3.x is installed in the local computer and that all the fol
 1a) On Linux/macOS
 
 ```bash
-$ sudo -H pip install virtualenv
+$ sudo -H pip3 install virtualenv
 ```
 
 1b) On Windows (with administrator privilleges)
@@ -51,6 +54,11 @@ $ pip install virtualenv
 2) Clone this repository
 ```bash
 $ git clone git@gitlab.c3sl.ufpr.br:tools/hotmapper.git
+```
+or
+
+```bash
+$ git clone https://github.com/C3SL/hotmapper.git
 ```
 
 3) Go to the repository
@@ -85,7 +93,7 @@ $ .\env\Scripts/activate
 $ pip install -r requirements.txt
 ```
 
-## Command Line Interface ##
+## Command Line Interface (CLI) ##
 
 The CLI (Command Line Interface) uses the standard actions provided by manage.py, which means that to invoke a command it follows the following patterns:
 
@@ -101,7 +109,7 @@ Where COMMAND can be:
 $ python manage.py create <table_name>
 ```
 
-**Notice** that the HOTMapper will use the name of the protocol as the name of the table.
+**NOTICE** that the HOTMapper will use the name of the protocol as the name of the table.
 
 
 * insert: Inserts a CSV file in an existing table.
@@ -164,66 +172,66 @@ $ python manage.py generate_backup
 ```
 ## Demo scenarios ##
 
-In this Section we will explain how to execute the demo scenarios that were submitted to EDBT 2019. Demo scenario 1 uses the dataset "local oferta", which is included in the directory open_data. Demo scenario 2 uses the dataset "matricula" which can be downloaded from the [INEP's Link ](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar".
+In this Section we will explain how to execute the demo scenarios that were submitted to EDBT 2019. Demo scenario 1 uses the dataset "local oferta", which is included in the directory `open_data`. Demo scenario 2 uses the dataset "matricula" which can be downloaded from the [INEP's Link ](http://portal.inep.gov.br/web/guest/microdados) in the section "Censo Escolar".
 
-In both scnearios, we assume that you started the virtual environment as explained in Section `Installation - 5`
+In both scenarios, we assume that you started the virtual environment as explained in Section `Installation - 5`
 
 ### Demo scenario 1 ###
 
-This section contains the commands used in the scenario 1, which is the creation of a new data source and the inclusion of the corresponding data.
+This Section contains the commands used in the scenario 1, which is the creation of a new table and the inclusion of the corresponding data.
 
 
-1) First we need to create the database, to do so we execute the following command:
+1) First we need to create the table in the database, to do so we execute the following command:
 ```bash
 $ ./manage.py create localoferta_ens_superior
 ```
 
-2) Now, as we already have the mapping definition, we need to insert the open data in the data base. To do it we must execute the following commands:
+2) Now, as we already have the mapping definition, we need to insert the open data in the database. To do it we must execute the following commands:
 
-**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/DM_LOCAL_OFERTA_2010`
+**NOTE:** FILEPATH is the **_full path_** for the directory where the open data table is, for example (in a Linux environment): `/home/c3sl/HOTMapper/open_data/DM_LOCAL_OFERTA_2010.CSV`
 
 
 a) To insert 2010:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2010.CSV localoferta_ens_superior 2010 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2010.CSV localoferta_ens_superior 2010 --sep="|" 
 ```
 
 b) To insert 2011:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2011.CSV localoferta_ens_superior 2011 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2011.CSV localoferta_ens_superior 2011 --sep="|" 
 ```
 
 c) To insert 2012:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2012.CSV localoferta_ens_superior 2012 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2012.CSV localoferta_ens_superior 2012 --sep="|" 
 ```
 
 d) To insert 2013:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2013.CSV localoferta_ens_superior 2013 --sep="|" 
 ```
 
 e) To insert 2014:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2014.CSV localoferta_ens_superior 2014 --sep="|" 
 ```
 
 f) To insert 2015:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2015.CSV localoferta_ens_superior 2015 --sep="|" 
 ```
 
 g) To insert 2016:
 ```bash
-$ ./manage.py insert FILEPATH/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
+$ ./manage.py insert FILEPATH/hotmapper/open_data/DM_LOCAL_OFERTA_2016.CSV localoferta_ens_superior 2016 --sep="|" 
 ```
 
 ### Demo scenario 2 ###
 
-This section contains the commands used in the scenario 2, which is an update of an existing data source.
+This Section contains the commands used in the scenario 2, which is an update of an existing table.
 
 
-1) First we need to create the database, to do so execute the following command:
+1) First we need to create the table in the database, to do so we execute the following command:
 ```bash
 $ ./manage.py create matricula
 ```
@@ -252,19 +260,19 @@ d) To insert 2016:
 $ ./manage.py insert FILEPATH/MATRICULA_2016.CSV matricula 2016 --sep="|" 
 ```
 
-3) Change the matricula's mapping protocol. You can use the `matricula_remap.csv` (To do so, rename the current `matricula.csv` to something else and the `matricula_remap.csv` to `matricula.csv`). In that case, the only column that will change is the "profissionalizante", because now, instead of the ELSE returns 0 it returns 9. 
+3) Change the matricula's mapping protocol. You can use the `matricula_remap.csv` (To do so, rename the current `matricula.csv` to something else and the `matricula_remap.csv` to `matricula.csv`). In that case, the only column that will change is the "profissionalizante", because now, instead of the `ELSE returns 0` it returns `9`. 
 
 4) Run the remap command
 
 ```bash
 $ ./manage.py remap matricula
 ```
-The above command will update the table `Fonte` and the schema from the table matricula
+The above command will update the table `Fonte` and the schema from the table `matricula`
 
 5) Update the table
 
 ```bash
-$ ./manage.py update_from_file /FILEPATH/MATRICULA_2013.CSV matricula 2013 --columns="profissionalizante" --sep="|"
+$ ./manage.py update_from_file FILEPATH/MATRICULA_2013.CSV matricula 2013 --columns="profissionalizante" --sep="|"
 ```
 
-The above command will update the data in the table matricula.
+The above command will update the data in the table `matricula`.

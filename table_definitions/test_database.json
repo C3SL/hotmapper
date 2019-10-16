@@ -1,0 +1,20 @@
+{
+    "pairing_description": "Tabela utilizada para testes",
+    "data_source": "Massa d' Água Região Hidrográfica Parana - ANA - dados.gov.br",
+    "pk": ["id"],
+    "foreign_keys": [{
+        "keys": ["id"],
+        "reference_columns": ["id"],
+        "reference_table": "test_reference"
+    }],
+    "columns": {
+        "id": ["INT", "OBJID"],
+        "ano_censo": ["INT", "ANO"],
+        "nome": ["VARCHAR(64)", "NOMEOG"],
+        "esp_id": ["INT", "ESPCD"],
+        "adm": ["VARCHAR(16)", "TIPOADM"],
+        "adm_id": ["INT", "CODADM"],
+        "random_string": ["VARCHAR(16)", "RDREF"],
+        "tipo_id": ["INT", "CODTIPO"]
+    }
+}

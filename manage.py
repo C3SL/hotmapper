@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-"""
-Copyright (C) 2018 Centro de Computacao Cientifica e Software Livre
+'''
+Copyright (C) 2016 Centro de Computacao Cientifica e Software Livre
 Departamento de Informatica - Universidade Federal do Parana - C3SL/UFPR
 
 This file is part of HOTMapper.
@@ -17,16 +17,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with simcaq-cdn.  If not, see <https://www.gnu.org/licenses/>.
-
-"""
-
-
+along with HOTMapper.  If not, see <https://www.gnu.org/licenses/>.
+'''
 
 '''CLI for database module'''
 from manager import Manager
-
+import subprocess
 import database.actions
+from settings import SCRIPTS_FOLDER
 
 manager = Manager()
 
@@ -37,9 +35,11 @@ def insert(csv_file, table, year, sep=';', null='',notifybackup=None):
     if notifybackup:
         database.actions.generate_backup()
 @manager.command
-def create(table):
-    '''Creates table using mapping protocols'''
-    database.actions.create(table)
+def create(table, ignore_definitions=False):
+    '''Creates table using mapping protocols
+    If ignore_definitions is set, it will ignore the columns from table definition if both, table_definitions and
+    mapping_protocol, exists (though it will still get primary_key, foreign_key and source information)'''
+    database.actions.create(table, ignore_definitions)
 
 @manager.command
 def drop(table):
@@ -47,9 +47,11 @@ def drop(table):
     database.actions.drop(table)
 
 @manager.command
-def remap(table):
-    '''Restructures a table to match the mapping protocol.'''
-    database.actions.remap(table)
+def remap(table, auto_confirmation=False, verify_definitions=False):
+    '''Restructures a table to match the mapping protocol.
+    If auto_confirmation is set it will not ask before doing any operation
+    If verify_definitions is set it will ask any difference between mapping_protocol and table_definition'''
+    database.actions.remap(table, auto_confirmation, verify_definitions)
 
 @manager.command
 def update_from_file(csv_file, table, year, columns=None, target_list=None, offset=2, sep=';',
@@ -59,7 +61,7 @@ def update_from_file(csv_file, table, year, columns=None, target_list=None, offs
     if target_list:
         target_list = target_list.split(',')
     database.actions.update_from_file(csv_file, table, year, columns=columns,
-                                      target_list=target_list, offset=offset,
+                                      offset=offset,
                                       delimiters=[sep, '\\n', '"'], null=null)
 
 @manager.command
@@ -78,6 +80,37 @@ def run_aggregations(table_name, year):
 def generate_backup():
     '''Create/Recriate file monitored by backup script in production'''
     database.actions.generate_backup()
+
+@manager.command
+def execute_sql_group(script_group, script_path=SCRIPTS_FOLDER, files=False):
+    '''Execute a group of sql files from groups.py,
+    if you want only specific files use --files and a "file1,file2,..." pattern'''
+    database.actions.execute_sql_group(script_group, script_path, files)
+
+@manager.command
+def drop_group(script_group, files=False):
+    '''Drop a group of tables from groups.py,
+    if you want to drop only specif tables use --files and a "table1,table2,..." pattern'''
+    database.actions.drop_group(script_group, files)
+
+@manager.command
+def rebuild_group(script_group, sql_path=SCRIPTS_FOLDER, files=False):
+    database.actions.drop_group(script_group, files)
+    database.actions.execute_sql_group(script_group, sql_path, files)
+
+@manager.command
+def run_script(script_name, args="", folder=SCRIPTS_FOLDER):
+    '''Run a script from the scripts folder, the arguments of the script needs to be passed as a string'''
+    run_list = args.split(",")
+    run_list.insert(0, script_name)
+    if script_name[-2:] == 'py':
+        run_list.insert(0, 'python')
+        subprocess.run(run_list, cwd=folder)
+    elif script_name[-2:] == 'sh':
+        run_list.insert(0, 'sh')
+        subprocess.run(run_list, cwd=folder)
+    elif script_name[-3:] == 'sql':
+        database.actions.execute_sql_script(script_name)
 
 if __name__ == "__main__":
     manager.main()
