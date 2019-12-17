@@ -276,3 +276,7 @@ $ ./manage.py update_from_file FILEPATH/MATRICULA_2013.CSV matricula 2013 --colu
 ```
 
 The above command will update the data in the table `matricula`.
+
+## Publications ##
+* Henrique Varella Ehrenfried, Eduardo Todt, Daniel Weingaertner, Luis Carlos Erpen de Bona, Fabiano Silva, and Marcos Didonet Del Fabro. Managing Open Data Evolution through Bi-dimensional Mappings. IEEE/ACM BDCAT ’19, pp 159-162, December 2–5, 2019, Auckland, New Zealand [Extended version available] (http://www.inf.ufpr.br/didonet/articles/2019_HotMapper_report.pdf)
+* Henrique Varella Ehrenfried, Rudolf Eckelberg, Hamer Iboshi, Eduardo Todt, Daniel Weingaertner and Marcos Didonet Del Fabro, HOTMapper: Historical Open Data Table Mapper. EDBT 2019, Demo paper. pp. 550-553, March 2019, Lisbon, Portugal. [Open Proceeddings available](http://openproceedings.org/2019/conf/edbt/EDBT19_paper_231.pdf)
