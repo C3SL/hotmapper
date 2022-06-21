@@ -9,7 +9,7 @@ jsbeautifier==1.10.0
 lazy-object-proxy==1.4.1
 manage.py==0.2.10
 mccabe==0.6.1
-numpy==1.16.3
+numpy==1.22.0
 pandas==0.24.2
 pexpect==4.7.0
 pickleshare==0.7.5
